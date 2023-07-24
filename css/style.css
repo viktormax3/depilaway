@@ -1,0 +1,65 @@
+#naver {
+    background-color: rgb(24,62,101)!important;
+    padding-left: 0;
+    padding-right: 0;
+}
+#naver.a {
+	color:#fff;
+}
+
+a.nav-link {
+	color:#fff;
+}
+nav.navbar.navbar-expand-lg.bg-body-tertiary {
+background-color: 0!important;
+}
+#naverWhite {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+.card-block {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#slideshowRes {
+    padding-right:0;
+    padding-left: 0;
+}
+#footer{
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin:0;
+    background-color:rgb(24,62,101)!important;
+}
+#footer>* {
+    color: #dedad6;
+}
+a.nav-link.p-0.text-body-secondary{
+    color:#dedad6!important;
+}
+p#copyright {
+    color:#dedad6!important;
+}
+@media (min-width: 768px) {
+#slideshowRes {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 66.666667%;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: 35vw;
+    overflow: hidden;
+    min-height: 405px;
+    padding-right:0;
+    padding-left: 0;
+}
+#formIcon {
+	position: absolute;
+    margin-left:63%;
+    margin-top: 3%;
+	border-radius:8px;
+	background-color:#fff;
+	padding:20px;
+	overflow:hidden;
+    z-index: 1;
+}
+}
