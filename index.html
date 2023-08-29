@@ -30,8 +30,8 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12" id="naver">
-          <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark" id="naver">
+        <div class="col-md-12">
+          <nav class="navbar navbar-expand-lg bg-light border-bottom border-body" data-bs-theme="light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
                 <img src="images/logo2.svg" height="50" />
@@ -193,49 +193,49 @@
                         <input type="radio" name="grupo0" value="woman" />
                         <div class="radio-input">
                           <i class="fas fa-venus"></i>
-                          <span>Cera</span>
+                          <span class="user-select-none">Cera</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="man" />
                         <div class="radio-input">
                           <i class="fas fa-mars"></i>
-                          <span>Laser</span>
+                          <span class="user-select-none">Laser</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="other" />
                         <div class="radio-input">
                           <i class="fas fa-transgender"></i>
-                          <span>Otro</span>
+                          <span class="user-select-none">Otro</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="other" />
                         <div class="radio-input">
                           <i class="fas fa-transgender"></i>
-                          <span>Otro</span>
+                          <span class="user-select-none">Otro</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="other" />
                         <div class="radio-input">
                           <i class="fas fa-transgender"></i>
-                          <span>Otro</span>
+                          <span class="user-select-none">Otro</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="other" />
                         <div class="radio-input">
                           <i class="fas fa-transgender"></i>
-                          <span>Otro</span>
+                          <span class="user-select-none">Otro</span>
                         </div>
                       </label>
                       <label class="radio-control">
                         <input type="radio" name="grupo0" value="other" />
                         <div class="radio-input">
                           <i class="fas fa-transgender"></i>
-                          <span>Otro</span>
+                          <span class="user-select-none">Otro</span>
                         </div>
                       </label>
                     </div>
@@ -308,16 +308,16 @@
                     </p>
                   </div>
                 </div>
-                <div style="overflow:auto;">
-                  <div style="float:right;">
+                <div id="botones">
+                  <div>
                     <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="fa-solid fa-arrow-left">
                     </button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)" >
                     </button>
                   </div>
                 </div>
                 <!-- Circles which indicates the steps of the form: -->
-                <div style="text-align:center;margin-top:1%;">
+                <div id="steps">
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>

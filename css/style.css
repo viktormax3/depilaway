@@ -1,20 +1,7 @@
-#naver {
-    background-color: rgb(24,62,101)!important;
-    padding-left: 0;
-    padding-right: 0;
-}
-#naver.a {
-	color:#fff;
+a.nav-link {
+  text-align: center;
 }
 
-a.nav-link {
-	color:#fff;
-  text-align: center;
-  font-size: 13px;
-}
-nav.navbar.navbar-expand-lg.bg-body-tertiary {
-background-color: 0!important;
-}
 .card-block {
     padding-left: 2%;
     padding-right: 2%;
@@ -32,9 +19,7 @@ background-color: 0!important;
 #footer>* {
     color: #dedad6;
 }
-a.nav-link.p-0.text-body-secondary{
-    color:#dedad6!important;
-}
+
 p#copyright {
     color:#dedad6!important;
 }
@@ -63,50 +48,75 @@ p#copyright {
 }
 }
 
+.input-group {
+  border-radius: 25px;
+  /* background-color: white; */
+}
+/* .form-control:focus {
+  border-color: #FF0000!important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6)!important;
+}
+input#srch-term {
+  border-color: white;
+} 
 
 /* Limite */
-
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
-
-
-input.invalid {
-  background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
+/* Oculta todos los pasos inicialmente */
 .tab {
   display: none;
 }
 
+.tab > p > input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #aaaaaa;
+}
+
+.tab > p > input:valid {
+  background-color: rgba(144, 238, 144, 0.123);
+}
+
+.tab > p > input.invalid {
+  background-color: rgb(255, 255, 255);
+}
 .tab > h2 {
   text-align: center;
 }
 
-button {
-  background-color: #04AA6D;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 17px;
-  font-family: Raleway;
+#botones {
+  overflow: auto;
+}
+
+#botones > div {
+  float: right;
+}
+
+#botones * {
   cursor: pointer;
 }
 
-button:hover {
+#botones > div > button,
+button#nextBtn:disabled {
+  background-color: #e57200;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+}
+
+#botones > div > button:hover:enabled {
   opacity: 0.8;
 }
 
+button#nextBtn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
 #prevBtn {
-  background-color: #bbbbbb;
+  background-color: #e57200;
 }
 
-/* Make circles that indicate the steps of the form: */
+/* indicadores de la pestaña actual */
 .step {
   height: 5px;
   width: 15px;
@@ -118,6 +128,11 @@ button:hover {
   opacity: 0.5;
 }
 
+#steps{
+  text-align:center;
+  margin-top:1%;
+}
+
 .step.active {
   opacity: 1;
 }
@@ -126,7 +141,6 @@ button:hover {
 .step.finish {
   background-color: #e57200;
 }
-
 
 
 .radio-form {
