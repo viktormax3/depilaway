@@ -9,13 +9,12 @@
 
 a.nav-link {
 	color:#fff;
+  text-align: center;
+  font-size: 13px;
 }
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
 background-color: 0!important;
 }
-#naverWhite {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  }
 .card-block {
     padding-left: 2%;
     padding-right: 2%;
@@ -48,18 +47,192 @@ p#copyright {
     max-width: 100%;
     height: 35vw;
     overflow: hidden;
-    min-height: 405px;
+    min-height: 500px;
     padding-right:0;
     padding-left: 0;
 }
 #formIcon {
 	position: absolute;
-    margin-left:63%;
-    margin-top: 3%;
-	border-radius:8px;
+    margin-left:55%;
+    margin-top: 1%;
+	border-radius:30px;
 	background-color:#fff;
 	padding:20px;
 	overflow:hidden;
     z-index: 1;
 }
 }
+
+
+/* Limite */
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+.tab > h2 {
+  text-align: center;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 5px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 25%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #e57200;
+}
+
+
+
+.radio-form {
+  width: 100%;
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+  @media screen and (max-width: 768px) {
+    .radio-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      width: 100%;
+      transform: none;
+      position: relative;
+      left: 0;
+      top: 0; } }
+  .radio-form h1 {
+    width: 100%;
+    text-align: center;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 35px; }
+  .radio-form .radio-control {
+    min-width: 25%;
+    transition: all ease 250ms; 
+  }
+    .radio-form .radio-control:hover {
+      transform: scale(1); 
+    }
+      .radio-form .radio-control:hover .radio-input {
+		margin: 0 5px;
+}
+    /* @media screen and (max-width: 768px) {
+      .radio-form .radio-control {
+        width: 100%;
+        margin-bottom: 30px; } } */
+    .radio-form .radio-control .radio-input {
+      background: #f4f4f4;
+      text-align: center;
+      padding: 1vw;
+      cursor: pointer;
+      position: relative;
+      margin: 3px;
+      transition: all ease 250ms;
+      background-clip: padding-box;
+      border: solid 2px transparent;
+      border-radius: 10px; }
+      .radio-form .radio-control .radio-input:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        margin: -2px;
+        border-radius: inherit;
+        /* background: #d9d9d9; */
+       }
+      .radio-form .radio-control .radio-input i {
+        display: block;
+        font-size: 40px;
+        opacity: .2; }
+      .radio-form .radio-control .radio-input span {
+        font-weight: 200;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 10px;
+        opacity: .2; }
+    .radio-form .radio-control input {
+      display: none; }
+	  .radio-form .radio-control input:checked {
+       border: 5px solid white;
+	  }
+      .radio-form .radio-control input:checked + .radio-input span {
+        color: #ffffff;
+        opacity: 1;
+        transition: opacity ease 250ms; }
+      .radio-form .radio-control input:checked + .radio-input:after {
+        top: 0;
+        right: 20px;
+        transform: translateY(-50%);
+        animation-name: bounceIn;
+        animation-duration: 250ms;
+        background-color: white;
+        font-size: 25px;
+        line-height: 25px;
+        border-radius: 25px;
+        display: block;
+        position: absolute;
+        content: "\f058";
+        font-family: "Font Awesome 5 pro";
+        font-weight: bold; }
+.radio-form .radio-control input:checked + .radio-input {
+border: 2px;
+background: #e57200;
+outline-style: dashed;
+}
+@keyframes bounceIn {
+  0% {
+    transform: translateY(-50%) scale(0); }
+  75% {
+    transform: translateY(-50%) scale(1.1); }
+  100% {
+    transform: translateY(-50%) scale(1); } }
+
