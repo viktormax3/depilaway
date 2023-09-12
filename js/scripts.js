@@ -217,3 +217,25 @@ function removeInputEvents() {
 deseleccionarTab();
 // Llama a la función removeInputEvents para eliminar los eventos de entrada de los campos de entrada de la pestaña actual
 removeInputEvents();
+
+// Definir la función reducirTexto
+function reducirTexto() {
+  // Obtener todos los elementos que tienen texto
+  var elementos = document.querySelectorAll("*");
+
+  // Recorrer cada elemento
+  for (var i = 0; i < elementos.length; i++) {
+    // Obtener el elemento actual
+    var elemento = elementos[i];
+
+    // Obtener el tamaño actual de la fuente en pixeles
+    var tamanoActual = parseInt(elemento.style.fontSize);
+
+    // Restar 3 pixeles al tamaño actual
+    var tamanoNuevo = tamanoActual - 5;
+
+    // Asignar el nuevo tamaño al elemento
+    elemento.style.fontSize = tamanoNuevo + "px";
+  }
+}
+reducirTexto();
