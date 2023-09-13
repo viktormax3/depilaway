@@ -5,6 +5,11 @@
   /* background-color: lab(57.9 64.4 68.4 / 1)!important; */
 }
 
+.display-3.fst-italic.mb-4.fw-normal {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
 .text-152c {
   color:var(--pms-152c);
 }
@@ -48,7 +53,7 @@ p#copyright {
     color:#dedad6!important;
 }
 @media (min-width: 992px) {
-#formIcon {
+.formIcon {
 	position: absolute;
   z-index: 1;
 }
