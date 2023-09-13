@@ -226,48 +226,48 @@ outline-style: dashed;
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-thin-webfont.woff2') format('woff2'),
-       url('cocogoose-thin-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-thin-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-thin-webfont.woff') format('woff');
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-thinitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-thinitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-thinitalic-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-thinitalic-webfont.woff') format('woff');
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-ultralight-webfont.woff2') format('woff2'),
-       url('cocogoose-ultralight-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-ultralight-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-ultralight-webfont.woff') format('woff');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-ultralightitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-ultralightitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-ultralightitalic-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-ultralightitalic-webfont.woff') format('woff');
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-light-webfont.woff2') format('woff2'),
-       url('cocogoose-light-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-light-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-light-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-lightitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-lightitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-lightitalic-webfont.woff2') format('woff2'),
+       url('../fonts/cocogoose-lightitalic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
