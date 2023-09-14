@@ -109,15 +109,11 @@ function validarYActualizarInputs() {
 				var radio = document.querySelector("input[name='" + y[i].name + "']:checked");
 				// Si no hay ningún elemento seleccionado, agrega la clase "invalid" al elemento
 				if (radio == null) {
-					if (!y[i].classList.contains("invalid")) {
-						y[i].classList.add("invalid");
-					}
-					valid = false; // Asigna false a la variable valid
-				} else { // Si hay un elemento seleccionado, elimina la clase "invalid" si está presente
-					if (y[i].classList.contains("invalid")) {
-						y[i].classList.remove("invalid");
-					}
-				}
+          y[i].classList.toggle("invalid", true);
+          valid = false; // Asigna false a la variable valid
+        } else { // Si hay un elemento seleccionado, comprueba si es válido y cambia la clase "invalid" según corresponda
+          y[i].classList.toggle("invalid", !radio.validity.valid);
+        }
 				break;
 			default: // Si el tipo es otro
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
@@ -137,7 +133,7 @@ function validarYActualizarInputs() {
 			y[i].setAttribute("data-input-event", true);
 			// Usar una IIFE para crear una clausura que capture el valor de i
 			(function(j) {
-				y[j].addEventListener("input", function() {
+				y[j].addEventListener("click", function() {
 					// Llama a la función validarYActualizarInputs cada vez que se cambia el valor del elemento
 					validarYActualizarInputs();
 				});
@@ -166,7 +162,7 @@ function fixStepIndicator(n) {
 
 // Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo "radio"
 function deseleccionar(grupo) {
-	// Obtiene todos los elementos con el mismo nombre que grupo y los asigna a una variable radios
+	// Obtiene todos los elementos que coinciden con el selector grupo y los asigna a una variable radios
 	var radios = document.getElementsByName(grupo);
 	// Define una variable lastChecked que almacena el último elemento seleccionado (inicialmente null)
 	var lastChecked = null;
@@ -181,15 +177,21 @@ function deseleccionar(grupo) {
 					this.checked = false;
 					lastChecked = null;
 				} else {
-					// Si no, asigna el elemento a lastChecked
+					// Si no, asigna el elemento a lastChecked y lo selecciona
 					lastChecked = this;
+					this.checked = true;
 				}
 				// Llama a la función validarYActualizarInputs para validar y actualizar los campos de entrada de la pestaña actual
 				validarYActualizarInputs(currentTab);
 			});
+			// Añade un evento "change" al elemento para que se actualice el valor de lastChecked cuando se cambie de grupo
+			radios[index].addEventListener("change", function() {
+				lastChecked = this;
+			});
 		})(i); // Invoca la IIFE con i como argumento
 	}
 }
+
 
 // Define una función que deselecciona la pestaña actual
 function deseleccionarTab() {
