@@ -18,10 +18,10 @@ function showTab(n) {
   }
   // Si n es igual al número de pestañas menos uno, cambia el botón "Siguiente" a un icono de avión de papel
   if (n == (x.length - 1)) { 
-    document.getElementById("nextBtn").setAttribute("class", "fa-sharp fa-regular fa-paper-plane-top"); 
+    document.getElementById("nextBtn").setAttribute("class", "btn btn-152c btn-lg fa-solid fa-arrow-left fa-sharp fa-regular fa-paper-plane-top"); 
   } else { 
     // Si no, cambia el botón "Siguiente" a un icono de flecha derecha
-    document.getElementById("nextBtn").setAttribute("class", "fa-solid fa-arrow-right"); 
+    document.getElementById("nextBtn").setAttribute("class", "btn btn-152c btn-lg fa-solid fa-arrow-right"); 
   }
   // Llama a la función fixStepIndicator para resaltar el indicador de la pestaña actual
   fixStepIndicator(n); 
@@ -145,9 +145,9 @@ function validarYActualizarInputs() {
   // Si el valor de valid es true, agrega la clase "finish" al indicador de la pestaña actual y habilita el botón "Siguiente"
   if (valid) { 
     document.getElementsByClassName("step")[currentTab].className += " finish"; 
-    document.getElementById("nextBtn").disabled = false; 
-  } else { // Si el valor de valid es false, deshabilita el botón "Siguiente"
-    document.getElementById("nextBtn").disabled = true; 
+    document.getElementById("nextBtn").classList.remove("disabled"); 
+  } else { // Si el valor de valid es false, agrega la clase "disabled" al elemento con el id "nextBtn"
+    document.getElementById("nextBtn").classList.add("disabled"); 
   }
   // Devuelve el valor de valid
   return valid; 
