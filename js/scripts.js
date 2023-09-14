@@ -240,20 +240,15 @@ function reducirTexto() {
 }
 reducirTexto();
 
-
-
-
-
-
-  // Se obtiene el botón por su id
-  var boton = document.getElementById("boton");
-  // Se le agrega un evento de clic
-  boton.addEventListener("click", function() {
-    // Se obtienen los divs por sus ids
-    var revealer = document.getElementById("revealer");
-    var revealed = document.getElementById("revealed");
-    // Se reemplaza el div 1 por el div 2
-    revealer.parentNode.replaceChild(revealed, revealer);
-    // Se muestra el div 2
-    revealed.style.display = "block";
-  });
+const boton = document.getElementById('boton');
+const revealer = document.getElementById('revealer');
+const revealed = document.getElementById('revealed');
+// Agregar manejador de eventos al botón
+boton.addEventListener('click', toggleVisibility);
+// Función para alternar la visibilidad de los elementos
+function toggleVisibility() {
+	// Reemplazar el elemento a ocultar con el elemento a mostrar
+	revealer.parentNode.replaceChild(revealed, revealer);
+	// Mostrar el elemento revelado
+	revealed.style.display = 'block';
+}
