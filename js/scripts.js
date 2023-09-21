@@ -2,7 +2,6 @@
 var currentTab = 0;
 // Llama a la función showTab para mostrar la primera pestaña
 showTab(currentTab);
-
 // Define una función que recibe un parámetro n que indica el índice de la pestaña a mostrar
 function showTab(n) {
 	// Obtiene todos los elementos con la clase "tab"
@@ -28,7 +27,6 @@ function showTab(n) {
 	// Llama a la función validarYActualizarInputs para validar y actualizar los campos de entrada de la pestaña actual
 	validarYActualizarInputs();
 }
-
 // Define una función que recibe un parámetro n que indica si se avanza o retrocede una pestaña
 function nextPrev(n) {
 	// Obtiene todos los elementos con la clase "tab"
@@ -51,7 +49,6 @@ function nextPrev(n) {
 	// Llama a la función showTab para mostrar la nueva pestaña
 	showTab(currentTab);
 }
-
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
 	var x, y, i, valid = true;
@@ -109,11 +106,11 @@ function validarYActualizarInputs() {
 				var radio = document.querySelector("input[name='" + y[i].name + "']:checked");
 				// Si no hay ningún elemento seleccionado, agrega la clase "invalid" al elemento
 				if (radio == null) {
-          y[i].classList.toggle("invalid", true);
-          valid = false; // Asigna false a la variable valid
-        } else { // Si hay un elemento seleccionado, comprueba si es válido y cambia la clase "invalid" según corresponda
-          y[i].classList.toggle("invalid", !radio.validity.valid);
-        }
+					y[i].classList.toggle("invalid", true);
+					valid = false; // Asigna false a la variable valid
+				} else { // Si hay un elemento seleccionado, comprueba si es válido y cambia la clase "invalid" según corresponda
+					y[i].classList.toggle("invalid", !radio.validity.valid);
+				}
 				break;
 			default: // Si el tipo es otro
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
@@ -133,7 +130,7 @@ function validarYActualizarInputs() {
 			y[i].setAttribute("data-input-event", true);
 			// Usar una IIFE para crear una clausura que capture el valor de i
 			(function(j) {
-				y[j].addEventListener("click", function() {
+				y[j].addEventListener("input", function() {
 					// Llama a la función validarYActualizarInputs cada vez que se cambia el valor del elemento
 					validarYActualizarInputs();
 				});
@@ -150,7 +147,6 @@ function validarYActualizarInputs() {
 	// Devuelve el valor de valid
 	return valid;
 }
-
 // Define una función que recibe un parámetro n que indica el índice de la pestaña actual
 function fixStepIndicator(n) {
 	var i, x = document.getElementsByClassName("step"); // Obtiene todos los elementos con la clase "step"
@@ -159,40 +155,39 @@ function fixStepIndicator(n) {
 	}
 	x[n].className += " active"; // Agrega la clase "active" al elemento con el índice n
 }
-
 // Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo "radio"
-function deseleccionar(grupo) {
-	// Obtiene todos los elementos que coinciden con el selector grupo y los asigna a una variable radios
-	var radios = document.getElementsByName(grupo);
-	// Define una variable lastChecked que almacena el último elemento seleccionado (inicialmente null)
-	var lastChecked = null;
-	// Recorre todos los elementos de radios y les añade un evento "click" que hace lo siguiente:
-	for (var i = 0; i < radios.length; i++) {
-		// Usa una expresión de función invocada inmediatamente (IIFE) para crear un closure
-		(function(index) {
-			// Pasa i como index al closure
-			radios[index].addEventListener("click", function() {
-				// Si el elemento es el mismo que el último seleccionado, lo deselecciona y asigna null a lastChecked
-				if (this === lastChecked) {
-					this.checked = false;
-					lastChecked = null;
-				} else {
-					// Si no, asigna el elemento a lastChecked y lo selecciona
-					lastChecked = this;
-					this.checked = true;
-				}
-				// Llama a la función validarYActualizarInputs para validar y actualizar los campos de entrada de la pestaña actual
-				validarYActualizarInputs(currentTab);
-			});
-			// Añade un evento "change" al elemento para que se actualice el valor de lastChecked cuando se cambie de grupo
-			radios[index].addEventListener("change", function() {
-				lastChecked = this;
-			});
-		})(i); // Invoca la IIFE con i como argumento
+function deseleccionar(e) {
+	// Obtiene todos los elementos con el nombre e y los guarda en un arreglo
+	let elementos = document.getElementsByName(e);
+	// Declara una variable para guardar el último elemento seleccionado
+	let ultimo = null;
+	// Recorre cada elemento del arreglo
+	for (let i = 0; i < elementos.length; i++) {
+		// Obtiene el elemento actual
+		let elemento = elementos[i];
+		// Le quita la selección
+		elemento.checked = false;
+		// Le agrega un evento "click" que hace lo siguiente:
+		elemento.addEventListener("click", function() {
+			// Si el elemento es el mismo que el último seleccionado
+			if (this == ultimo) {
+				// Lo deselecciona y asigna null a ultimo
+				this.checked = false;
+				ultimo = null;
+			} else {
+				// Si no, asigna el elemento a ultimo y lo selecciona
+				ultimo = this;
+				this.checked = true;
+			}
+			// Valida y actualiza los campos de entrada de la pestaña actual
+			validarYActualizarInputs(currentTab);
+		});
+		// Le agrega un evento "change" que actualiza el valor de ultimo cuando se cambie de grupo
+		elemento.addEventListener("change", function() {
+			ultimo = this;
+		});
 	}
 }
-
-
 // Define una función que deselecciona la pestaña actual
 function deseleccionarTab() {
 	// Define una variable cadena que almacena el nombre del grupo de elementos de tipo "radio" de la pestaña actual
@@ -201,7 +196,6 @@ function deseleccionarTab() {
 	// Llama a la función deseleccionar con el parámetro cadena
 	deseleccionar(cadena);
 }
-
 // Define una función que elimina los eventos de entrada de los campos de entrada de la pestaña actual
 function removeInputEvents() {
 	var x, y, i;
@@ -225,12 +219,10 @@ function removeInputEvents() {
 		}
 	}
 }
-
 // Llama a la función deseleccionarTab para deseleccionar la pestaña actual
 deseleccionarTab();
 // Llama a la función removeInputEvents para eliminar los eventos de entrada de los campos de entrada de la pestaña actual
 removeInputEvents();
-
 const boton = document.getElementById('boton');
 const revealer = document.getElementById('revealer');
 const revealed = document.getElementById('revealed');
