@@ -2,58 +2,96 @@
   --pms-152c:#ed6f00;
   --pms-152c:lab(60 36 66 / 1);
   --pms-152c:hsl(30, 100%, 45%);
-  /* background-color: lab(57.9 64.4 68.4 / 1)!important; */
+  /* background-color: lab(57.9 64.4 68.4 / 1)!important;
+  */
+}
+body{
+  color:var(--bs-secondary-color);
+}
+.display-3.fst-italic.mb-4.fw-normal {
+  margin-left: -0.625rem;
+  margin-right: -0.625rem;
+  text-align-last: justify ;
+}
+.btn-152c {
+  --bs-btn-active-bg: #ea5900;
+  --bs-btn-active-border-color: #ed6a00;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-bg: var(--pms-152c);
+  --bs-btn-border-color: var(--pms-152c);
+  --bs-btn-color: #fff;
+  --bs-btn-disabled-bg: var(--pms-152c);
+  --bs-btn-disabled-border-color: var(--pms-152c);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-focus-shadow-rgb: 255,133,0;
+  --bs-btn-hover-bg:#ef7f26;
+  --bs-btn-hover-border-color: #ef7f26;
+  --bs-btn-hover-color: #fff;
+}
+.btn-outline-152c {
+  --bs-btn-active-bg: #ea5900;
+  --bs-btn-active-border-color: #000000;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-bg: #f0f0f0; 
+  --bs-btn-border-color: none;
+  --bs-btn-color: var(--bs-secondary-color);
+  --bs-btn-disabled-bg: gray;
+  --bs-btn-disabled-border-color: gray;
+  --bs-btn-disabled-color: rgb(0, 0, 0);
+  --bs-btn-focus-shadow-rgb: 13,110,253;
+  --bs-btn-hover-bg:#ef7f26;
+  --bs-btn-hover-border-color: #000000;
+  --bs-btn-hover-color: #fff;
+  --bs-gradient: none;
+  transition: color ease 450ms;
+  transition: background-color ease 450ms;
+}
+.btn-check+.btn.btn-outline-152c:hover {
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
+  color: var(--bs-btn-hover-color);
 }
 
+.btn-check:checked+.btn.btn-outline-152c {
+  outline:var(--bs-btn-active-border-color);
+  outline-style: dashed;
+  outline-width: 3px;
+}
 .text-152c {
   color:var(--pms-152c);
+}
+.bg-152c {
+  background-color: var(--pms-152c);
 }
 .container > div {
   text-shadow: 0 0 3px #00000045;
 }
 html{
-	font-size: 0.875rem;
+  font-size: 0.875rem;
 }
-
 .input-group:focus-within {
   box-shadow: 0 0 0 0.25rem rgba(237, 111, 0, 0.25);
 }
-
 .form-control:focus {
-  border-color: inherit; 
+  border-color: inherit;
   box-shadow: none;
 }
 button.btn.btn-outline-secondary.border-0.rounded-end:hover{
-background-color: var(--pms-152c);
+  background-color: var(--pms-152c);
 }
 .card-block {
-    padding-left: 2%;
-    padding-right: 2%;
-}
-#slideshowRes {
-    padding-right:0;
-    padding-left: 0;
-}
-#footer{
-    padding-left: 4rem;
-    padding-right: 4rem;
-    margin:0;
-    background-color:rgb(24,62,101)!important;
-}
-#footer>* {
-    color: #dedad6;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
-p#copyright {
-    color:#dedad6!important;
-}
 @media (min-width: 992px) {
-#formIcon {
-	position: absolute;
-  z-index: 1;
+  .formIcon {
+      position: absolute;
+      z-index: 1;
+  }
 }
-}
-/* Limite */
 /* Oculta todos los pasos inicialmente */
 .tab {
   display: none;
@@ -66,37 +104,13 @@ p#copyright {
   border: 1px solid #aaaaaa;
 }
 
-.tab > p > input:valid {
+/* .tab > p > input:valid {
   background-color: rgba(144, 238, 144, 0.123);
-}
+} */
 
-.tab > p > input.invalid {
+/* .tab > p > input.invalid {
   background-color: rgb(255, 255, 255);
-}
-
-#botones * {
-  cursor: pointer;
-}
-
-#botones > div > button,
-button#nextBtn:disabled {
-  background-color: var(--pms-152c);
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-}
-
-#botones > div > button:hover:enabled {
-  opacity: 0.8;
-}
-
-button#nextBtn:disabled {
-  background-color: gray;
-  cursor: not-allowed;
-}
-#prevBtn {
-  background-color: var(--pms-152c);
-}
+} */
 
 /* indicadores de la pestaña actual */
 .step {
@@ -126,89 +140,78 @@ button#nextBtn:disabled {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-  /* @media screen and (max-width: 768px) {
-    .radio-form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      width: 100%;
-      transform: none;
-      position: relative;
-      left: 0;
-      top: 0; } } */
-  .radio-form h1 {
-    width: 100%;
-    text-align: center;
-    font-weight: 100;
-    font-style: italic;
-    font-size: 35px; }
-  .radio-form .radio-control {
-    min-width: 25%;
-    transition: all ease 250ms; 
-  }
-    .radio-form .radio-control:hover {
-      transform: scale(1); 
-    }
-      .radio-form .radio-control:hover .radio-input {
-		margin: 0 5px;
+.radio-form .radio-control {
+  min-width: 25%;
+  transition: all ease 250ms; 
 }
-    .radio-form .radio-control .radio-input {
-      background: #f4f4f4;
-      padding: 1vw;
-      cursor: pointer;
-      position: relative;
-      margin: 3px;
-      transition: all ease 250ms;
-      background-clip: padding-box;
-      border: solid 2px transparent;
-      border-radius: 10px; }
-      .radio-form .radio-control .radio-input:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: -1;
-        margin: -2px;
-        border-radius: inherit;
-        /* background: #d9d9d9; */
-      }
-      .radio-form .radio-control .radio-input i {
-        display: block;
-        font-size: 40px;
-        opacity: .2; }
-      .radio-form .radio-control .radio-input span {
-        font-weight: 200;
-        text-transform: uppercase;
-        display: block;
-        margin-top: 10px;
-        opacity: .2; }
-    .radio-form .radio-control input {
-      display: none; }
-	.radio-form .radio-control input:checked {
-    border: 5px solid white;
-	}
-      .radio-form .radio-control input:checked + .radio-input span {
-        color: #ffffff;
-        opacity: 1;
-        transition: opacity ease 250ms; }
-      .radio-form .radio-control input:checked + .radio-input:after {
-        top: 0;
-        right: 20px;
-        transform: translateY(-50%);
-        animation-name: bounceIn;
-        animation-duration: 250ms;
-        background-color: white;
-        font-size: 25px;
-        line-height: 25px;
-        border-radius: 25px;
-        display: block;
-        position: absolute;
-        content: "\f058";
-        font-family: "Font Awesome 5 pro";
-        font-weight: bold; 
-      }
+.radio-form .radio-control:hover {
+  transform: scale(1); 
+}
+.radio-form .radio-control:hover .radio-input {
+margin: 0 5px;
+}
+.radio-form .radio-control .radio-input {
+  background: #f4f4f4;
+  padding: 1vw;
+  cursor: pointer;
+  position: relative;
+  margin: 3px;
+  transition: all ease 250ms;
+  background-clip: padding-box;
+  border: solid 2px transparent;
+  border-radius: 10px;
+}
+.radio-form .radio-control .radio-input:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  /* background: #d9d9d9;*/
+}
+.radio-form .radio-control .radio-input i {
+  display: block;
+  font-size: 40px;
+}
+.radio-form .radio-control .radio-input span {
+  font-weight: 200;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 10px;
+}
+.radio-form .radio-control input {
+  display: none;
+}
+.radio-form .radio-control input:checked {
+  border: 5px solid white;
+}
+.radio-form .radio-control input:checked + .radio-input span {
+  color: #ffffff;
+  transition: color ease 500ms;
+}
+
+.btn-check:checked+.btn.btn-outline-152c
+.radio-form .radio-control input:checked + .radio-input:after {
+  top: 0;
+  right: 20px;
+  transform: translateY(-50%);
+  animation-name: bounceIn;
+  animation-duration: 250ms;
+  color:black;
+  background-color: white;
+  font-size: 25px;
+  line-height: 25px;
+  border-radius: 25px;
+  display: block;
+  position: absolute;
+  content: "\f058";
+  font-family: "Font Awesome 5 pro";
+  font-weight: bold;
+}
 .radio-form .radio-control input:checked + .radio-input {
 border: 2px;
 background: var(--pms-152c);
@@ -216,61 +219,53 @@ outline-style: dashed;
 }
 @keyframes bounceIn {
   0% {
-    transform: translateY(-50%) scale(0); }
+      transform: translateY(-50%) scale(0);
+ }
   75% {
-    transform: translateY(-50%) scale(1.1); }
+      transform: translateY(-50%) scale(1.1);
+ }
   100% {
-    transform: translateY(-50%) scale(1); } }
-
-
+      transform: translateY(-50%) scale(1);
+ }
+}
 
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-thin-webfont.woff2') format('woff2'),
-       url('cocogoose-thin-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-thin-webfont.woff2') format('woff2'), url('../fonts/cocogoose-thin-webfont.woff') format('woff');
   font-weight: 100;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-thinitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-thinitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-thinitalic-webfont.woff2') format('woff2'), url('../fonts/cocogoose-thinitalic-webfont.woff') format('woff');
   font-weight: 100;
   font-style: italic;
 }
-
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-ultralight-webfont.woff2') format('woff2'),
-       url('cocogoose-ultralight-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-ultralight-webfont.woff2') format('woff2'), url('../fonts/cocogoose-ultralight-webfont.woff') format('woff');
   font-weight: 200;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-ultralightitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-ultralightitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-ultralightitalic-webfont.woff2') format('woff2'), url('../fonts/cocogoose-ultralightitalic-webfont.woff') format('woff');
   font-weight: 200;
   font-style: italic;
 }
-
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-light-webfont.woff2') format('woff2'),
-       url('cocogoose-light-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-light-webfont.woff2') format('woff2'), url('../fonts/cocogoose-light-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Cocogoose';
-  src: url('cocogoose-lightitalic-webfont.woff2') format('woff2'),
-       url('cocogoose-lightitalic-webfont.woff') format('woff');
+  src: url('../fonts/cocogoose-lightitalic-webfont.woff2') format('woff2'), url('../fonts/cocogoose-lightitalic-webfont.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
+
 
 * {
 	font-family: 'cocogoose';

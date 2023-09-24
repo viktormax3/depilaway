@@ -90,7 +90,7 @@
       <div class="row">
         <div class="col-md-12 d-flex">
           <div class="row justify-content-sm-around justify-content-lg-end">
-            <div class="col-md-12" id="slideshowRes">
+            <div class="col-md-12 px-0" id="slideshowRes">
               <div
                 id="carousel-1"
                 class="carousel slide carousel-fade"
@@ -121,33 +121,36 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item">
-                    <img
-                      class="d-block w-100"
-                      alt="Slideshow 1"
-                      src="images/1.jpeg"
-                    />
+                    <picture>
+                      <source srcset="images/1.50.png" media="(max-width: 575px)">
+                      <source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
+                      <source srcset="images/1.100.png" media="(min-width: 992px)">
+                      <img src="images/1.50.png" class="img-fluid" alt="Slideshow 1">
+                    </picture>
                     <div class="carousel-caption">
                       <h4>Titulo 1</h4>
                       <p>Imagen referencial 1</p>
                     </div>
                   </div>
                   <div class="carousel-item active">
-                    <img
-                      class="d-block w-100"
-                      alt="Slideshow 2"
-                      src="images/2.jpeg"
-                    />
+                    <picture>
+                      <source srcset="images/2.50.png" media="(max-width: 575px)">
+                      <source srcset="images/2.75.png" media="(min-width: 576px) and (max-width: 991px)">
+                      <source srcset="images/2.100.png" media="(min-width: 992px)">
+                      <img src="images/2.50.png" class="img-fluid" alt="Slideshow 2">
+                    </picture>
                     <div class="carousel-caption">
                       <h4>Titulo 2</h4>
                       <p>Imagen referencial 2</p>
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img
-                      class="d-block w-100"
-                      alt="Slideshow 3"
-                      src="images/3.jpeg"
-                    />
+                    <picture>
+                      <source srcset="images/3.50.png" media="(max-width: 575px)">
+                      <source srcset="images/3.75.png" media="(min-width: 576px) and (max-width: 991px)">
+                      <source srcset="images/3.100.png" media="(min-width: 992px)">
+                      <img src="images/3.50.png" class="img-fluid" alt="Slideshow 3">
+                    </picture>
                     <div class="carousel-caption">
                       <h4>Titulo 3</h4>
                       <p>Imagen referencial 3</p>
@@ -180,7 +183,20 @@
                 </a>
               </div>
             </div>
-            <div class="col-lg-5 col-sm-8 my-4 p-4 bg-light text-center align-self-center rounded-4 me-lg-3" id="formIcon">
+            <div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light d-flex text-center align-self-center justify-content-center rounded-4 me-lg-3 pt-lg-5">
+              <div class="text-152c text-center">
+                <div class="display-6">ahora depilarse es</div>
+                <div class="display-3 fst-italic mb-4 fw-normal">¡ Así de fácil !</div>
+                <p>
+                  <a id="boton" class="btn btn-152c btn-md">Agendar cita</a>
+                </p>
+              </div>
+            </div>
+            <!-- <div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light text-center align-self-center rounded-4 me-lg-3">
+              <p>Reservar una cita</p>
+              <a id="boton" class="btn btn-152c btn-md">boton para ir a cita</a>
+            </div> -->
+            <div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light text-center align-self-center rounded-4 me-lg-3" style="display: none;">
               <form
                 id="regForm"
                 action="https://forms.gle/F3RLPXBs87WKbdkY8"
@@ -190,63 +206,96 @@
                   <div class="mb-4 tab">
                     ***Contenido aqui***
                   </div>
-              -->
+              -->                 
                   <div class="mb-4 tab" style="display:block">
-                    <h2>¿Tipo de Depilacion?</h2>
+                  <div class="mb-4 tab" style="display:block">
+                    <h3>Paso 6</h3>
+                    <input type="radio" class="btn-check" name="grupo0" id="grupo0_1" autocomplete="off">
+                    <label class="btn btn-outline-152c btn-lg" for="grupo0_1">
+                      <i class="fa-solid fa-planet-moon"></i>
+                      <span class="user-select-none">Cera</span>
+                    </label>
+                    <input type="radio" class="btn-check" name="grupo0" id="grupo0_2" autocomplete="off">
+                    <label class="btn btn-outline-152c btn-lg" for="grupo0_2">
+                      <i class="fa-solid fa-planet-moon"></i>
+                      <span class="user-select-none">Laser</span>
+                    </label>
+                  </div>
+                  <div class="mb-4 tab">
+                    <h2>¿Tipo de depilación?</h2>
                     <div class="radio-form">
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="woman" />
+                        <input type="radio" name="grupo1" value="cera" />
                         <div class="radio-input">
                           <i class="fa-sharp fa-solid fa-moon"></i>
                           <span class="user-select-none">Cera</span>
                         </div>
                       </label>
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="man" />
+                        <input type="radio" name="grupo1" value="laser" />
                         <div class="radio-input">
                           <i class="fa-solid fa-planet-moon"></i>
                           <span class="user-select-none">Laser</span>
                         </div>
                       </label>
+                    </div>
+                  </div> 
+                  <div class="mb-4 tab">
+                    <h2>Zonas</h2>
+                    <div class="radio-form">
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="other" />
+                        <input type="radio" name="grupo2" value="zona1" />
+                        <div class="radio-input">
+                          <i class="fa-sharp fa-solid fa-moon"></i>
+                          <span class="user-select-none">Zona 1</span>
+                        </div>
+                      </label>
+                      <label class="radio-control">
+                        <input type="radio" name="grupo2" value="zona2" />
                         <div class="radio-input">
                           <i class="fa-solid fa-planet-moon"></i>
-                          <span class="user-select-none">Otro</span>
+                          <span class="user-select-none">Zona 2</span>
                         </div>
                       </label>
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="other" />
+                        <input type="radio" name="grupo2" value="zona3" />
                         <div class="radio-input">
-                          <i class="fa-sharp fa-solid fa-moon"></i>
-                          <span class="user-select-none">Otro</span>
+                          <i class="fa-solid fa-planet-moon"></i>
+                          <span class="user-select-none">Zona 3</span>
                         </div>
                       </label>
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="other" />
+                        <input type="radio" name="grupo2" value="zona4" />
                         <div class="radio-input">
                           <i class="fa-sharp fa-solid fa-moon"></i>
-                          <span class="user-select-none">Otro</span>
+                          <span class="user-select-none">Zona 4</span>
                         </div>
                       </label>
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="other" />
+                        <input type="radio" name="grupo2" value="zona5" />
                         <div class="radio-input">
                           <i class="fa-sharp fa-solid fa-moon"></i>
-                          <span class="user-select-none">Otro</span>
+                          <span class="user-select-none">Zona 5</span>
                         </div>
                       </label>
                       <label class="radio-control">
-                        <input type="radio" name="grupo0" value="other" />
+                        <input type="radio" name="grupo2" value="zona6" />
                         <div class="radio-input">
                           <i class="fa-sharp fa-solid fa-moon"></i>
-                          <span class="user-select-none">Otro</span>
+                          <span class="user-select-none">Zona 6</span>
+                        </div>
+                      </label>
+                      <label class="radio-control">
+                        <input type="radio" name="grupo2" value="zona7" />
+                        <div class="radio-input">
+                          <i class="fa-sharp fa-solid fa-moon"></i>
+                          <span class="user-select-none">Zona 7</span>
                         </div>
                       </label>
                     </div>
                   </div>
                   <div class="mb-4 tab">
-                    <h2> Informacion de Contacto </h2>
+                    <h2> Información de contacto </h2>
                     <p>
                       <input
                         placeholder="Correo"
@@ -257,7 +306,7 @@
                     </p>
                     <p>
                       <input
-                        placeholder="Numero"
+                        placeholder="Número"
                         type="tel"
                         oninput="this.className = ''"
                         name="phone"
@@ -265,7 +314,7 @@
                     </p>
                   </div>
                   <div class="mb-4 tab">
-                    Birthday:
+                    <h2>Paso 5</h2>
                     <p>
                       <input
                         placeholder="dd"
@@ -289,17 +338,17 @@
                     </p>
                   </div>
                   <div class="mb-4 tab">
-                    Login Info:
+                    <h2>Paso 6</h2>
                     <p>
                       <input
-                        placeholder="Username..."
+                        placeholder="Usuario"
                         oninput="this.className = ''"
                         name="uname"
                       />
                     </p>
                     <p>
                       <input
-                        placeholder="Password..."
+                        placeholder="Contraseña"
                         oninput="this.className = ''"
                         name="pword"
                         type="password"
@@ -308,14 +357,15 @@
                   </div>
                 <div id="botones" class="overflow-auto">
                   <div class="float-end">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="fa-solid fa-arrow-left">
-                    </button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)" >
-                    </button>
+                    <a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-152c btn-lg fa-solid fa-arrow-left">
+                    </a>
+                    <a type="button" id="nextBtn" onclick="nextPrev(1)" >
+                    </a>
                   </div>
                 </div>
                 <!-- Indicadores -->
                 <div class="text-center mt-2">
+                  <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
@@ -326,25 +376,24 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 py-5 text-152c text-center">
           <div class="container">
             <div class="display-5">ahora depilarse es</div>
-            <div class="display-2 fst-italic mb-4 fw-normal">¡ Asi de facil !</div>
+            <div class="display-2 fst-italic mb-4 fw-normal">¡ Así de facíl !</div>
             <p>
-              <a class="btn btn-primary btn-md" href="#">Mas informacion</a>
+              <a class="btn btn-152c btn-md" href="#">Mas informacion</a>
             </p>
           </div>
         </div>
-      </div>
-      <div class="row">
+      </div> -->
+      <div class="row py-5">
         <div class="col-md-4">
           <h2>Heading</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            ad minim veniam.
           </p>
           <p>
             <a class="btn" href="#">Mas detalles »</a>
@@ -355,8 +404,7 @@
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            ad minim veniam.
           </p>
           <p>
             <a class="btn" href="#">Mas detalles »</a>
@@ -367,8 +415,7 @@
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            ad minim veniam.
           </p>
           <p>
             <a class="btn" href="#">Mas detalles »</a>
@@ -425,13 +472,10 @@
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec eget nulla id leo dignissim posuere sed et elit.
-                    Mauris a lorem neque. Proin suscipit tincidunt mi ut
-                    laoreet. Pellentesque ut dignissim lacus, vitae convallis
-                    diam. Pellentesque sem mi, viverra nec risus ac, dignissim
-                    porta urna.
+                    Mauris a lorem neque.
                   </p>
                   <p>
-                    <a class="btn btn-primary" href="#">Solicitar</a>
+                    <a class="btn btn-152c" href="#">Solicitar</a>
                     <a class="btn" href="#">Leer mas</a>
                   </p>
                 </div>
@@ -449,13 +493,10 @@
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec eget nulla id leo dignissim posuere sed et elit.
-                    Mauris a lorem neque. Proin suscipit tincidunt mi ut
-                    laoreet. Pellentesque ut dignissim lacus, vitae convallis
-                    diam. Pellentesque sem mi, viverra nec risus ac, dignissim
-                    porta urna.
+                    Mauris a lorem neque.
                   </p>
                   <p>
-                    <a class="btn btn-primary" href="#">Solicitar</a>
+                    <a class="btn btn-152c" href="#">Solicitar</a>
                     <a class="btn" href="#">Leer mas</a>
                   </p>
                 </div>
@@ -473,13 +514,10 @@
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec eget nulla id leo dignissim posuere sed et elit.
-                    Mauris a lorem neque. Proin suscipit tincidunt mi ut
-                    laoreet. Pellentesque ut dignissim lacus, vitae convallis
-                    diam. Pellentesque sem mi, viverra nec risus ac, dignissim
-                    porta urna.
+                    Mauris a lorem neque.
                   </p>
                   <p>
-                    <a class="btn btn-primary" href="#">Solicitar</a>
+                    <a class="btn btn-152c" href="#">Solicitar</a>
                     <a class="btn" href="#">Leer mas</a>
                   </p>
                 </div>
@@ -490,22 +528,20 @@
         </div>
       </div>
       <div class="row">
-        <footer
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
-          id="footer"
-        >
+        <div class="row p-5 my-5 text-light text-center bg-152c justify-content-evenly">
           <div class="col mb-3">
             <a
               href="#"
-              class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
+              class="d-flex align-items-center mb-3"
             >
               <img src="images/logo3.svg" width="100%" />
             </a>
-            <p class="text-body-secondary" id="copyright">
+            <p class="text-light">
               © 2023 Depilaway. Todos los derechos reservados
             </p>
           </div>
-          <div class="col mb-3"></div>
+          <div class="col mb-3">
+          </div>
           <div class="col mb-3">
             <h5>Titulo Seccion 1</h5>
             <ul class="nav flex-column">
@@ -596,7 +632,7 @@
               </li>
             </ul>
           </div>
-        </footer>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -625,7 +661,7 @@
                 </div>
                 <div class="modal-body">...</div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Accion</button>
+                  <button type="button" class="btn btn-152c">Accion</button>
                   <button
                     type="button"
                     class="btn btn-secondary"
