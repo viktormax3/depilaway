@@ -17,10 +17,10 @@ function showTab(n) {
 	}
 	// Si n es igual al número de pestañas menos uno, cambia el botón "Siguiente" a un icono de avión de papel
 	if (n == (x.length - 1)) {
-		document.getElementById("nextBtn").setAttribute("class", "btn btn-152c btn-lg fa-sharp fa-regular fa-paper-plane-top");
+		document.getElementById("nextBtn").setAttribute("class", "btn btn-1505c btn-lg fa-sharp fa-regular fa-paper-plane-top");
 	} else {
 		// Si no, cambia el botón "Siguiente" a un icono de flecha derecha
-		document.getElementById("nextBtn").setAttribute("class", "btn btn-152c btn-lg fa-solid fa-arrow-right");
+		document.getElementById("nextBtn").setAttribute("class", "btn btn-1505c btn-lg fa-solid fa-arrow-right");
 	}
 	// Llama a la función fixStepIndicator para resaltar el indicador de la pestaña actual
 	fixStepIndicator(n);

@@ -1,53 +1,36 @@
 :root {
-  --pms-152c:#ed6f00;
-  --pms-152c:lab(60 36 66 / 1);
-  --pms-152c:hsl(30, 100%, 45%);
-  /* background-color: lab(57.9 64.4 68.4 / 1)!important;
-  */
+  --pms-1505c:#ff6900;
+  --pms-1505c:lab(62.81 53.68 71.61 / 1);
+  --pms-1505c:hsl(25, 100%, 50%);
 }
 body{
   color:var(--bs-secondary-color);
 }
-.display-3.fst-italic.mb-4.fw-normal {
+#subSlogan {
   margin-left: -0.625rem;
   margin-right: -0.625rem;
   text-align-last: justify ;
 }
-.btn-152c {
-  --bs-btn-active-bg: #ea5900;
-  --bs-btn-active-border-color: #ed6a00;
+
+.btn-1505c {
+  --bs-btn-active-bg: #fc5300;
+  --bs-btn-active-border-color: #fc4c00;
   --bs-btn-active-color: #fff;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-bg: var(--pms-152c);
-  --bs-btn-border-color: var(--pms-152c);
+  --bs-btn-bg: var(--pms-1505c);
+  --bs-btn-border-color: var(--pms-1505c);
   --bs-btn-color: #fff;
-  --bs-btn-disabled-bg: var(--pms-152c);
-  --bs-btn-disabled-border-color: var(--pms-152c);
+  --bs-btn-disabled-bg: var(--pms-1505c);
+  --bs-btn-disabled-border-color: var(--pms-1505c);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-focus-shadow-rgb: 255,133,0;
-  --bs-btn-hover-bg:#ef7f26;
-  --bs-btn-hover-border-color: #ef7f26;
+  --bs-btn-focus-shadow-rgb: 255,127,0;
+  --bs-btn-hover-bg: #ff7926;
+  --bs-btn-hover-border-color: #ff7f33;
   --bs-btn-hover-color: #fff;
 }
-.btn-153c {
---bs-btn-color: #fff;
---bs-btn-bg: #ff6700;
---bs-btn-border-color: #ff6700;
---bs-btn-hover-color: #fff;
---bs-btn-hover-bg: #ff7726;
---bs-btn-hover-border-color: #ff7d33;
---bs-btn-focus-shadow-rgb: 255, 103, 0;
---bs-btn-active-color: #fff;
---bs-btn-active-bg: #fd5700;
---bs-btn-active-border-color: #fc4c00;
---bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
---bs-btn-disabled-color: rgba(255, 255, 255, .65);
---bs-btn-disabled-bg: #ff6700;
---bs-btn-disabled-border-color: #ff6700;
-}
 
-.btn-outline-152c {
-  --bs-btn-active-bg: #ea5900;
+.btn-outline-1505c {
+  --bs-btn-active-bg: #fc5300;
   --bs-btn-active-border-color: #000000;
   --bs-btn-active-color: #fff;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -58,29 +41,29 @@ body{
   --bs-btn-disabled-border-color: gray;
   --bs-btn-disabled-color: rgb(0, 0, 0);
   --bs-btn-focus-shadow-rgb: 13,110,253;
-  --bs-btn-hover-bg:#ef7f26;
+  --bs-btn-hover-bg:#ff7926;
   --bs-btn-hover-border-color: #000000;
   --bs-btn-hover-color: #fff;
   --bs-gradient: none;
   transition: color ease 450ms;
   transition: background-color ease 450ms;
 }
-.btn-check+.btn.btn-outline-152c:hover {
+.btn-check+.btn.btn-outline-1505c:hover {
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   color: var(--bs-btn-hover-color);
 }
 
-.btn-check:checked+.btn.btn-outline-152c {
+.btn-check:checked+.btn.btn-outline-1505c {
   outline:var(--bs-btn-active-border-color);
   outline-style: dashed;
   outline-width: 3px;
 }
-.text-152c {
-  color:var(--pms-152c);
+.text-1505c {
+  color:var(--pms-1505c);
 }
-.bg-152c {
-  background-color: var(--pms-152c);
+.bg-1505c {
+  background-color: var(--pms-1505c);
 }
 .container > div {
   text-shadow: 0 0 3px #00000045;
@@ -96,7 +79,7 @@ html{
   box-shadow: none;
 }
 button.btn.btn-outline-secondary.border-0.rounded-end:hover{
-  background-color: var(--pms-152c);
+  background-color: var(--pms-1505c);
 }
 .card-block {
   padding-left: 2%;
@@ -121,14 +104,6 @@ button.btn.btn-outline-secondary.border-0.rounded-end:hover{
   border: 1px solid #aaaaaa;
 }
 
-/* .tab > p > input:valid {
-  background-color: rgba(144, 238, 144, 0.123);
-} */
-
-/* .tab > p > input.invalid {
-  background-color: rgb(255, 255, 255);
-} */
-
 /* indicadores de la pestaña actual */
 .step {
   height: 5px;
@@ -147,7 +122,7 @@ button.btn.btn-outline-secondary.border-0.rounded-end:hover{
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: var(--pms-152c);
+  background-color: var(--pms-1505c);
 }
 
 .radio-form {
@@ -211,7 +186,7 @@ margin: 0 5px;
   transition: color ease 500ms;
 }
 
-.btn-check:checked+.btn.btn-outline-152c
+.btn-check:checked+.btn.btn-outline-1505c
 .radio-form .radio-control input:checked + .radio-input:after {
   top: 0;
   right: 20px;
@@ -231,7 +206,7 @@ margin: 0 5px;
 }
 .radio-form .radio-control input:checked + .radio-input {
 border: 2px;
-background: var(--pms-152c);
+background: var(--pms-1505c);
 outline-style: dashed;
 }
 @keyframes bounceIn {
