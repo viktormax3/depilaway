@@ -29,6 +29,23 @@ body{
   --bs-btn-hover-border-color: #ef7f26;
   --bs-btn-hover-color: #fff;
 }
+.btn-153c {
+--bs-btn-color: #fff;
+--bs-btn-bg: #ff6700;
+--bs-btn-border-color: #ff6700;
+--bs-btn-hover-color: #fff;
+--bs-btn-hover-bg: #ff7726;
+--bs-btn-hover-border-color: #ff7d33;
+--bs-btn-focus-shadow-rgb: 255, 103, 0;
+--bs-btn-active-color: #fff;
+--bs-btn-active-bg: #fd5700;
+--bs-btn-active-border-color: #fc4c00;
+--bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+--bs-btn-disabled-color: rgba(255, 255, 255, .65);
+--bs-btn-disabled-bg: #ff6700;
+--bs-btn-disabled-border-color: #ff6700;
+}
+
 .btn-outline-152c {
   --bs-btn-active-bg: #ea5900;
   --bs-btn-active-border-color: #000000;
