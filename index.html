@@ -76,8 +76,8 @@
                 </ul>
                 <form>
                   <div class="input-group rounded">
-                    <input type="search" class="form-control border-0 rounded-start" placeholder="Buscar...">
-                    <button class="btn btn-outline-secondary border-0 rounded-end" type="submit">
+                    <input type="search" class="form-control border border-end-0 rounded-start" placeholder="Buscar...">
+                    <button class="btn btn-outline-1505c border border-start-0 rounded-end" type="submit">
                       <i class="fas fa-search"></i>
                     </button>  
                   </div>
@@ -184,7 +184,7 @@
               </div>
             </div>
             <div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light d-flex text-center align-self-center justify-content-center rounded-4 me-lg-3 pt-lg-5">
-              <div class="text-1505c text-center">
+              <div class="text-1505c text-center text-shadow">
                 <div class="display-6">ahora depilarse es</div>
                 <div id="subSlogan"class="display-3 fst-italic mb-4 fw-normal">¡ Así de fácil !</div>
                 <p>
@@ -192,7 +192,7 @@
                 </p>
               </div>
             </div>
-            <div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light text-center align-self-center rounded-4 me-lg-3" style="display: none;">
+            <div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light text-center align-self-center rounded-4 me-lg-3" style="display: block;" style="display: none;">
               <form
                 id="regForm"
                 action="https://forms.gle/F3RLPXBs87WKbdkY8"
@@ -292,66 +292,35 @@
                   <div class="mb-4 tab">
                     <h2> Información de contacto </h2>
                     <p>
-                      <input
-                        placeholder="Correo"
-                        type="email"
-                        oninput="this.className = ''"
-                        name="email"
-                      />
+                      <input placeholder="Correo" type="email" name="email" class="border rounded-3 w-75 p-2"/>
                     </p>
                     <p>
-                      <input
-                        placeholder="Número"
-                        type="tel"
-                        oninput="this.className = ''"
-                        name="phone"
-                      />
+                      <input placeholder="Número" type="tel" name="phone" class="border rounded-3 w-75 p-2"/>
                     </p>
                   </div>
                   <div class="mb-4 tab">
                     <h2>Paso 5</h2>
                     <p>
-                      <input
-                        placeholder="dd"
-                        oninput="this.className = ''"
-                        name="dd"
-                      />
+                      <input placeholder="dd" name="dd" class="border rounded-3 w-75 p-2"/>
                     </p>
                     <p>
-                      <input
-                        placeholder="mm"
-                        oninput="this.className = ''"
-                        name="nn"
-                      />
+                      <input placeholder="mm" name="nn" class="border rounded-3 w-75 p-2"/>
                     </p>
                     <p>
-                      <input
-                        placeholder="yyyy"
-                        oninput="this.className = ''"
-                        name="yyyy"
-                      />
+                      <input placeholder="yyyy" name="yyyy" class="border rounded-3 w-75 p-2"/>
                     </p>
                   </div>
                   <div class="mb-4 tab">
                     <h2>Paso 6</h2>
                     <p>
-                      <input
-                        placeholder="Usuario"
-                        oninput="this.className = ''"
-                        name="uname"
-                      />
+                      <input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2"/>
                     </p>
                     <p>
-                      <input
-                        placeholder="Contraseña"
-                        oninput="this.className = ''"
-                        name="pword"
-                        type="password"
-                      />
+                      <input placeholder="Contraseña" name="pword" type="password" class="border rounded-3 w-75 p-2" />
                     </p>
                   </div>
                 <div id="botones" class="overflow-auto">
-                  <div class="float-end">
+                  <div class="float-end user-select-none">
                     <a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left">
                     </a>
                     <a type="button" id="nextBtn" onclick="nextPrev(1)" >
@@ -359,7 +328,7 @@
                   </div>
                 </div>
                 <!-- Indicadores -->
-                <div class="text-center mt-2">
+                <div class="text-center mt-2 user-select-none">
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
@@ -442,16 +411,15 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-3 mx-auto">
-              <div class="card">
+          <div class="row my-4 justify-content-around">
+            <div class="col-md-3">
+              <div class="card p-3">
                 <img
                   class="card-img-top"
                   alt="Bootstrap Thumbnail First"
                   src="images/card1.jpeg"
                 />
-                <div class="card-block">
+                <div class="card-block card-block p-3 mt-1">
                   <h5 class="card-title">Titulo</h5>
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -465,14 +433,14 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-3 mx-auto">
-              <div class="card">
+            <div class="col-md-3">
+              <div class="card p-3">
                 <img
                   class="card-img-top"
                   alt="Bootstrap Thumbnail Second"
                   src="images/card2.jpeg"
                 />
-                <div class="card-block">
+                <div class="card-block card-block p-3 mt-1">
                   <h5 class="card-title">Titulo</h5>
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -486,14 +454,14 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-3 mx-auto">
-              <div class="card">
+            <div class="col-md-3">
+              <div class="card p-3">
                 <img
                   class="card-img-top"
                   alt="Bootstrap Thumbnail Third"
                   src="images/card3.jpeg"
                 />
-                <div class="card-block">
+                <div class="card-block card-block p-3 mt-1">
                   <h5 class="card-title">Titulo</h5>
                   <p class="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -507,12 +475,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-1"></div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="row p-5 my-5 text-light text-center bg-1505c justify-content-evenly">
+        <div class="row p-5 my-5 text-light text-center bg-7477c justify-content-evenly">
           <div class="col mb-3">
             <a
               href="#"

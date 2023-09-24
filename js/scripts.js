@@ -64,14 +64,10 @@ function validarYActualizarInputs() {
 				var regexCorreo = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 				// Si el valor no cumple con la expresión regular, agrega la clase "invalid" al elemento
 				if (!regexCorreo.test(y[i].value)) {
-					if (!y[i].classList.contains("invalid")) {
-						y[i].classList.add("invalid");
-					}
+					y[i].classList.toggle("invalid", true);
 					valid = false; // Asigna false a la variable valid
 				} else { // Si el valor cumple con la expresión regular, elimina la clase "invalid" si está presente
-					if (y[i].classList.contains("invalid")) {
-						y[i].classList.remove("invalid");
-					}
+					y[i].classList.toggle("invalid", false);
 				}
 				break;
 			case "tel": // Si el tipo es "tel"
@@ -79,9 +75,7 @@ function validarYActualizarInputs() {
 				var tlf = y[i].value;
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
 				if (tlf == "") {
-					if (!y[i].classList.contains("invalid")) {
-						y[i].classList.add("invalid");
-					}
+					y[i].classList.toggle("invalid", true);
 					valid = false; // Asigna false a la variable valid
 				} else { // Si el valor no está vacío
 					// Convierte el valor a un número y lo asigna a la variable tlf
@@ -90,14 +84,10 @@ function validarYActualizarInputs() {
 					var valido = !isNaN(tlf);
 					// Si el valor no es un número válido, agrega la clase "invalid" al elemento
 					if (!valido) {
-						if (!y[i].classList.contains("invalid")) {
-							y[i].classList.add("invalid");
-						}
+						y[i].classList.toggle("invalid", true);
 						valid = false; // Asigna false a la variable valid
 					} else { // Si el valor es un número válido, elimina la clase "invalid" si está presente
-						if (y[i].classList.contains("invalid")) {
-							y[i].classList.remove("invalid");
-						}
+						y[i].classList.toggle("invalid", false);
 					}
 				}
 				break;
@@ -115,14 +105,10 @@ function validarYActualizarInputs() {
 			default: // Si el tipo es otro
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
 				if (y[i].value == "") {
-					if (!y[i].classList.contains("invalid")) {
-						y[i].classList.add("invalid");
-					}
-					valid = false; // Asigna false a la variable valid
+					y[i].classList.toggle("invalid", true);
+					valid = false;
 				} else { // Si el valor no está vacío, elimina la clase "invalid" si está presente
-					if (y[i].classList.contains("invalid")) {
-						y[i].classList.remove("invalid");
-					}
+					y[i].classList.toggle("invalid", false);
 				}
 		}
 		// Si el elemento no tiene el atributo "data-input-event", se lo agrega y le añade un evento "input"
