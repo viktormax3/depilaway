@@ -1,3 +1,4 @@
+/* paleta de colores depilaway */
 :root {
   --pms-1505c:#ff6900;
   --pms-1505c:lab(62.81 53.68 71.61 / 1);
@@ -11,6 +12,30 @@
   --pms-7477c:#244c5a;
   --pms-7477c:lab(30.11 -9.47 -12.54 / 1);
   --pms-7477c:hsl(196 , 43% , 25%);
+}
+.text-1505c {
+  color:var(--pms-1505c);
+}
+.bg-1505c {
+  background-color: var(--pms-1505c);
+}
+.bg-1215c {
+  background-color: var(--pms-1215c);
+}
+.text-1215c {
+  color: var(--pms-1215c);
+}
+.bg-290c {
+  background-color: var(--pms-290c);
+}
+.text-290c {
+  color: var(--pms-290c);
+}
+.bg-7477c {
+  background-color: var(--pms-7477c);
+}
+.text-7477c {
+  color: var(--pms-7477c);
 }
 body{
   color:var(--bs-secondary-color);
@@ -65,32 +90,34 @@ html{
   outline:var(--bs-btn-active-border-color);
   outline-style: dashed;
   outline-width: 3px;
+  position: relative;
+}
+.btn-check:checked + .btn.btn-outline-1505c::after {
+  top: 0;
+  right: 5px;
+  transform: translateY(-50%);
+  animation-name: bounceIn;
+  animation-duration: 450ms;
+  color:var(--bs-btn-active-border-color);
+  background-color: white;
+  font-size: 25px;
+  line-height: 25px;
+  border-radius: 25px;
+  position: absolute;
+  content: "\f058";
+  font-family: "Font Awesome 5 pro";
 }
 
-/* paleta de colores depilaway */
-.text-1505c {
-  color:var(--pms-1505c);
+.btn-check+.btn.btn-outline-1505c:hover {
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
+  color: var(--bs-btn-hover-color);
 }
-.bg-1505c {
-  background-color: var(--pms-1505c);
-}
-.bg-1215c {
-  background-color: var(--pms-1215c);
-}
-.text-1215c {
-  color: var(--pms-1215c);
-}
-.bg-290c {
-  background-color: var(--pms-290c);
-}
-.text-290c {
-  color: var(--pms-290c);
-}
-.bg-7477c {
-  background-color: var(--pms-7477c);
-}
-.text-7477c {
-  color: var(--pms-7477c);
+
+.btn-check:checked+.btn.btn-outline-1505c {
+  outline:var(--bs-btn-active-border-color);
+  outline-style: dashed;
+  outline-width: 3px;
 }
 
 .text-shadow {
@@ -127,10 +154,9 @@ html{
 /* indicadores de la pestaña actual */
 .step {
   height: 5px;
-  width: 15px;
+  width: 10px;
   margin: 0 2px;
   background-color: #bbbbbb;
-  border: none;
   border-radius: 25%;
   display: inline-block;
   opacity: 0.5;
@@ -140,105 +166,52 @@ html{
   opacity: 1;
 }
 
-/* Mark the steps that are finished and valid: */
+/* Marca los pasos finalizados con otro color */
 .step.finish {
   background-color: var(--pms-1505c);
 }
 
 .radio-form {
   width: 100%;
-  margin: 30px 0;
+  margin: 15px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.radio-form .radio-control {
-  min-width: 25%;
-  transition: all ease 250ms; 
-}
-.radio-form .radio-control:hover {
-  transform: scale(1); 
-}
-.radio-form .radio-control:hover .radio-input {
-margin: 0 5px;
-}
-.radio-form .radio-control .radio-input {
-  background: #f4f4f4;
+.radio-form label {
+  min-width: 20%;
   padding: 1vw;
-  cursor: pointer;
   position: relative;
-  margin: 3px;
-  transition: all ease 250ms;
+  margin: 5px;
   background-clip: padding-box;
-  border: solid 2px transparent;
-  border-radius: 10px;
-}
-.radio-form .radio-control .radio-input:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  margin: -2px;
-  border-radius: inherit;
-  /* background: #d9d9d9;*/
-}
-.radio-form .radio-control .radio-input i {
-  display: block;
-  font-size: 40px;
-}
-.radio-form .radio-control .radio-input span {
-  font-weight: 200;
-  text-transform: uppercase;
-  display: block;
-  margin-top: 10px;
-}
-.radio-form .radio-control input {
-  display: none;
-}
-.radio-form .radio-control input:checked {
-  border: 5px solid white;
-}
-.radio-form .radio-control input:checked + .radio-input span {
-  color: #ffffff;
-  transition: color ease 500ms;
 }
 
-.btn-check:checked+.btn.btn-outline-1505c
-.radio-form .radio-control input:checked + .radio-input:after {
-  top: 0;
-  right: 20px;
-  transform: translateY(-50%);
-  animation-name: bounceIn;
-  animation-duration: 250ms;
-  color:black;
-  background-color: white;
-  font-size: 25px;
-  line-height: 25px;
-  border-radius: 25px;
+.radio-form label i {
   display: block;
-  position: absolute;
-  content: "\f058";
-  font-family: "Font Awesome 5 pro";
-  font-weight: bold;
+  font-size: 30px;
 }
-.radio-form .radio-control input:checked + .radio-input {
-border: 2px;
-background: var(--pms-1505c);
-outline-style: dashed;
+.radio-form label i + span {
+  font-weight: 200;
+  /* text-transform: uppercase; */
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
 }
+/* Oculta radio  */
+.radio-form input {
+  display: none;
+}
+
 @keyframes bounceIn {
   0% {
-      transform: translateY(-50%) scale(0);
- }
+    transform: translateY(-50%) scale(0);
+  }
   75% {
-      transform: translateY(-50%) scale(1.1);
- }
+    transform: translateY(-50%) scale(1.1);
+  }
   100% {
-      transform: translateY(-50%) scale(1);
- }
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 @font-face {
@@ -277,7 +250,6 @@ outline-style: dashed;
   font-weight: normal;
   font-style: italic;
 }
-
 
 * {
 	font-family: 'cocogoose';

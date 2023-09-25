@@ -60,13 +60,15 @@ function validarYActualizarInputs() {
 	for (i = 0; i < y.length; i++) {
 		switch (y[i].type) {
 			case "email": // Si el tipo es "email"
-				// Define una expresión regular para validar el formato del correo electrónico
-				var regexCorreo = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-				// Si el valor no cumple con la expresión regular, agrega la clase "invalid" al elemento
-				if (!regexCorreo.test(y[i].value)) {
+				// Verificar si el valor está vacío
+				if (y[i].value === '') {
+					y[i].classList.toggle("invalid", true);
+					valid = false;
+					// Verificar validez si no está vacío
+				} else if (!y[i].validity.valid) {
 					y[i].classList.toggle("invalid", true);
 					valid = false; // Asigna false a la variable valid
-				} else { // Si el valor cumple con la expresión regular, elimina la clase "invalid" si está presente
+				} else { // Si se cumple elimina la clase "invalid" si está presente
 					y[i].classList.toggle("invalid", false);
 				}
 				break;
@@ -110,6 +112,7 @@ function validarYActualizarInputs() {
 				} else { // Si el valor no está vacío, elimina la clase "invalid" si está presente
 					y[i].classList.toggle("invalid", false);
 				}
+				break;
 		}
 		// Si el elemento no tiene el atributo "data-input-event", se lo agrega y le añade un evento "input"
 		if (!y[i].hasAttribute("data-input-event")) {
@@ -123,11 +126,14 @@ function validarYActualizarInputs() {
 			})(i); // Pasar el valor de i como argumento a la IIFE
 		}
 	}
-	// Si el valor de valid es true, agrega la clase "finish" al indicador de la pestaña actual y habilita el botón "Siguiente"
+	// Si el valor de valid es true, hace toggle de la clase "finish" en el indicador de la pestaña actual
 	if (valid) {
-		document.getElementsByClassName("step")[currentTab].className += " finish";
+		document.getElementsByClassName("step")[currentTab].classList.toggle("finish", true);
 		document.getElementById("nextBtn").classList.remove("disabled");
-	} else { // Si el valor de valid es false, agrega la clase "disabled" al elemento con el id "nextBtn"
+	} else {
+		// Si el valor de valid es false, hace toggle de la clase "finish" en el indicador de la pestaña actual
+		document.getElementsByClassName("step")[currentTab].classList.toggle("finish", false);
+		// Si el valor de valid es false, agrega la clase "disabled" al botón "Siguiente"
 		document.getElementById("nextBtn").classList.add("disabled");
 	}
 	// Devuelve el valor de valid
