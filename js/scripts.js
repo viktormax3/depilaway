@@ -1,76 +1,64 @@
+// Declaraciones
+
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 var currentTab = 0;
 // Obtener el div con id="stepContainer"
 var stepContainer = document.getElementById("stepContainer");
 // Obtener todos los divs con la clase tab
 var tabs = document.getElementsByClassName("tab");
-// Obtener el número de divs con la clase tab
-updateSpans();
+// Obtener el contenedor de los spans con la clase step
+var stepContainer = document.getElementById("stepContainer");
+// Obtener el div que se muestra u oculta según el tratamiento
+var treatmentDiv = document.getElementById("applyTreatment");
+// Obtener los radios que indican si se aplica tratamiento o no
+var treatedYes = document.getElementById("grupo2_1");
+var treatedNo = document.getElementById("grupo2_2");
+// Obtener el botón, su bisabuelo y su siguiente hermano
+var btnToggler = document.getElementById('toggleBtn');
+var grandparent = btnToggler.parentElement.parentElement.parentElement;
+var nextSibling = grandparent.nextElementSibling;
+
+// helpers
+
+// Define una función para añadir un span con la clase step al contenedor
 function addSpan() {
-	// Crear un elemento span
+	// Crear un elemento span y asignarle la clase step
 	var span = document.createElement("span");
-	// Añadir la clase step al span
 	span.className = "step";
-	// Añadir el span como hijo del stepContainer
+	// Añadir el span como hijo del contenedor
 	stepContainer.appendChild(span);
 }
-
-// Crear una función para remover el último hijo span del stepContainer
+// Define una función para remover el último span con la clase step del contenedor
 function removeSpan() {
-	// Obtener el último hijo del stepContainer
+	// Obtener el último hijo del contenedor y comprobar si es un span con la clase step
 	var lastChild = stepContainer.lastChild;
-	// Si el último hijo es un span con la clase step
 	if (lastChild && lastChild.tagName == "SPAN" && lastChild.className == "step") {
-	// Remover el último hijo del stepContainer
-	stepContainer.removeChild(lastChild);
+		// Remover el último hijo del contenedor
+		stepContainer.removeChild(lastChild);
 	}
 }
-
-// Crear una función para actualizar los hijos span del stepContainer según el número de divs con la clase tab
+// Define una función para actualizar los spans según el número de divs con la clase tab
 function updateSpans() {
-	// Obtener todos los spans con la clase step
-	var numTabs = tabs.length; // Mover esta línea aquí
+	// Obtener todos los spans con la clase step y sus números
+	var numTabs = tabs.length;
 	var steps = document.getElementsByClassName("step");
-	// Obtener el número de spans con la clase step
 	var numSteps = steps.length;
-	console.log(tabs.length)
-	console.log(steps.length)
-	// Si el número de spans es menor que el número de divs
+	// Si el número de spans es menor que el número de divs, añadir los spans necesarios
 	if (numSteps < numTabs) {
-	// Añadir tantos spans como sea necesario para igualar el número de divs
-	for (var i = numSteps; i < numTabs; i++) {
-		addSpan();
+		for (var i = numSteps; i < numTabs; i++) {
+			addSpan();
+		}
 	}
-	}
-	// Si el número de spans es mayor que el número de divs
+	// Si el número de spans es mayor que el número de divs, remover los spans necesarios
 	else if (numSteps > numTabs) {
-	// Remover tantos spans como sea necesario para igualar el número de divs
-	for (var i = numSteps; i > numTabs; i--) {
-		removeSpan();
-	}
+		for (var i = numSteps; i > numTabs; i--) {
+			removeSpan();
+		}
 	}
 }
-updateSpans();
 
-// const's handleTreated
-const treatmentDiv = document.getElementById('applyTreatment');
-const treatedYes = document.getElementById('grupo2_1'); 
-const treatedNo = document.getElementById('grupo2_2');
+// Funciones para el manejo de pestañas
 
-function handleTreated() {
-	treatedYes.addEventListener('click', () => {
-		treatmentDiv.classList.toggle('tab');
-		updateSpans();
-	});
-	treatedNo.addEventListener('click', () => {
-		treatmentDiv.classList.remove('tab');
-		updateSpans();
-	});
-}
-//Se llama a la función al final para inicializarla
-handleTreated();
-// Llama a la función showTab para mostrar la primera pestaña
-showTab(currentTab);
 // Define una función que recibe un parámetro n que indica el índice de la pestaña a mostrar
 function showTab(n) {
 	// Obtiene todos los elementos con la clase "tab"
@@ -119,7 +107,24 @@ function nextPrev(n) {
 	showTab(currentTab);
 	updateSpans();
 }
+// Define una función que recibe un parámetro n que indica el índice de la pestaña actual
+function fixStepIndicator(n) {
+	var i, x = document.getElementsByClassName("step"); // Obtiene todos los elementos con la clase "step"
+	for (i = 0; i < x.length; i++) { // Recorre todos los elementos de x
+		x[i].className = x[i].className.replace(" active", ""); // Elimina la clase "active" de todos ellos
+	}
+	x[n].className += " active"; // Agrega la clase "active" al elemento con el índice n
+}
+// Define una función que deselecciona la pestaña actual
+function deseleccionarTab() {
+	// Define una variable cadena que almacena el nombre del grupo de elementos de tipo "radio" de la pestaña actual
+	var cadena = "";
+	cadena = "grupo" + currentTab;
+	// Llama a la función deseleccionar con el parámetro cadena
+	deseleccionar(cadena);
+}
 
+// Funciones de validación
 
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
@@ -211,14 +216,6 @@ function validarYActualizarInputs() {
 	// Devuelve el valor de valid
 	return valid;
 }
-// Define una función que recibe un parámetro n que indica el índice de la pestaña actual
-function fixStepIndicator(n) {
-	var i, x = document.getElementsByClassName("step"); // Obtiene todos los elementos con la clase "step"
-	for (i = 0; i < x.length; i++) { // Recorre todos los elementos de x
-		x[i].className = x[i].className.replace(" active", ""); // Elimina la clase "active" de todos ellos
-	}
-	x[n].className += " active"; // Agrega la clase "active" al elemento con el índice n
-}
 // Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo "radio"
 function deseleccionar(e) {
 	// Obtiene todos los elementos con el nombre e y los guarda en un arreglo
@@ -252,16 +249,24 @@ function deseleccionar(e) {
 		});
 	}
 }
-// Define una función que deselecciona la pestaña actual
-function deseleccionarTab() {
-	// Define una variable cadena que almacena el nombre del grupo de elementos de tipo "radio" de la pestaña actual
-	var cadena = "";
-	cadena = "grupo" + currentTab;
-	// Llama a la función deseleccionar con el parámetro cadena
-	deseleccionar(cadena);
+
+// Funciones para eventos
+
+// Define una función para manejar el evento de cambio de los radios de tratamiento
+function handleTreated() {
+	// Añadir un listener al radio de tratamiento sí
+	treatedYes.addEventListener("click", () => {
+		// togglea la clase tab al div de tratamiento y actualizar los spans
+		treatmentDiv.classList.toggle("tab");
+		updateSpans();
+	});
+	// Añadir un listener al radio de tratamiento no
+	treatedNo.addEventListener("click", () => {
+		// Remover la clase tab al div de tratamiento y actualizar los spans
+		treatmentDiv.classList.remove("tab");
+		updateSpans();
+	});
 }
-// Llama a la función deseleccionarTab para deseleccionar la pestaña actual
-deseleccionarTab();
 // Define una función que elimina los eventos de entrada de los campos de entrada de la pestaña actual
 function removeInputEvents() {
 	var x, y, i;
@@ -285,19 +290,25 @@ function removeInputEvents() {
 		}
 	}
 }
+
+// Inicializadores y listener
+
+// Llama a la función updateSpans al inicio para inicializar los spans
+updateSpans();
+// Llama a la función handleTreated al inicio para inicializar los listeners
+handleTreated();
+// Llama a la función showTab para mostrar la primera pestaña
+showTab(currentTab);
+// Llama a la función deseleccionarTab para deseleccionar la pestaña actual
+deseleccionarTab();
 // Llama a la función removeInputEvents para eliminar los eventos de entrada de los campos de entrada de la pestaña actual
 removeInputEvents();
-
-// const's toggleVisibility
-const boton = document.getElementById('boton');
-const revealer = document.getElementById('revealer');
-const revealed = document.getElementById('revealed');
-// Agregar manejador de eventos al botón
-boton.addEventListener('click', toggleVisibility);
-// Función para alternar la visibilidad de los elementos
-function toggleVisibility() {
-	// Reemplazar el elemento a ocultar con el elemento a mostrar
-	revealer.parentNode.replaceChild(revealed, revealer);
-	// Mostrar el elemento revelado
-	revealed.style.display = 'block';
+// Al hacer clic en el botón, llamar a la función toggleVisibility
+btnToggler.addEventListener('click', () => {
+	toggleVisibility(grandparent, nextSibling);
+});
+// La función toggleVisibility oculta el primer elemento y muestra el segundo
+function toggleVisibility(elem1, elem2) {
+	elem1.style.display = 'none';
+	elem2.style.display = 'block';
 }
