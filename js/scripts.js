@@ -1,5 +1,74 @@
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 var currentTab = 0;
+// Obtener el div con id="stepContainer"
+var stepContainer = document.getElementById("stepContainer");
+// Obtener todos los divs con la clase tab
+var tabs = document.getElementsByClassName("tab");
+// Obtener el número de divs con la clase tab
+updateSpans();
+function addSpan() {
+	// Crear un elemento span
+	var span = document.createElement("span");
+	// Añadir la clase step al span
+	span.className = "step";
+	// Añadir el span como hijo del stepContainer
+	stepContainer.appendChild(span);
+}
+
+// Crear una función para remover el último hijo span del stepContainer
+function removeSpan() {
+	// Obtener el último hijo del stepContainer
+	var lastChild = stepContainer.lastChild;
+	// Si el último hijo es un span con la clase step
+	if (lastChild && lastChild.tagName == "SPAN" && lastChild.className == "step") {
+	// Remover el último hijo del stepContainer
+	stepContainer.removeChild(lastChild);
+	}
+}
+
+// Crear una función para actualizar los hijos span del stepContainer según el número de divs con la clase tab
+function updateSpans() {
+	// Obtener todos los spans con la clase step
+	var numTabs = tabs.length; // Mover esta línea aquí
+	var steps = document.getElementsByClassName("step");
+	// Obtener el número de spans con la clase step
+	var numSteps = steps.length;
+	console.log(tabs.length)
+	console.log(steps.length)
+	// Si el número de spans es menor que el número de divs
+	if (numSteps < numTabs) {
+	// Añadir tantos spans como sea necesario para igualar el número de divs
+	for (var i = numSteps; i < numTabs; i++) {
+		addSpan();
+	}
+	}
+	// Si el número de spans es mayor que el número de divs
+	else if (numSteps > numTabs) {
+	// Remover tantos spans como sea necesario para igualar el número de divs
+	for (var i = numSteps; i > numTabs; i--) {
+		removeSpan();
+	}
+	}
+}
+updateSpans();
+
+// const's handleTreated
+const treatmentDiv = document.getElementById('applyTreatment');
+const treatedYes = document.getElementById('grupo2_1'); 
+const treatedNo = document.getElementById('grupo2_2');
+
+function handleTreated() {
+	treatedYes.addEventListener('click', () => {
+		treatmentDiv.classList.toggle('tab');
+		updateSpans();
+	});
+	treatedNo.addEventListener('click', () => {
+		treatmentDiv.classList.remove('tab');
+		updateSpans();
+	});
+}
+//Se llama a la función al final para inicializarla
+handleTreated();
 // Llama a la función showTab para mostrar la primera pestaña
 showTab(currentTab);
 // Define una función que recibe un parámetro n que indica el índice de la pestaña a mostrar
@@ -10,10 +79,10 @@ function showTab(n) {
 	x[n].style.display = "block";
 	// Si n es 0, oculta el botón "Anterior"
 	if (n == 0) {
-		document.getElementById("prevBtn").style.display = "none";
+		document.getElementById("prevBtn").style.visibility = "hidden";
 	} else {
 		// Si no, muestra el botón "Anterior"
-		document.getElementById("prevBtn").style.display = "inline";
+		document.getElementById("prevBtn").style.visibility = "visible";
 	}
 	// Si n es igual al número de pestañas menos uno, cambia el botón "Siguiente" a un icono de avión de papel
 	if (n == (x.length - 1)) {
@@ -48,7 +117,10 @@ function nextPrev(n) {
 	}
 	// Llama a la función showTab para mostrar la nueva pestaña
 	showTab(currentTab);
+	updateSpans();
 }
+
+
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
 	var x, y, i, valid = true;
@@ -188,6 +260,8 @@ function deseleccionarTab() {
 	// Llama a la función deseleccionar con el parámetro cadena
 	deseleccionar(cadena);
 }
+// Llama a la función deseleccionarTab para deseleccionar la pestaña actual
+deseleccionarTab();
 // Define una función que elimina los eventos de entrada de los campos de entrada de la pestaña actual
 function removeInputEvents() {
 	var x, y, i;
@@ -211,10 +285,10 @@ function removeInputEvents() {
 		}
 	}
 }
-// Llama a la función deseleccionarTab para deseleccionar la pestaña actual
-deseleccionarTab();
 // Llama a la función removeInputEvents para eliminar los eventos de entrada de los campos de entrada de la pestaña actual
 removeInputEvents();
+
+// const's toggleVisibility
 const boton = document.getElementById('boton');
 const revealer = document.getElementById('revealer');
 const revealed = document.getElementById('revealed');

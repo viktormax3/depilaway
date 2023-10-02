@@ -43,6 +43,21 @@ body{
 html{
   font-size: 0.875rem;
 }
+.navbar-brand img {
+  width: 10vw;
+  min-width: 120px;
+  max-height: 50px;
+}
+.carousel-control-next, .carousel-control-prev {
+  width: 5%;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 20px;
+  border-radius: 5px;
+  height: 5px;
+  border:0
+}
 /* botones personalizados basados en bootstrap usando la paleta de colores de depilaway */
 .btn-1505c {
   --bs-btn-active-bg: #fc5300;
@@ -123,6 +138,10 @@ html{
 .text-shadow {
   text-shadow: 0 0 3px #00000045;
 }
+.box-shadow {
+  box-shadow: 2px 2px 4px 0.2rem #efecec;
+}
+
 /* boton de busqueda navbar */
 .input-group:focus-within {
   box-shadow: 0 0 0 0.25rem rgba(255, 105, 0, 0.25);
@@ -180,7 +199,7 @@ html{
 }
 .radio-form label {
   min-width: 20%;
-  padding: 1vw;
+  padding: 0.5vw 2vw;
   position: relative;
   margin: 5px;
   background-clip: padding-box;
@@ -194,7 +213,7 @@ html{
   font-weight: 200;
   /* text-transform: uppercase; */
   display: block;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 1rem;
 }
 /* Oculta radio  */
