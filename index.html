@@ -71,231 +71,243 @@
 					</nav>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 d-flex">
-					<div class="row justify-content-sm-around justify-content-lg-end">
-						<div class="col-md-12 px-0" id="slideshowRes">
-							<div id="carousel-1" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="8000">
-								<div class="carousel-indicators">
-									<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" aria-label="Slide 1"></button>
-									<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
-									<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-								</div>
-								<div class="carousel-inner">
-									<div class="carousel-item">
-										<picture>
-											<source srcset="images/1.50.png" media="(max-width: 575px)">
-											<source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
-											<source srcset="images/1.100.png" media="(min-width: 992px)">
-											<img src="images/1.50.png" class="img-fluid" alt="Slideshow 1">
-										</picture>
-										<div class="carousel-caption">
-											<h4>Titulo 1</h4>
-											<p>Imagen referencial 1</p>
-										</div>
-									</div>
-									<div class="carousel-item active">
-										<picture>
-											<source srcset="images/2.50.png" media="(max-width: 575px)">
-											<source srcset="images/2.75.png" media="(min-width: 576px) and (max-width: 991px)">
-											<source srcset="images/2.100.png" media="(min-width: 992px)">
-											<img src="images/2.50.png" class="img-fluid" alt="Slideshow 2">
-										</picture>
-										<div class="carousel-caption">
-											<h4>Titulo 2</h4>
-											<p>Imagen referencial 2</p>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<picture>
-											<source srcset="images/3.50.png" media="(max-width: 575px)">
-											<source srcset="images/3.75.png" media="(min-width: 576px) and (max-width: 991px)">
-											<source srcset="images/3.100.png" media="(min-width: 992px)">
-											<img src="images/3.50.png" class="img-fluid" alt="Slideshow 3">
-										</picture>
-										<div class="carousel-caption">
-											<h4>Titulo 3</h4>
-											<p>Imagen referencial 3</p>
-										</div>
-									</div>
-								</div>
-								<a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="visually-hidden">Previous</span>
-								</a>
-								<a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="visually-hidden">Next</span>
-								</a>
+			<div class="col-md-12">
+				<div class="row justify-content-sm-around justify-content-lg-end">
+					<div class="col-md-12 px-0" id="slideshowRes">
+						<div id="carousel-1" class="carousel slide carousel-fade" data-bs-ride="carousel" data-pause="hover">
+							<div class="carousel-indicators">
+								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" aria-label="Slide 1"></button>
+								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
 							</div>
+							<div class="carousel-inner">
+								<div class="carousel-item"  data-bs-interval="4000">
+									<picture>
+										<source srcset="images/1.50.png" media="(max-width: 575px)">
+										<source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
+										<source srcset="images/1.100.png" media="(min-width: 992px)">
+										<img src="images/1.50.png" class="img-fluid w-100" alt="Slideshow 1">
+									</picture>
+									<div class="carousel-caption">
+										<h5>Titulo 1</h5>
+										<p>Imagen referencial 1</p>
+									</div>
+								</div>
+								<div class="carousel-item active" data-bs-interval="5000">
+									<picture>
+										<source srcset="images/2.50.png" media="(max-width: 575px)">
+										<source srcset="images/2.75.png" media="(min-width: 576px) and (max-width: 991px)">
+										<source srcset="images/2.100.png" media="(min-width: 992px)">
+										<img src="images/2.50.png" class="img-fluid w-100" alt="Slideshow 2">
+									</picture>
+									<div class="carousel-caption">
+										<h5>Titulo 2</h5>
+										<p>Imagen referencial 2</p>
+									</div>
+								</div>
+								<div class="carousel-item" data-bs-interval="4000">
+									<picture>
+										<source srcset="images/3.50.png" media="(max-width: 575px)">
+										<source srcset="images/3.75.png" media="(min-width: 576px) and (max-width: 991px)">
+										<source srcset="images/3.100.png" media="(min-width: 992px)">
+										<img src="images/3.50.png" class="img-fluid w-100" alt="Slideshow 3">
+									</picture>
+									<div class="carousel-caption">
+										<h5>Titulo 3</h5>
+										<p>Imagen referencial 3</p>
+									</div>
+								</div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#carousel-1" data-bs-slide="prev">
+								<i class="fa-thin fa-caret-left fa-2xl"></i>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#carousel-1" data-bs-slide="next">
+								<i class="fa-thin fa-caret-right fa-2xl"></i>
+							</button>
 						</div>
-						<div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light d-flex text-center align-self-center justify-content-center rounded-4 me-lg-3 pt-lg-5">
-							<div class="text-1505c text-center text-shadow">
-								<div class="display-6">ahora depilarse es</div>
-								<div id="subSlogan" class="display-3 fst-italic mb-4 fw-normal">¡ Así de fácil !</div>
+					</div>
+					<div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light d-flex text-center align-self-center justify-content-center rounded-4 me-lg-3 pt-lg-5">
+						<div class="text-1505c text-center text-shadow">
+							<div class="display-6">ahora depilarse es</div>
+							<div id="subSlogan" class="display-3 fst-italic mb-4 fw-normal">¡ Así de fácil !</div>
+							<p>
+								<a id="boton" class="btn btn-1505c btn-md">Agendar cita</a>
+							</p>
+						</div>
+					</div>
+					<div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-3 bg-light text-center align-self-center rounded-4 me-lg-3 user-select-none" style="display: block;" style="display: none;">
+						<form id="regForm" action="https://forms.gle/F3RLPXBs87WKbdkY8" method="post">
+							<!-- One "tab" for each step in the form:
+							<div class="mb-3 tab">
+								***Contenido aqui***
+							</div>
+							-->
+							<div class="mb-3 tab" style="display:block">
+								<h4>¿Tipo de depilación?</h4>
+								<div class="radio-form">
+									<input type="radio" class="btn-check" name="grupo0" id="grupo0_1" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo0_1">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Cera</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo0" id="grupo0_2" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo0_2">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Laser</span>
+									</label>
+								</div>
+							</div>
+							<div class="mb-3 tab">
+								<h4>¿Zona?</h4>
+								<div class="radio-form">
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_1" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_1">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Espalda</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_2" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_2">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Bikini</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_3" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_3">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Brasileño</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_4" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_4">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Pecho</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_5" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_5">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Mentón</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_6" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_6">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Rostro</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_7" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_7">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Piernas</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_8" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_8">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Otro</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo1" id="grupo1_9" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo1_9">
+										<i class="fa-solid fa-planet-moon"></i>
+										<span>Axilas</span>
+									</label>
+								</div>
+							</div>
+							<div class="mb-3 tab">
+								<h4>¿Te has realizado este tratamiento?</h4>
+								<div class="radio-form">
+									<input type="radio" class="btn-check" name="grupo2" id="grupo2_1" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo2_1">
+										<span>Si</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo2" id="grupo2_2" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo2_2">
+										<span>No</span>
+									</label>
+								</div>
+							</div>
+							<div id="applyTreatment" class="mb-3 tab" style="display: none;">
+								<h4>¿Cuántas veces?</h4>
+								<div class="radio-form">
+									<input type="radio" class="btn-check" name="grupo3" id="grupo3_1" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_1">
+										<span>1-2</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo3" id="grupo3_2" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_2">
+										<span>3-4</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo3" id="grupo3_3" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_3">
+										<span>5-6</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo3" id="grupo3_4" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_4">
+										<span>7-8</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo3" id="grupo3_5" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_5">
+										<span>9+</span>
+									</label>
+								</div>
+							</div>
+							<div class="mb-3 tab">
+								<h4>¿Edad?</h4>
+								<div class="radio-form">
+									<input type="radio" class="btn-check" name="grupo4" id="grupo4_1" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_1">
+										<span>15-18</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo4" id="grupo4_2" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_2">
+										<span>19-34</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo4" id="grupo4_3" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_3">
+										<span>35-54</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo4" id="grupo4_4" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_4">
+										<span>55-64</span>
+									</label>
+									<input type="radio" class="btn-check" name="grupo4" id="grupo4_5" autocomplete="off">
+									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_5">
+										<span>65+</span>
+									</label>
+								</div>
+							</div>
+							<div class="mb-3 tab">
+								<h2> Información de contacto </h2>
 								<p>
-									<a id="boton" class="btn btn-1505c btn-md">Agendar cita</a>
+									<input placeholder="Correo" type="email" name="email" class="border rounded-3 w-75 p-2"/>
+								</p>
+								<p>
+									<input placeholder="Número" type="tel" name="phone" class="border rounded-3 w-75 p-2"/>
 								</p>
 							</div>
-						</div>
-						<div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-3 bg-light text-center align-self-center rounded-4 me-lg-3 user-select-none" style="display: block;" style="display: none;">
-							<form id="regForm" action="https://forms.gle/F3RLPXBs87WKbdkY8" method="post">
-								<!-- One "tab" for each step in the form:
-                  <div class="mb-3 tab">
-                    ***Contenido aqui***
-                  </div>
-              -->
-								<div class="mb-3 tab" style="display:block">
-									<h4>¿Tipo de depilación?</h4>
-									<div class="radio-form">
-										<input type="radio" class="btn-check" name="grupo0" id="grupo0_1" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo0_1">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Cera</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo0" id="grupo0_2" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo0_2">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Laser</span>
-										</label>
-									</div>
-								</div>
-								<div class="mb-3 tab">
-									<h4>¿Zona?</h4>
-									<div class="radio-form">
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_1" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_1">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Espalda</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_2" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_2">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Bikini</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_3" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_3">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Brasileño</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_4" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_4">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Pecho</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_5" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_5">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Mentón / Labios</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_6" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_6">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Rostro</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_7" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_7">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Piernas</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_8" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_8">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Otro</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo1" id="grupo1_9" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg" for="grupo1_9">
-											<i class="fa-solid fa-planet-moon"></i>
-											<span>Axilas</span>
-										</label>
-									</div>
-								</div>
-								<div class="mb-3 tab">
-									<h4>¿Cuántos tratamientos lleva?</h4>
-									<div class="radio-form">
-										<input type="radio" class="btn-check" name="grupo2" id="grupo2_1" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo2_1">
-											<span>1-2</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo2" id="grupo2_2" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo2_2">
-											<span>3-4</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo2" id="grupo2_3" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo2_3">
-											<span>5-6</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo2" id="grupo2_4" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo2_4">
-											<span>7-8</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo2" id="grupo2_5" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo2_5">
-											<span>9+</span>
-										</label>
-									</div>
-								</div>
-								<div class="mb-3 tab">
-									<h4>¿Cuántos tratamientos lleva?</h4>
-									<div class="radio-form">
-										<input type="radio" class="btn-check" name="grupo3" id="grupo3_1" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo3_1">
-											<span>15-18</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo3" id="grupo3_2" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo3_2">
-											<span>19-34</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo3" id="grupo3_3" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo3_3">
-											<span>35-54</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo3" id="grupo3_4" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo3_4">
-											<span>55-64</span>
-										</label>
-										<input type="radio" class="btn-check" name="grupo3" id="grupo3_5" autocomplete="off">
-										<label class="btn btn-outline-1505c btn-lg p-4" for="grupo3_5">
-											<span>65+</span>
-										</label>
-									</div>
-								</div>
-								<div class="mb-3 tab">
-									<h2> Información de contacto </h2>
-									<p>
-										<input placeholder="Correo" type="email" name="email" class="border rounded-3 w-75 p-2" />
-									</p>
-									<p>
-										<input placeholder="Número" type="tel" name="phone" class="border rounded-3 w-75 p-2" />
-									</p>
-								</div>
-								<!-- <div class="mb-3 tab"><h2>Paso 5</h2><p><input placeholder="dd" name="dd" class="border rounded-3 w-75 p-2"/></p><p><input placeholder="mm" name="nn" class="border rounded-3 w-75 p-2"/></p><p><input placeholder="yyyy" name="yyyy" class="border rounded-3 w-75 p-2"/></p></div> -->
-								<div class="mb-3 tab">
-									<h2>Paso 6</h2>
-									<p>
-										<input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2" />
-									</p>
-									<p>
-										<input placeholder="Contraseña" name="pword" type="password" class="border rounded-3 w-75 p-2" />
-									</p>
-								</div>
-								<div id="botones" class="overflow-auto">
-									<div class="float-end">
-										<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a>
-										<a type="button" id="nextBtn" onclick="nextPrev(1)"></a>
-									</div>
-								</div>
-								<!-- Indicadores -->
-								<div class="text-center mt-2">
-									<span class="step"></span>
-									<span class="step"></span>
-									<span class="step"></span>
-									<span class="step"></span>
-									<span class="step"></span>
-									<span class="step"></span>
-								</div>
-							</form>
-						</div>
+							<!-- <div class="mb-3 tab">
+							<h2>Paso 5</h2>
+							<p>
+								<input placeholder="dd" name="dd" class="border rounded-3 w-75 p-2"/>
+							</p>
+							<p>
+								<input placeholder="mm" name="nn" class="border rounded-3 w-75 p-2"/>
+							</p>
+							<p>
+								<input placeholder="yyyy" name="yyyy" class="border rounded-3 w-75 p-2"/>
+							</p>
+							</div> -->
+							<div class="mb-3 tab">
+								<h2>Paso 6</h2>
+								<p>
+									<input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2"/>
+								</p>
+								<p>
+									<input placeholder="Contraseña" name="pword" type="password" class="border rounded-3 w-75 p-2"/>
+								</p>
+							</div>
+							<!-- Indicadores -->
+							<div class="d-flex flex-warp mt-2 justify-content-around align-items-center">
+								<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a>
+								<a id="stepContainer">
+								</a>
+								<a type="button" id="nextBtn" onclick="nextPrev(1)"></a>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
