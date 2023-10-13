@@ -1,17 +1,9 @@
 /* paleta de colores depilaway */
 :root {
   --pms-1505c:#ff6900;
-  --pms-1505c:lab(62.81 53.68 71.61 / 1);
-  --pms-1505c:hsl(25, 100%, 50%);
   --pms-1215c:#fbd872;
-  --pms-1215c:lab(87.41 0.11 54.14 / 1);
-  --pms-1215c:hsl(45 , 94% , 72%);
   --pms-290c:#b9d9eb;
-  --pms-290c:lab(84.96 -6.71 -12.34 / 1);
-  --pms-290c:hsl(202, 56%, 82%);
   --pms-7477c:#244c5a;
-  --pms-7477c:lab(30.11 -9.47 -12.54 / 1);
-  --pms-7477c:hsl(196 , 43% , 25%);
 }
 .text-1505c {
   color:var(--pms-1505c);
@@ -123,18 +115,6 @@ html{
   font-family: "Font Awesome 5 pro";
 }
 
-.btn-check+.btn.btn-outline-1505c:hover {
-  background-color: var(--bs-btn-hover-bg);
-  border-color: var(--bs-btn-hover-border-color);
-  color: var(--bs-btn-hover-color);
-}
-
-.btn-check:checked+.btn.btn-outline-1505c {
-  outline:var(--bs-btn-active-border-color);
-  outline-style: dashed;
-  outline-width: 3px;
-}
-
 .text-shadow {
   text-shadow: 0 0 3px #00000045;
 }
@@ -150,8 +130,7 @@ html{
   box-shadow: none;
 }
 .card-block {
-  padding-left: 5%;
-  padding-right: 2%;
+  padding: 0 5% 0 2%;
 }
 #subSlogan {
   margin-left: -0.625rem;
@@ -179,15 +158,18 @@ html{
   border-radius: 25%;
   display: inline-block;
   opacity: 0.5;
+
 }
 
 .step.active {
   opacity: 1;
+  transition: opacity ease 1s;
 }
 
 /* Marca los pasos finalizados con otro color */
 .step.finish {
   background-color: var(--pms-1505c);
+  transition: background-color ease 1s;
 }
 
 .radio-form {
@@ -216,17 +198,12 @@ html{
   margin-top: 15px;
   font-size: 1rem;
 }
-/* Oculta radio  */
-.radio-form input {
-  display: none;
-}
-
 @keyframes bounceIn {
   0% {
     transform: translateY(-50%) scale(0);
   }
-  75% {
-    transform: translateY(-50%) scale(1.1);
+  65% {
+    transform: translateY(-50%) scale(1.2);
   }
   100% {
     transform: translateY(-50%) scale(1);
