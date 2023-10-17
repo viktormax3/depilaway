@@ -1,5 +1,4 @@
 // Declaraciones
-
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 var currentTab = 0;
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
@@ -23,13 +22,11 @@ var treatedNo = document.getElementById("grupo2_1");
 var btnToggler = document.getElementById('toggleBtn');
 var grandparent = btnToggler.parentElement.parentElement.parentElement;
 var nextSibling = grandparent.nextElementSibling;
-
 // helpers
-
 // Define una función para modificar los spans con la clase step según el número de divs con la clase tab
 function updateSpans() {
 	// Si el número de spans es menor que el número de divs, añadir los spans necesarios
-	while(steps.length < tabs.length) {
+	while (steps.length < tabs.length) {
 		var newSpan = document.createElement("span");
 		newSpan.className = "step";
 		// Validamos que haya un span actual
@@ -43,7 +40,7 @@ function updateSpans() {
 		steps.length++;
 	}
 	// Si el número de spans es mayor que el número de divs, remover los spans necesarios
-	while(steps.length > tabs.length) {
+	while (steps.length > tabs.length) {
 		// Obtiene el siguiente span después del actual
 		var nextSpan = steps[currentTab].nextSibling;
 		// Si el siguiente span existe y es un span.step
@@ -54,15 +51,9 @@ function updateSpans() {
 		steps.length--;
 	}
 }
-
 // Funciones para el manejo de pestañas
-
 // Define una función que recibe un parámetro n que indica el índice de la pestaña a mostrar
 function showTab(n) {
-	// Recorre todos los steps y remueve la clase active
-	for (const step of steps) {
-		step.className = step.className.replace(" active", "");
-	};
 	// Agrega la clase active al step actual
 	steps[n].className += " active";
 	// Muestra el tab actual
@@ -70,22 +61,32 @@ function showTab(n) {
 	// Muestra u oculta el botón prev según corresponda
 	document.getElementById("prevBtn").style.visibility = n === 0 ? "hidden" : "visible";
 	// Cambia el icono del botón next según corresponda
-	nextBtn.className = "btn btn-1505c btn-lg" + (n === tabs.length - 1 ? " fa-sharp fa-regular fa-paper-plane-top" : " fa-solid fa-arrow-right");
-	// Actualiza los campos según la pestaña actual
+	nextBtn.className = "btn btn-1505c btn-lg " + (n === tabs.length - 1 ? "fa-sharp fa-regular fa-paper-plane-top" : "fa-solid fa-arrow-right");
+	// Si el elemento no tiene el atributo "data-input-event", se lo agrega y le añade un evento "input"
+	const inputs = tabs[n].getElementsByTagName("input");
+	for (let i = 0; i < inputs.length; i++) {
+		const inputEvent = inputs[i].getAttribute("data-input-event") === "true";
+		if (!inputEvent) {
+			inputs[i].setAttribute("data-input-event", true);
+			// Llama a la función validarYActualizarInputs cada vez que se cambia el valor del elemento
+			inputs[i].addEventListener("input", function() {
+				validarYActualizarInputs();
+			});
+		}
+	}
 	validarYActualizarInputs();
 	deseleccionarTab();
 }
 // Define una función que recibe un parámetro n que indica si se avanza o retrocede una pestaña
 function nextPrev(n) {
-	// Llama a la función removeInputEvents para eliminar los eventos de entrada de los campos de entrada
-	removeInputEvents();
 	// Si currentTab es mayor o igual al número de pestañas, envía el formulario y termina la función
 	if (currentTab + n >= tabs.length) {
 		document.getElementById("regForm").submit();
 		return false;
 	} else {
 		// Oculta el elemento con el índice currentTab
-		tabs[currentTab].style.display = "none"; 
+		tabs[currentTab].style.display = "none";
+		steps[currentTab].className = steps[currentTab].className.replace(" active", "");
 		// Actualiza el valor de currentTab sumando el valor de n
 		currentTab += n;
 	}
@@ -98,7 +99,7 @@ function deseleccionarTab() {
 	for (let i = 0; i < tabs.length; i++) {
 		if (tabs[i].style.display != 'none') {
 			tabVisible = tabs[i];
-			break; 
+			break;
 		}
 	}
 	var nombreTab = tabVisible.getAttribute('data-tabname');
@@ -107,93 +108,51 @@ function deseleccionarTab() {
 		deseleccionar(nombreTab);
 	}
 }
-
 // Funciones de validación
-
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
 	var valid = true;
 	// Obtiene todos los elementos con la etiqueta "input" dentro de tabs y los asigna a una variable y
 	var inputs = tabs[currentTab].getElementsByTagName("input");
 	// Recorre todos los elementos de inputs y verifica su tipo y valor
-	for (var i = 0; i < inputs.length; i++) {
+	for (let i = 0; i < inputs.length; i++) {
 		switch (inputs[i].type) {
 			case "email": // Si el tipo es "email"
-			// Verificar si el valor está vacío
-			// Verificar validez si no está vacío
-				if (inputs[i].value === '') {
-					inputs[i].classList.toggle("invalid", true);
-					valid = false;
-				} else if (!inputs[i].validity.valid) {
-					inputs[i].classList.toggle("invalid", true);
-					valid = false; // Asigna false a la variable valid
-				} else { // Si se cumple elimina la clase "invalid" si está presente
-					inputs[i].classList.toggle("invalid", false);
-				}
+				// Verifica validez con validity.valid o si está vacío  
+				inputs[i].classList.toggle("invalid",
+					!inputs[i].validity.valid || inputs[i].value === ""
+				);
+				// Actualiza valid
+				valid = !inputs[i].classList.contains("invalid");
 				break;
 			case "tel": // Si el tipo es "tel"
-				// Asigna el valor a una variable tlf
-				var tlf = inputs[i].value;
-				// Si el valor está vacío, agrega la clase "invalid" al elemento
-				if (tlf == "") {
-					inputs[i].classList.toggle("invalid", true);
-					valid = false; // Asigna false a la variable valid
-				} else { // Si el valor no está vacío
-					// Convierte el valor a un número y lo asigna a la variable tlf
-					tlf = Number(tlf);
-					// Verifica si el valor es un número válido
-					var valido = !isNaN(tlf);
-					// Si el valor no es un número válido, agrega la clase "invalid" al elemento
-					if (!valido) {
-						inputs[i].classList.toggle("invalid", true);
-						valid = false; // Asigna false a la variable valid
-					} else { // Si el valor es un número válido, elimina la clase "invalid" si está presente
-						inputs[i].classList.toggle("invalid", false);
-					}
-				}
+				// Comprueba vacío y NaN
+				inputs[i].classList.toggle("invalid",
+					inputs[i].value === "" || Number.isNaN(Number(inputs[i].value))
+				);
+				// Actualiza valor de valid
+				valid = valid && !inputs[i].classList.contains("invalid");
 				break;
 			case "radio": // Si el tipo es "radio"
 				// Obtiene el elemento con el mismo nombre que esté seleccionado y lo asigna a una variable radio
 				var radio = document.querySelector("input[name='" + inputs[i].name + "']:checked");
 				// Si no hay ningún elemento seleccionado, agrega la clase "invalid" al elemento
-				if (radio == null) {
-					inputs[i].classList.toggle("invalid", true);
+				if (!radio) {
 					valid = false; // Asigna false a la variable valid
-				} else { // Si hay un elemento seleccionado, comprueba si es válido y cambia la clase "invalid" según corresponda
-					inputs[i].classList.toggle("invalid", !radio.validity.valid);
 				}
 				break;
 			default: // Si el tipo es otro
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
-				if (inputs[i].value == "") {
-					inputs[i].classList.toggle("invalid", true);
-					valid = false;
-				} else { // Si el valor no está vacío, elimina la clase "invalid" si está presente
-					inputs[i].classList.toggle("invalid", false);
-				}
+				inputs[i].classList.toggle("invalid", inputs[i].value == "");
+				// Actualiza valor de valid
+				valid = valid && !inputs[i].classList.contains("invalid");
 				break;
 		}
-		// Si el elemento no tiene el atributo "data-input-event", se lo agrega y le añade un evento "input"
-		if (!inputs[i].hasAttribute("data-input-event")) {
-			inputs[i].setAttribute("data-input-event", true);
-			inputs[i].addEventListener("input", function() {
-				// Llama a la función validarYActualizarInputs cada vez que se cambia el valor del elemento
-				validarYActualizarInputs();
-			});
-		}
 	}
-	// Si el valor de valid es true, hace toggle de la clase "finish" en el indicador de la pestaña actual
-	if (valid) {
-		steps[currentTab].classList.toggle("finish", true);
-		nextBtn.classList.remove("disabled");
-	} else {
-		// Si el valor de valid es false, hace toggle de la clase "finish" en el indicador de la pestaña actual
-		steps[currentTab].classList.toggle("finish", false);
-		// Si el valor de valid es false, agrega la clase "disabled" al botón "Siguiente"
-		nextBtn.classList.add("disabled");
-	}
-	// Devuelve el valor de valid
-	return valid;
+	// Basado en valor de valid se hacen un toggle a 2 clases
+	steps[currentTab].classList.toggle("finish", valid);
+	// Deshabilita nextBtn si valid es false  
+	nextBtn.classList.toggle("disabled", !valid);
 }
 // Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo "radio"
 function deseleccionar(e) {
@@ -206,7 +165,7 @@ function deseleccionar(e) {
 		grupo2: handleTreatedClick,
 		grupo3: function() {
 			// Manejar el error del grupo3 al limpiar los botones radio cuando no existe
-			if (resetUltimo == true && !this.checked) {
+			if (resetUltimo && !this.checked) {
 				ultimo = null;
 				this.checked = false;
 				resetUltimo = false;
@@ -232,36 +191,28 @@ function deseleccionar(e) {
 					// Lo deselecciona y limpia ultimo
 					elemento.checked = false;
 					ultimo = null;
+					// procesa el cambio y lo valida
+					validarYActualizarInputs();
 				} else {
 					// Si no, asigna el elemento a ultimo y lo selecciona
 					ultimo = this.getAttribute("id");
 					elemento.checked = true;
 				}
-				// Valida y actualiza los campos de entrada de la pestaña actual
-				validarYActualizarInputs(currentTab);
 			});
 		}
 	}
 	// Agrega el nombre del grupo al arreglo para no correr de nuevo esta misma funcion
 	gruposProcesados.push(e);
 }
-
 // Funciones para eventos
-
 // Define una función para manejar el evento de cambio de los radios de tratamiento
 // Modificar esto para hacerlo reutilizable!!!!!!!!!!!!!!!
 function handleTreatedClick() {
 	// Obtener valor actual de treated para variar la clase tab segun sea el caso
-	if (treatedYes.checked && !treatmentDiv.classList.contains("tab")) {
+	if (treatedYes.checked || !treatedNo.checked) {
 		treatmentDiv.classList.add("tab");
-		resetUltimo = true;
-	} else if (!treatedYes.checked && treatedNo.checked &&
-		treatmentDiv.classList.contains("tab")) {
-		treatmentDiv.classList.remove("tab");
-		document.getElementById('applyTreatment').value = '0';
-		clearRadioGroup('grupo3');
-	} else if (treatedYes.checked && !treatedNo.checked &&
-		treatmentDiv.classList.contains("tab")) {
+		resetUltimo = treatedYes.checked ? true : false;
+	} else {
 		treatmentDiv.classList.remove("tab");
 		document.getElementById('applyTreatment').value = '0';
 		clearRadioGroup('grupo3');
@@ -272,28 +223,11 @@ function clearRadioGroup(name) {
 	// Obtener botones radio del grupo
 	var radios = document.getElementsByName(name);
 	// Deseleccionar todos
-	for(var i = 0; i < radios.length; i++) {
+	for (var i = 0; i < radios.length; i++) {
 		radios[i].checked = false;
 	}
 }
-// Define una función que elimina los eventos de entrada de los campos de entrada de la pestaña actual
-function removeInputEvents() {
-	// Obtiene todos los elementos con la etiqueta "input" dentro de tabs y los asigna a una variable y
-	var inputs = tabs[currentTab].getElementsByTagName("input");
-	// Recorre todos los elementos de y y verifica si tienen el atributo "data-input-event"
-	for (var i = 0; i < inputs.length; i++) {
-		if (inputs[i].hasAttribute("data-input-event")) {
-			// Si lo tienen, se lo elimina y también elimina el evento "input" asociado
-			inputs[i].removeAttribute("data-input-event");
-			inputs[i].removeEventListener("input", function() {
-				validarYActualizarInputs();
-			});
-		}
-	}
-}
-
 // Inicializadores y listener
-
 // Llama a la función updateSpans al inicio para inicializar los spans
 updateSpans();
 // Llama a la función showTab para mostrar la primera pestaña
