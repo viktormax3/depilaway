@@ -220,21 +220,26 @@ function deseleccionar(e) {
 	// Agrega el nombre del grupo al arreglo para no correr de nuevo esta misma funcion
 	gruposProcesados.push(e);
 }
+
 // Funciones para eventos
 // Define una función para manejar el evento de cambio de los radios de tratamiento
 // Modificar esto para hacerlo reutilizable!!!!!!!!!!!!!!!
 function handleTreatedClick() {
 	// Obtener valor actual de treated para variar la clase tab segun sea el caso
-	if (treatedYes.checked || !treatedNo.checked) {
-		treatmentDiv.classList.add('tab');
-		resetUltimo = treatedYes.checked ? true : false;
-	} else {
-		treatmentDiv.classList.remove('tab');
+	if (treatedYes.checked && !treatmentDiv.classList.contains('tab')) {
+		resetUltimo = true;
+	} else if (
+		treatedYes.checked ^ treatedNo.checked &&
+		treatmentDiv.classList.contains('tab')
+	) {
+		resetUltimo = false;
 		document.getElementById('applyTreatment').value = '0';
 		clearRadioGroup('grupo3');
 	}
+	treatmentDiv.classList.toggle('tab', resetUltimo);
 	updateSpans();
 }
+
 function clearRadioGroup(name) {
 	// Obtener botones radio del grupo
 	var radios = document.getElementsByName(name);
