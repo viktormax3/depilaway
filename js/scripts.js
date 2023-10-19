@@ -1,27 +1,27 @@
 // Declaraciones
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
-var currentTab = 0;
+let currentTab = 0;
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 let resetUltimo = false;
 // Define una variable que almacene los nombres de los grupos  de botones radio procesados
 let gruposProcesados = [];
 // Obtener el div con id="stepContainer"
-var stepContainer = document.getElementById('stepContainer');
+const stepContainer = document.getElementById('stepContainer');
 // Obtener todos los divs con la clase tab
-var tabs = document.getElementsByClassName('tab');
+const tabs = document.getElementsByClassName('tab');
 // Obtener el boton nextBtn
-var nextBtn = document.getElementById('nextBtn');
+const nextBtn = document.getElementById('nextBtn');
 // Obtener todos los span con la clase step
-var steps = document.getElementsByClassName('step');
+const steps = document.getElementsByClassName('step');
 // Obtener el div que se muestra u oculta según el tratamiento
-var treatmentDiv = document.getElementById('applyTreatment');
+const treatmentDiv = document.getElementById('applyTreatment');
 // Obtener los radios que indican si se aplica tratamiento o no
-var treatedYes = document.getElementById('grupo2_0');
-var treatedNo = document.getElementById('grupo2_1');
+const treatedYes = document.getElementById('grupo2_0');
+const treatedNo = document.getElementById('grupo2_1');
 // Obtener el botón, su bisabuelo y su siguiente hermano para hacer un toggler de divs
-var btnToggler = document.getElementById('toggleBtn');
-var grandparent = btnToggler.parentElement.parentElement.parentElement;
-var nextSibling = grandparent.nextElementSibling;
+const btnToggler = document.getElementById('toggleBtn');
+const grandparent = btnToggler.parentElement.parentElement.parentElement;
+const nextSibling = grandparent.nextElementSibling;
 // helpers
 // Define una función para modificar los spans con la clase step según el número de divs con la clase tab
 function updateSpans() {
@@ -123,9 +123,9 @@ function deseleccionarTab() {
 // Funciones de validación
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
-	var valid = true;
+	let valid = true;
 	// Obtiene todos los elementos con la etiqueta "input" dentro de tabs y los asigna a una variable y
-	var inputs = tabs[currentTab].getElementsByTagName('input');
+	const inputs = tabs[currentTab].getElementsByTagName('input');
 	// Recorre todos los elementos de inputs y verifica su tipo y valor
 	for (let i = 0; i < inputs.length; i++) {
 		switch (inputs[i].type) {
@@ -135,8 +135,6 @@ function validarYActualizarInputs() {
 					'invalid',
 					!inputs[i].validity.valid || inputs[i].value === '',
 				);
-				// Actualiza valid
-				valid = !inputs[i].classList.contains('invalid');
 				break;
 			case 'tel': // Si el tipo es "tel"
 				// Comprueba vacío y NaN
@@ -144,26 +142,18 @@ function validarYActualizarInputs() {
 					'invalid',
 					inputs[i].value === '' || Number.isNaN(Number(inputs[i].value)),
 				);
-				// Actualiza valor de valid
-				valid = valid && !inputs[i].classList.contains('invalid');
 				break;
 			case 'radio': // Si el tipo es "radio"
-				// Obtiene el elemento con el mismo nombre que esté seleccionado y lo asigna a una variable radio
-				var radio = document.querySelector(
-					"input[name='" + inputs[i].name + "']:checked",
-				);
 				// Si no hay ningún elemento seleccionado, agrega la clase "invalid" al elemento
-				if (!radio) {
-					valid = false; // Asigna false a la variable valid
-				}
+				inputs[i].classList.toggle('invalid', !document.querySelector( "input[name='" + inputs[i].name + "']:checked", ));
 				break;
 			default: // Si el tipo es otro
 				// Si el valor está vacío, agrega la clase "invalid" al elemento
 				inputs[i].classList.toggle('invalid', inputs[i].value == '');
-				// Actualiza valor de valid
-				valid = valid && !inputs[i].classList.contains('invalid');
 				break;
 		}
+	// Actualiza valid
+	valid = valid && !inputs[i].classList.contains('invalid');
 	}
 	// Basado en valor de valid se hacen un toggle a 2 clases
 	steps[currentTab].classList.toggle('finish', valid);
@@ -183,7 +173,6 @@ function deseleccionar(e) {
 			// Manejar el error del grupo3 al limpiar los botones radio cuando no existe
 			if (resetUltimo && !this.checked) {
 				ultimo = null;
-				this.checked = false;
 				resetUltimo = false;
 			}
 		},
@@ -203,7 +192,7 @@ function deseleccionar(e) {
 					funciones[elemento.name]();
 				}
 				// Si el elemento es el mismo que el último seleccionado y está marcado
-				if (this.getAttribute('id') == ultimo && elemento.checked) {
+				if (this.getAttribute('id') == ultimo) {
 					// Lo deselecciona y limpia ultimo
 					elemento.checked = false;
 					ultimo = null;
@@ -233,20 +222,17 @@ function handleTreatedClick() {
 		treatmentDiv.classList.contains('tab')
 	) {
 		resetUltimo = false;
-		document.getElementById('applyTreatment').value = '0';
+		treatmentDiv.value = '0';
 		clearRadioGroup('grupo3');
 	}
 	treatmentDiv.classList.toggle('tab', resetUltimo);
 	updateSpans();
 }
-
 function clearRadioGroup(name) {
-	// Obtener botones radio del grupo
-	var radios = document.getElementsByName(name);
-	// Deseleccionar todos
-	for (var i = 0; i < radios.length; i++) {
-		radios[i].checked = false;
-	}
+	// Obtener botones radio del grupo y los deselecciona todos
+	document.getElementsByName(name).forEach((radio) => {
+		radio.checked = false;
+	});
 }
 // Inicializadores y listener
 // Llama a la función updateSpans al inicio para inicializar los spans
@@ -254,7 +240,7 @@ updateSpans();
 // Llama a la función showTab para mostrar la primera pestaña
 showTab(currentTab);
 // Al hacer clic en btnToggler, llamar a la función toggleVisibility
-btnToggler.addEventListener('click', () => {
+btnToggler.addEventListener('click', function () {
 	toggleVisibility(grandparent, nextSibling);
 });
 // La función toggleVisibility oculta el primer elemento y muestra el segundo
