@@ -189,14 +189,41 @@ html{
 
 .radio-form label i {
   display: block;
-  font-size: 30px;
+  font-size: 25px;
 }
 .radio-form label i + span {
   font-weight: 200;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   display: block;
-  margin-top: 15px;
-  font-size: 1rem;
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.badge-pill-primary {
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 50rem;
+  background-color: #ff6900;
+  display: inline-flex;
+  align-items: center;
+  }
+/* Cambia el color de texto de los nav-pills por defecto */
+.nav-pills .nav-link {
+  color: #5c8a36; /* Elige el color que quieras */
+}
+
+/* Cambia el color de fondo y de texto de los nav-pills al pasar el ratón o hacer clic */
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus,
+.nav-pills .nav-link.active {
+  background-color: #8cbf69; /* Elige el color que quieras */
+  color: white; /* Elige el color que quieras */
 }
 @keyframes bounceIn {
   0% {

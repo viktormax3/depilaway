@@ -3,7 +3,7 @@
 let currentTab = 0;
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 let resetUltimo = false;
-// Define una variable que almacene los nombres de los grupos  de botones radio procesados
+// Define una variable que almacene los nombres de los grupos de botones radio procesados
 let gruposProcesados = [];
 // Obtener el div con id="stepContainer"
 const stepContainer = document.getElementById('stepContainer');
@@ -165,7 +165,7 @@ function deseleccionar(e) {
 	// Obtiene todos los elementos con el nombre e y los guarda en un arreglo
 	let elementos = document.getElementsByName(e);
 	// Declara una variable para guardar el último elemento seleccionado
-	let ultimo = null;
+	let ultimo;
 	// Crea un objeto que almacene las funciones que se deben ejecutar para cada grupo
 	let funciones = {
 		grupo2: handleTreatedClick,
@@ -181,7 +181,7 @@ function deseleccionar(e) {
 		// Obtiene el elemento actual
 		let elemento = elementos[i];
 		// Verifica si el elemento tiene el atributo data-haslistener
-		const hasListener = elemento.getAttribute('data-haslistener') === 'true';
+		const hasListener = elemento.getAttribute('data-haslistener');
 		if (!hasListener) {
 			elemento.setAttribute('data-haslistener', 'true');
 			// Le añade el evento listener de tipo "click"
@@ -249,3 +249,240 @@ function toggleVisibility(elem1, elem2) {
 	elem1.classList.remove('d-flex');
 	elem2.style.display = 'block';
 }
+
+
+// Arrays de contenidos
+const mini = [
+  ['bozo','fa-solid fa-crown'],
+  ['nariz','fa-solid fa-umbrella'],
+  ['orejas','fa-solid fa-bell'],
+  ['nudillos manos','fa-solid fa-gift'],
+  ['nudillos pies','fa-solid fa-gift'] 
+];
+
+const peque = [
+  ['axilas','fa-solid fa-coffee'],
+  ['bikini','fa-solid fa-bicycle'],
+  ['cuello','fa-solid fa-tree'],
+  ['línea alba','fa-solid fa-cloud'],
+  ['mejillas','fa-solid fa-fire'],
+  ['mentón','fa-solid fa-moon']
+];
+
+const media = [
+  ['abdomen','fa-solid fa-flag','línea alba'],
+  ['antebrazo','fa-solid fa-paint-brush'],
+  ['barba','fa-solid fa-phone','mejillas,mentón,bozo'],
+  ['brasilero','fa-solid fa-calculator', 'bikini'],
+  ['espalda alta','fa-solid fa-lightbulb'],
+  ['espalda baja','fa-solid fa-magnet'], 
+  ['glúteos','fa-solid fa-key'],
+  ['hombros','fa-solid fa-lock'],
+  ['media pierna','fa-solid fa-map'],
+  ['muslos','fa-solid fa-compass']
+];
+
+const grande = [
+  ['brazos completos','fa-solid fa-clock','nudillos manos,antebrazo'],
+  ['espalda completa','fa-solid fa-clock','espalda alta,espalda baja'],
+  ['pecho completo','fa-solid fa-thermometer','abdomen,línea alba'],
+  ['piernas completas','fa-solid fa-medal','muslos,media pierna,nudillos pies'],
+  ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba'] 
+];
+let grupo = 10; // esta es la variable global que almacena el número de grupo 
+// Generar inputs
+// Creamos un arreglo que contiene los arreglos de las categorías y sus nombres
+const categorias = [
+	[mini, 'mini', 'checkbox'],
+	[peque, 'peque', 'checkbox'],
+	[media, 'media', 'checkbox'],
+	[grande, 'grande', 'checkbox']
+];
+// Hacemos un forEach para llamar a la función generateInputs con cada subarreglo
+categorias.forEach(categoria => {
+	// La función recibe el subarreglo como argumento
+	// Usamos la desestructuración de arreglos para asignar los valores a las variables
+	let [contents, containerName, type] = categoria;
+	// Llamamos a la función generateInputs con las variables
+	generateInputs(contents, containerName, type);
+});
+// Función para asignar atributos 
+function generateInputs(contents, containerName, type) {
+	const container = document.getElementById(containerName);
+	contents.forEach((content, index) => {
+		// Crear input
+		const input = document.createElement('input');
+		const inputConfig = {
+			type: type,
+			class: 'btn-check',
+			id: `grupo${grupo}_${index}`, // usamos el número de grupo y el índice para crear el id
+			'data-label': content[0],
+			'data-covered-by': content[2]
+		};
+		if (type == 'radio') {
+			input.name = `grupo${grupo}`;
+		}
+		setAttributes(input, inputConfig);
+		// Crear label
+		const label = document.createElement('label');
+		const labelConfig = {
+			for: input.id,
+			class: 'btn btn-outline-1505c btn-lg box-shadow px-2'
+		};
+		setAttributes(label, labelConfig);
+		if (content[1]) {
+		// Crear i
+		const i = document.createElement('i');
+		const iConfig = {
+			class: content[1],
+		};
+		setAttributes(i, iConfig);
+		// Agregar i al label
+		label.appendChild(i);
+	}
+		// Crear span
+		const span = document.createElement('span');
+		span.textContent = content[0]; // Asignamos el texto del span
+		// Agregar span al label
+		label.appendChild(span);
+		container.appendChild(input);
+		container.appendChild(label);
+	});
+	grupo++; // incrementamos el número de grupo cada vez que se llama a la función
+}
+// Función para asignar atributos 
+function setAttributes(element, attributes) {
+	Object.keys(attributes).forEach(attr => {
+		element.setAttribute(attr, attributes[attr]);
+	});
+}
+// Crea una clase para manejar los checkboxes
+class CheckboxesManager {
+	constructor() {
+		// Selecciona todos los elementos <input> por su tipo
+		this.checkboxes = document.querySelectorAll('.btn-check[type="checkbox"]');
+		// Selecciona el elemento <div> por su id
+		this.contentsContainer = document.querySelector('#contents-container');
+		// Selecciona el elemento <div> con la clase alert
+		this.alert = document.querySelector('.alert');
+	}
+	init() {
+		// Recorre los elementos <input>
+		this.checkboxes.forEach(checkbox => {
+			// Añade un evento change a cada elemento <input> para que se ejecute una función cuando cambie su estado
+			checkbox.addEventListener('change', () => {
+				this.handleChange(checkbox);
+			});
+		});
+	}
+	handleChange(checkbox) {
+		// Obtiene el valor del elemento <input>
+		const value = checkbox.dataset.label;
+		let span = this.contentsContainer.querySelector(`[data-value="${value}"]`);
+		const checked = checkbox.checked;
+		const covered = checkbox.dataset.coveredBy;
+		let disabled = [];
+		// Si no hay un elemento <span> con el mismo valor
+		if (!span && checkbox.checked) {
+			// Crea un nuevo elemento <span> con el valor del elemento <input>
+			span = this.createSpan(value);
+			// Añade el nuevo elemento <span> al elemento <div> que contiene los contenidos
+			this.contentsContainer.appendChild(span);
+			// Añade un evento click al elemento <span> para que se ejecute una función cuando se haga clic en él
+			span.addEventListener('click', () => {
+				this.updateAlert()
+				this.contentsContainer.removeChild(span);
+				checkbox.checked = false;
+				this.toggleLabels(covered, false, disabled);
+			})
+		} else if (span && !checkbox.checked) {
+			// Elimina el elemento <span> existente
+			this.contentsContainer.removeChild(span);
+		}
+		this.updateAlert();
+		if (covered){
+			this.toggleLabels(covered, checked, disabled);
+			if (disabled.length) {
+				// Eliminar spans
+				disabled.forEach(chk => {
+					const span = document.querySelector(`[data-value="${chk.dataset.label}"]`);
+					if (span) {
+						this.contentsContainer.removeChild(span);
+					}
+				});
+			}
+		}
+	}
+	toggleLabels(covered, enable,disabled) {
+		// Convertir el covered-by a array
+		const zones = covered.split(',');
+		// Iterar cada zona
+		zones.forEach(zone => {
+			// Encontrar inputs con data-label igual a la zona
+			const inputs = document.querySelectorAll(`[data-label="${zone}"]`);
+			// Iterar los inputs
+			inputs.forEach(input => {
+				// Obtener el id del input
+				const inputId = input.id;
+				// Encontrar el label por el id
+				const label = document.querySelector(`label[for="${inputId}"]`);
+				label.classList.toggle('disabled', enable)
+				// Habilitar/deshabilitar según enable
+				if (enable) {
+					console.log('entre a deseleccionar');
+					input.checked = false;
+					disabled.push(input);
+				}
+			});
+		});
+		return disabled;
+	}
+	createSpan(value) {
+		// Crea un nuevo elemento <span>
+		const span = document.createElement('span');
+		// Define los atributos del elemento <span>
+		const attributes = {
+			'data-value': value,
+			class: 'badge-pill-primary me-1 mb-1',
+			'data-bs-theme': 'dark'
+		};
+		// Asigna los atributos al elemento <span>
+		setAttributes(span, attributes);
+		// Asigna el valor del elemento <input> como el texto del elemento <span>
+		span.textContent = value;
+		// Crea un nuevo elemento <button>
+		const button = document.createElement('button');
+		// Define los atributos del elemento <button>
+		button.type = 'button';
+		button.classList.add('btn-close');
+		button.setAttribute('aria-label', 'Close');
+		// Añade el elemento <button> al elemento <span> como hijo
+		span.appendChild(button);
+		// Devuelve el elemento <span> creado
+		return span;
+	}
+	updateAlert() {
+		// Obtiene el número total de elementos <span> en el elemento <div> que contiene los contenidos
+		const totalcontents = this.contentsContainer.querySelectorAll('span').length;
+		// Si hay más de un interés seleccionado
+		if (totalcontents > 1) {
+			// Muestra el elemento <div> con la clase alert
+			this.alert.style.display = 'block';
+		} else {
+			// Oculta el elemento <div> con la clase alert
+			this.alert.style.display = 'none';
+		}
+	}
+}
+// Crea una función para asignar varios atributos a un elemento
+function setAttributes(element, attributes) {
+	// Recorre las claves del objeto attributes
+	Object.keys(attributes).forEach(attr => {
+		// Asigna cada atributo y su valor al elemento
+		element.setAttribute(attr, attributes[attr]);
+	});
+}
+// Crea una instancia de la clase CheckboxesManager
+const manager = new CheckboxesManager();
+// Inicializa la instancia
+manager.init();
