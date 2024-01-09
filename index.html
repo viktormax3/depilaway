@@ -1,467 +1,412 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Depilaway</title>
-		<meta name="description" content="Laser diodo de alta potencia"/>
-		<meta name="author" content="viktormax3"/>
-		<link rel="icon" href="images/favicon.png"/>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"/>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-		<link rel="stylesheet" href="css/all.css"/>
-		<link rel="stylesheet" href="css/style.css"/>
-	</head>
-	<body>
-		<div class="container-fluid bg-light">
-			<div class="row">
-				<div class="col-md-12 px-0">
-					<nav class="navbar navbar-expand-lg">
-						<div class="container-fluid">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="visibility:hidden;">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="d-flex align-items-center justify-content-center">
-								<a class="navbar-brand me-lg-2 me-0" href="#">
-									<img src="images/logo2.svg"/>
-								</a>
-							</div>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
-								<ul class="navbar-nav text-center justify-content-around">
-									<li class="nav-item">
-										<a class="nav-link" href="#">PROMOS</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">DEPILACION <br> MUJERES </a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">DEPILACION <br> HOMBRES </a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">TIENDA</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">INFO</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">UBICACION</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">CONTACTANOS</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">AGENDAR<br>CITA</a>
-									</li>
-									<form class="py-2">
-										<div class="input-group rounded align-items-center">
-											<input type="search" class="form-control border border-end-0 rounded-start" placeholder="Buscar...">
-											<button class="btn btn-outline-1505c border border-start-0 rounded-end" type="submit">
-												<i class="fas fa-search"></i>
-											</button>
-										</div>
-									</form>
-								</ul>
-							</div>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Depilaway</title>
+	<meta name="description" content="Laser diodo de alta potencia" />
+	<meta name="author" content="viktormax3" />
+	<link rel="icon" href="images/favicon.png" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="css/all.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<div class="container-fluid bg-light">
+		<div class="row">
+			<div class="col-md-12 px-0">
+				<nav class="navbar navbar-expand-lg">
+					<div class="container-fluid">
+						<!--navbar-toggler oculto para centrar el logo -->
+						<a class="navbar-toggler" style="visibility:hidden;">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="d-flex align-items-center justify-content-center">
+							<a class="navbar-brand me-lg-2 me-0" href="#">
+								<img src="images/logo2.svg" />
+							</a>
 						</div>
-					</nav>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="row justify-content-sm-around justify-content-lg-end">
-					<div class="col-md-12 px-0 user-select-none" id="slideshowRes">
-						<div id="carousel-1" class="carousel slide carousel-fade" data-bs-ride="carousel" data-pause="hover">
-							<div class="carousel-indicators">
-								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" aria-label="Slide 1"></button>
-								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
-								<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-							</div>
-							<div class="carousel-inner">
-								<div class="carousel-item"	data-bs-interval="4000">
-									<picture>
-										<source srcset="images/1.50.png" media="(max-width: 575px)">
-										<source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
-										<source srcset="images/1.100.png" media="(min-width: 992px)">
-										<img src="images/1.50.png" class="img-fluid w-100" alt="Slideshow 1" draggable="false">
-									</picture>
-									<div class="carousel-caption">
-										<h5>Titulo 1</h5>
-										<p>Imagen referencial 1</p>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
+							<ul class="navbar-nav text-center justify-content-around">
+								<li class="nav-item">
+									<a class="nav-link" href="#">PROMOS</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">DEPILACION <br> MUJERES </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">DEPILACION <br> HOMBRES </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">TIENDA</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">INFO</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">UBICACION</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">CONTACTANOS</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">AGENDAR<br>CITA</a>
+								</li>
+								<form class="py-2">
+									<div class="input-group rounded align-items-center">
+										<input type="search" class="form-control border border-end-0 rounded-start" placeholder="Buscar...">
+										<button class="btn btn-outline-1505c border border-start-0 rounded-end" type="submit">
+											<i class="fas fa-search"></i>
+										</button>
 									</div>
-								</div>
-								<div class="carousel-item active" data-bs-interval="5000">
-									<picture>
-										<source srcset="images/2.50.png" media="(max-width: 575px)">
-										<source srcset="images/2.75.png" media="(min-width: 576px) and (max-width: 991px)">
-										<source srcset="images/2.100.png" media="(min-width: 992px)">
-										<img src="images/2.50.png" class="img-fluid w-100" alt="Slideshow 2" draggable="false">
-									</picture>
-									<div class="carousel-caption">
-										<h5>Titulo 2</h5>
-										<p>Imagen referencial 2</p>
-									</div>
-								</div>
-								<div class="carousel-item" data-bs-interval="4000">
-									<picture>
-										<source srcset="images/3.50.png" media="(max-width: 575px)">
-										<source srcset="images/3.75.png" media="(min-width: 576px) and (max-width: 991px)">
-										<source srcset="images/3.100.png" media="(min-width: 992px)">
-										<img src="images/3.50.png" class="img-fluid w-100" alt="Slideshow 3" draggable="false">
-									</picture>
-									<div class="carousel-caption">
-										<h5>Titulo 3</h5>
-										<p>Imagen referencial 3</p>
-									</div>
-								</div>
-							</div>
-							<button class="carousel-control-prev" type="button" data-bs-target="#carousel-1" data-bs-slide="prev">
-								<i class="fa-thin fa-caret-left fa-2xl"></i>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carousel-1" data-bs-slide="next">
-								<i class="fa-thin fa-caret-right fa-2xl"></i>
-							</button>
+								</form>
+							</ul>
 						</div>
 					</div>
-					<div id="revealer" class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light d-flex text-center align-self-center justify-content-center rounded-4 me-lg-3 pt-lg-5 user-select-none">
+				</nav>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="row justify-content-sm-around justify-content-lg-end">
+				<div class="col-md-12 px-0 user-select-none" id="slideshowRes">
+					<div id="carousel-1" class="carousel slide carousel-fade" data-bs-ride="carousel" data-pause="hover">
+						<div class="carousel-indicators">
+							<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" aria-label="Slide 1"></button>
+							<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+							<button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+						</div>
+						<div class="carousel-inner">
+							<div class="carousel-item" data-bs-interval="4000">
+								<picture>
+									<source srcset="images/1.50.png" media="(max-width: 575px)">
+									<source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
+									<source srcset="images/1.100.png" media="(min-width: 992px)">
+									<img src="images/1.50.png" class="img-fluid w-100" alt="Slideshow 1" draggable="false">
+								</picture>
+								<div class="carousel-caption">
+									<h5>Titulo 1</h5>
+									<p>Imagen referencial 1</p>
+								</div>
+							</div>
+							<div class="carousel-item active" data-bs-interval="5000">
+								<picture>
+									<source srcset="images/2.50.png" media="(max-width: 575px)">
+									<source srcset="images/2.75.png" media="(min-width: 576px) and (max-width: 991px)">
+									<source srcset="images/2.100.png" media="(min-width: 992px)">
+									<img src="images/2.50.png" class="img-fluid w-100" alt="Slideshow 2" draggable="false">
+								</picture>
+								<div class="carousel-caption">
+									<h5>Titulo 2</h5>
+									<p>Imagen referencial 2</p>
+								</div>
+							</div>
+							<div class="carousel-item" data-bs-interval="4000">
+								<picture>
+									<source srcset="images/3.50.png" media="(max-width: 575px)">
+									<source srcset="images/3.75.png" media="(min-width: 576px) and (max-width: 991px)">
+									<source srcset="images/3.100.png" media="(min-width: 992px)">
+									<img src="images/3.50.png" class="img-fluid w-100" alt="Slideshow 3" draggable="false">
+								</picture>
+								<div class="carousel-caption">
+									<h5>Titulo 3</h5>
+									<p>Imagen referencial 3</p>
+								</div>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carousel-1" data-bs-slide="prev">
+							<i class="fa-thin fa-caret-left fa-2xl"></i>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carousel-1" data-bs-slide="next">
+							<i class="fa-thin fa-caret-right fa-2xl"></i>
+						</button>
+					</div>
+				</div>
+				<div class="formIcon col-lg-5 col-sm-8 my-4 p-4 bg-light rounded-4 me-lg-3 pt-lg-5 user-select-none align-self-center multi-collapse collapse show" id="revealerDiv">
+					<div class="d-flex justify-content-center">
 						<div class="text-1505c text-center text-shadow">
 							<div class="display-6">ahora depilarse es</div>
 							<div id="subSlogan" class="display-3 fst-italic mb-4 fw-normal">¡ Así de fácil !</div>
 							<p>
-								<a id="toggleBtn" class="btn btn-1505c btn-md">Agendar cita</a>
+								<button type="button" class="btn btn-1505c btn-md collapsed" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="revealerDiv revealedDiv">Agendar cita</button>
 							</p>
 						</div>
 					</div>
-					<div id="revealed" class="formIcon col-lg-5 col-sm-8 my-4 p-3 bg-light text-center align-self-center rounded-4 me-lg-3 user-select-none" style="display: none;">
-						<form id="regForm" method="post" action="depi_cita.php">
-							<div data-tabname="grupo0" class="mb-3 tab" style="display:block">
-								<h4>¿Tipo de depilación?</h4>
-								<div class="radio-form">
-									<input type="radio" class="btn-check" name="grupo0" id="grupo0_0" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo0_0">
-										<i class="fa-solid fa-planet-moon"></i>
-										<span>Cera</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo0" id="grupo0_1" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo0_1">
-										<i class="fa-solid fa-planet-moon"></i>
-										<span>Laser</span>
-									</label>
-								</div>
-							</div>
-							<div data-tabname="grupo1" class="mb-1 tab">
-								<div class="w-100">
-									<ul class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
-										<li class="nav-item">
-											<a class="nav-link disabled">Zonas:</a>
-										</li>										
-										<li class="nav-item">
-											<button class="nav-link" id="tabMini" data-bs-toggle="tab" data-bs-target="#mini" type="button" role="tab" aria-controls="movies-tab" aria-selected="true"> Mini </button>
-										</li>
-										<li class="nav-item">
-											<button class="nav-link" id="tabPeque" data-bs-toggle="tab" data-bs-target="#peque" type="button" role="tab" aria-controls="books-tab" aria-selected="false"> Peque </button>
-										</li>
-										<li class="nav-item">
-											<button class="nav-link" id="tabMedia" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab" aria-controls="games-tab" aria-selected="false"> Media </button>
-										</li>
-										<li class="nav-item">
-											<button class="nav-link" id="tabGrande" data-bs-toggle="tab" data-bs-target="#grande" type="button" role="tab" aria-controls="games-tab" aria-selected="false"> Grande </button>
-										</li>
-									</ul>
-									<div class="tab-content w-100" id="nav-tabContent">
-										<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="mini" role="tabpanel" aria-labelledby="tabMini"></div>
-										<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="peque" role="tabpanel" aria-labelledby="tabPeque"></div>
-										<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="media" role="tabpanel" aria-labelledby="tabMedia"></div>
-										<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="grande" role="tabpanel" aria-labelledby="tabGrande"></div>
-									</div>
-								</div>
-								<div>
-									<!-- Crea un elemento <div> con la clase .alert para mostrar los contenidos seleccionados -->
-									<div class="alert alert-info p-1 mb-0" role="alert" style="display:none">
-										<!-- Crea un elemento <div> con un id para contener los elementos <span> -->
-										<div id="contents-container"></div>
-									</div>
-								</div>
-							</div>
-							<div data-tabname="grupo2" class="mb-3 tab">
-								<h4>¿Te has realizado este tratamiento?</h4>
-								<div class="radio-form">
-									<input type="radio" class="btn-check" name="grupo2" id="grupo2_0" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo2_0">
-										<span>Si</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo2" id="grupo2_1" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo2_1">
-										<span>No</span>
-									</label>
-								</div>
-							</div>
-							<div data-tabname="grupo3" id="applyTreatment" class="mb-3" style="display: none;">
-								<h4>¿Cuántas veces?</h4>
-								<div class="radio-form">
-									<input type="radio" class="btn-check" name="grupo3" id="grupo3_0" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_0">
-										<span>1-2</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo3" id="grupo3_1" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_1">
-										<span>3-4</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo3" id="grupo3_2" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_2">
-										<span>5-6</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo3" id="grupo3_3" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_3">
-										<span>7-8</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo3" id="grupo3_4" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo3_4">
-										<span>9+</span>
-									</label>
-								</div>
-							</div>
-							<div data-tabname="grupo4" class="mb-3 tab">
-								<h4>¿Edad?</h4>
-								<div class="radio-form">
-									<input type="radio" class="btn-check" name="grupo4" id="grupo4_0" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_0">
-										<span>15-18</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo4" id="grupo4_1" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_1">
-										<span>19-34</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo4" id="grupo4_2" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_2">
-										<span>35-54</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo4" id="grupo4_3" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_3">
-										<span>55-64</span>
-									</label>
-									<input type="radio" class="btn-check" name="grupo4" id="grupo4_4" autocomplete="off">
-									<label class="btn btn-outline-1505c btn-lg box-shadow px-4" for="grupo4_4">
-										<span>65+</span>
-									</label>
-								</div>
-							</div>
-							<div data-tabname="grupo5" class="mb-3 tab">
-								<h2> Información de contacto </h2>
-								<p>
-									<input placeholder="Correo" type="email" name="email" class="border rounded-3 w-75 p-2"/>
-								</p>
-								<p>
-									<input placeholder="Número" type="tel" name="phone" class="border rounded-3 w-75 p-2"/>
-								</p>
-							</div>
-							<div data-tabname="grupo6" class="mb-3 tab">
-								<h2>Paso 6</h2>
-								<p>
-									<input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2"/>
-								</p>
-								<p>
-									<input placeholder="Contraseña" name="pword" type="password" class="border rounded-3 w-75 p-2"/>
-								</p>
-							</div>
-							<!-- Indicadores -->
-							<div class="d-flex flex-warp mt-2 justify-content-around align-items-center">
-								<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a>
-								<a id="stepContainer">
-								</a>
-								<a type="button" id="nextBtn" onclick="nextPrev(1)"></a>
-							</div>
-						</form>
-					</div>
 				</div>
-			</div>
-			<div class="row py-5">
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-					<p>
-						<a class="btn" href="#">Mas detalles »</a>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-					<p>
-						<a class="btn" href="#">Mas detalles »</a>
-					</p>
-				</div>
-				<div class="col-md-4">
-					<h2>Heading</h2>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
-					<p>
-						<a class="btn" href="#">Mas detalles »</a>
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div id="card-86517">
-						<div class="card">
-							<div class="card-header">
-								<a class="card-link collapsed" data-bs-toggle="collapse" data-bs-parent="#card-86517" href="#card-element-22982">Collapsible Group Item #1</a>
-							</div>
-							<div id="card-element-22982" class="collapse">
-								<div class="card-body">Anim pariatur cliche...</div>
+				<div class="formIcon col-lg-5 col-sm-8 my-4 p-3 bg-light text-center align-self-center rounded-4 me-lg-3 user-select-none multi-collapse collapse" id="revealedDiv">
+					<form id="regForm" method="post" action="depi_cita.php">
+						<div data-tabname="grupo0" class="mb-3 tab" style="display:block">
+							<h4>¿Tipo de depilación?</h4>
+							<div class="radio-form" id="tipoDepilacion">
 							</div>
 						</div>
-						<div class="card">
-							<div class="card-header">
-								<a class="card-link collapsed" data-bs-toggle="collapse" data-bs-parent="#card-86517" href="#card-element-732754">Collapsible Group Item #2</a>
+						<div data-tabname="grupo1" class="mb-1 tab">
+							<div class="w-100">
+								<ul class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+									<li class="nav-item">
+										<a class="nav-link disabled">Zonas:</a>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" id="tabMini" data-bs-toggle="tab" data-bs-target="#mini" type="button" role="tab" aria-controls="movies-tab" aria-selected="true"> Mini </button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" id="tabPeque" data-bs-toggle="tab" data-bs-target="#peque" type="button" role="tab" aria-controls="books-tab" aria-selected="false"> Peque </button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" id="tabMedia" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab" aria-controls="games-tab" aria-selected="false"> Media </button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" id="tabGrande" data-bs-toggle="tab" data-bs-target="#grande" type="button" role="tab" aria-controls="games-tab" aria-selected="false"> Grande </button>
+									</li>
+								</ul>
+								<div class="tab-content w-100" id="nav-tabContent">
+									<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="mini" role="tabpanel" aria-labelledby="tabMini"></div>
+									<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="peque" role="tabpanel" aria-labelledby="tabPeque"></div>
+									<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="media" role="tabpanel" aria-labelledby="tabMedia"></div>
+									<div class="tab-pane fade btn-group-toggle radio-form mt-1" data-toggle="buttons" id="grande" role="tabpanel" aria-labelledby="tabGrande"></div>
+								</div>
 							</div>
-							<div id="card-element-732754" class="collapse">
-								<div class="card-body">Anim pariatur cliche...</div>
+							<div>
+								<!-- Crea un elemento <div> con la clase .alert para mostrar los contenidos seleccionados -->
+								<div class="alert alert-primary p-1 mb-0" role="alert" style="display:none">
+									<!-- Crea un elemento <div> con un id para contener los elementos <span> -->
+									<div id="contents-container"></div>
+								</div>
 							</div>
+						</div>
+						<div data-tabname="grupo2" class="mb-3 tab">
+							<h4>¿Te has realizado este tratamiento?</h4>
+							<div class="radio-form" id="treatedYesno">
+							</div>
+						</div>
+						<div data-tabname="grupo3" id="applyTreatment" class="mb-3" style="display: none;">
+							<h4>¿Cuántas veces?</h4>
+							<div class="radio-form" id="howOften">
+							</div>
+						</div>
+						<div data-tabname="grupo4" class="mb-3 tab">
+							<h4>¿Edad?</h4>
+							<div class="radio-form" id="age">
+							</div>
+						</div>
+						<div data-tabname="grupo5" class="mb-3 tab">
+							<h2> Información de contacto </h2>
+							<p>
+								<input placeholder="Correo" type="email" name="email" class="border rounded-3 w-75 p-2" />
+							</p>
+							<p>
+								<input placeholder="Número" type="tel" name="phone" class="border rounded-3 w-75 p-2" />
+							</p>
+						</div>
+						<div data-tabname="grupo6" class="mb-3 tab">
+							<h2>Paso 6</h2>
+							<p>
+								<input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2" />
+							</p>
+							<p>
+								<input placeholder="Contraseña" name="pword" type="password" class="border rounded-3 w-75 p-2" />
+							</p>
+						</div>
+						<!-- Indicadores -->
+						<div class="d-flex flex-warp mt-2 justify-content-around align-items-center">
+							<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a>
+							<a id="stepContainer">
+							</a>
+							<a type="button" id="nextBtn" onclick="nextPrev(1)"></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row py-5">
+			<div class="col-md-4">
+				<h2>Heading</h2>
+				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+				<p>
+					<a class="btn" href="#">Mas detalles »</a>
+				</p>
+			</div>
+			<div class="col-md-4">
+				<h2>Heading</h2>
+				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+				<p>
+					<a class="btn" href="#">Mas detalles »</a>
+				</p>
+			</div>
+			<div class="col-md-4">
+				<h2>Heading</h2>
+				<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+				<p>
+					<a class="btn" href="#">Mas detalles »</a>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="card-86517">
+					<div class="card">
+						<div class="card-header">
+							<a class="card-link collapsed" data-bs-toggle="collapse" data-bs-parent="#card-86517" href="#card-element-22982">Collapsible Group Item #1</a>
+						</div>
+						<div id="card-element-22982" class="collapse">
+							<div class="card-body">Anim pariatur cliche...</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<a class="card-link collapsed" data-bs-toggle="collapse" data-bs-parent="#card-86517" href="#card-element-732754">Collapsible Group Item #2</a>
+						</div>
+						<div id="card-element-732754" class="collapse">
+							<div class="card-body">Anim pariatur cliche...</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="row my-4">
-						<div class="col-md-1"></div>
-						<div class="col-md-3 mx-auto">
-							<div class="card p-3">
-								<img class="card-img-top" alt="Bootstrap Thumbnail First" src="images/card1.jpeg"/>
-								<div class="card-block card-block p-3 mt-1">
-									<h5 class="card-title">Titulo</h5>
-									<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
-									<p>
-										<a class="btn btn-1505c" href="#">Solicitar</a>
-										<a class="btn" href="#">Leer mas</a>
-									</p>
-								</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row my-4">
+					<div class="col-md-1"></div>
+					<div class="col-md-3 mx-auto">
+						<div class="card p-3">
+							<img class="card-img-top" alt="Bootstrap Thumbnail First" src="images/card1.jpeg" />
+							<div class="card-block card-block p-3 mt-1">
+								<h5 class="card-title">Titulo</h5>
+								<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
+								<p>
+									<a class="btn btn-1505c" href="#">Solicitar</a>
+									<a class="btn" href="#">Leer mas</a>
+								</p>
 							</div>
 						</div>
-						<div class="col-md-3 mx-auto">
-							<div class="card p-3">
-								<img class="card-img-top" alt="Bootstrap Thumbnail Second" src="images/card2.jpeg"/>
-								<div class="card-block card-block p-3 mt-1">
-									<h5 class="card-title">Titulo</h5>
-									<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
-									<p>
-										<a class="btn btn-1505c" href="#">Solicitar</a>
-										<a class="btn" href="#">Leer mas</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 mx-auto">
-							<div class="card p-3">
-								<img class="card-img-top" alt="Bootstrap Thumbnail Third" src="images/card3.jpeg"/>
-								<div class="card-block card-block p-3 mt-1">
-									<h5 class="card-title">Titulo</h5>
-									<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
-									<p>
-										<a class="btn btn-1505c" href="#">Solicitar</a>
-										<a class="btn" href="#">Leer mas</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-1"></div>
 					</div>
+					<div class="col-md-3 mx-auto">
+						<div class="card p-3">
+							<img class="card-img-top" alt="Bootstrap Thumbnail Second" src="images/card2.jpeg" />
+							<div class="card-block card-block p-3 mt-1">
+								<h5 class="card-title">Titulo</h5>
+								<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
+								<p>
+									<a class="btn btn-1505c" href="#">Solicitar</a>
+									<a class="btn" href="#">Leer mas</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 mx-auto">
+						<div class="card p-3">
+							<img class="card-img-top" alt="Bootstrap Thumbnail Third" src="images/card3.jpeg" />
+							<div class="card-block card-block p-3 mt-1">
+								<h5 class="card-title">Titulo</h5>
+								<p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget nulla id leo dignissim posuere sed et elit. Mauris a lorem neque. </p>
+								<p>
+									<a class="btn btn-1505c" href="#">Solicitar</a>
+									<a class="btn" href="#">Leer mas</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
 				</div>
 			</div>
-			<div class="row p-5 my-5 text-light text-center bg-7477c justify-content-evenly">
-				<div class="col mb-3">
-					<a href="#" class="d-flex align-items-center mb-3">
-						<img src="images/logo3.svg" width="100%"/>
-					</a>
-					<p class="text-light"> © 2023 Depilaway. Todos los derechos reservados </p>
-				</div>
-				<div class="col mb-3"></div>
-				<div class="col mb-3">
-					<h5>Titulo Seccion 1</h5>
-					<ul class="nav flex-column">
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col mb-3">
-					<h5>Titulo Seccion 2</h5>
-					<ul class="nav flex-column">
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col mb-3">
-					<h5>Titulo Seccion 3</h5>
-					<ul class="nav flex-column">
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
-						</li>
-					</ul>
-				</div>
+		</div>
+		<div class="row p-5 my-5 text-light text-center bg-7477c justify-content-evenly">
+			<div class="col mb-3">
+				<a href="#" class="d-flex align-items-center mb-3">
+					<img src="images/logo3.svg" width="100%" />
+				</a>
+				<p class="text-light"> © 2023 Depilaway. Todos los derechos reservados </p>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<a id="modal-281890" href="#modal-container-281890" role="button" class="btn" data-bs-toggle="modal">Abrir modal</a>
-					<div class="modal fade" id="modal-container-281890" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">Titulo</h5>
-									<button type="button" class="close" data-bs-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">...</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-1505c">Accion</button>
-									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-								</div>
+			<div class="col mb-3"></div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 1</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 2</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 3</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a id="modal-281890" href="#modal-container-281890" role="button" class="btn" data-bs-toggle="modal">Abrir modal</a>
+				<div class="modal fade" id="modal-container-281890" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">Titulo</h5>
+								<button type="button" class="close" data-bs-dismiss="modal">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">...</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-1505c">Accion</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="js/scripts.js"></script>
-	</body>
+	</div>
+	<script src="js/scripts.js"></script>
+</body>
 </html>

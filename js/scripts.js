@@ -3,9 +3,7 @@
 let currentTab = 0;
 // Define una variable que almacena el índice de la pestaña actual (inicialmente 0)
 let resetUltimo = false;
-// Define una variable que almacene los nombres de los grupos de botones radio procesados
-let gruposProcesados = [];
-// Obtener el div con id="stepContainer"
+// Obtener el div con id 'stepContainer'
 const stepContainer = document.getElementById('stepContainer');
 // Obtener todos los divs con la clase tab
 const tabs = document.getElementsByClassName('tab');
@@ -13,15 +11,23 @@ const tabs = document.getElementsByClassName('tab');
 const nextBtn = document.getElementById('nextBtn');
 // Obtener todos los span con la clase step
 const steps = document.getElementsByClassName('step');
-// Obtener el div que se muestra u oculta según el tratamiento
-const treatmentDiv = document.getElementById('applyTreatment');
-// Obtener los radios que indican si se aplica tratamiento o no
-const treatedYes = document.getElementById('grupo2_0');
-const treatedNo = document.getElementById('grupo2_1');
-// Obtener el botón, su bisabuelo y su siguiente hermano para hacer un toggler de divs
-const btnToggler = document.getElementById('toggleBtn');
-const grandparent = btnToggler.parentElement.parentElement.parentElement;
-const nextSibling = grandparent.nextElementSibling;
+// Selecciona todos los radio
+const radios = document.querySelectorAll('.btn-check[type="radio"]');
+// Define una variable que almacene los nombres de los grupos de botones radio procesados
+let radioGroups = [];
+// Crear un array vacío para guardar los grupos
+var grupos = [];
+// Crea un objeto que almacene las funciones que se deben ejecutar para cada grupo
+let funciones = {
+	grupo2: handleTreatedClick,
+	grupo3: function() {
+		// Manejar el error del grupo3 al limpiar los botones radio cuando no existe
+		if (resetUltimo && !this.checked) {
+			ultimo = null;
+			resetUltimo = false;
+		}
+	},
+};
 // helpers
 // Define una función para modificar los spans con la clase step según el número de divs con la clase tab
 function updateSpans() {
@@ -45,9 +51,7 @@ function updateSpans() {
 		var nextSpan = steps[currentTab].nextSibling;
 		// Si el siguiente span existe y es un span.step
 		if (
-			nextSpan &&
-			nextSpan.tagName == 'SPAN' &&
-			nextSpan.classList.contains('step')
+			nextSpan.tagName == 'SPAN'
 		) {
 			// Elimina ese span
 			nextSpan.parentNode.removeChild(nextSpan);
@@ -58,97 +62,87 @@ function updateSpans() {
 // Funciones para el manejo de pestañas
 // Define una función que recibe un parámetro n que indica el índice de la pestaña a mostrar
 function showTab(n) {
-	// Agrega la clase active al step actual
-	steps[n].className += ' active';
-	// Muestra el tab actual
+	// Muestra step y tab actual
+	steps[n].classList.add('active');
 	tabs[n].style.display = 'block';
 	// Muestra u oculta el botón prev según corresponda
 	document.getElementById('prevBtn').style.visibility =
-		n === 0 ? 'hidden' : 'visible';
+		n === 0 ? 'hidden' 
+						: 'visible';
 	// Cambia el icono del botón next según corresponda
 	nextBtn.className =
 		'btn btn-1505c btn-lg ' +
 		(n === tabs.length - 1
 			? 'fa-sharp fa-regular fa-paper-plane-top'
 			: 'fa-solid fa-arrow-right');
-	// Si el elemento no tiene el atributo "data-input-event", se lo agrega y le añade un evento "input"
-	const inputs = tabs[n].getElementsByTagName('input');
-	for (let i = 0; i < inputs.length; i++) {
-		const inputEvent = inputs[i].getAttribute('data-input-event') === 'true';
+	// Si el elemento no tiene el atributo 'data-input-event', se lo agrega y le añade un evento input
+	const inputs = [...tabs[n].getElementsByTagName('input')];
+	inputs.forEach(input => {
+		const inputEvent = input.getAttribute('data-input-event');
 		if (!inputEvent) {
-			inputs[i].setAttribute('data-input-event', true);
+			input.setAttribute('data-input-event', true);
 			// Llama a la función validarYActualizarInputs cada vez que se cambia el valor del elemento
-			inputs[i].addEventListener('input', function () {
-				validarYActualizarInputs();
-			});
-		}
-	}
+			input.addEventListener('input', () => validarYActualizarInputs());
+			}
+		});
 	validarYActualizarInputs();
-	deseleccionarTab();
 }
 // Define una función que recibe un parámetro n que indica si se avanza o retrocede una pestaña
 function nextPrev(n) {
 	// Si currentTab es mayor o igual al número de pestañas, envía el formulario y termina la función
 	if (currentTab + n >= tabs.length) {
 		document.getElementById('regForm').submit();
-		return false;
+		// return false;
 	} else {
 		// Oculta el elemento con el índice currentTab
 		tabs[currentTab].style.display = 'none';
-		steps[currentTab].className = steps[currentTab].className.replace(
-			' active',
-			'',
-		);
+		steps[currentTab].classList.remove('active');
 		// Actualiza el valor de currentTab sumando el valor de n
 		currentTab += n;
 	}
 	// Llama a la función showTab para mostrar la nueva pestaña
 	showTab(currentTab);
 }
-// Define una función que deselecciona la pestaña actual
-function deseleccionarTab() {
-	let tabVisible;
-	for (let i = 0; i < tabs.length; i++) {
-		if (tabs[i].style.display != 'none') {
-			tabVisible = tabs[i];
-			break;
-		}
-	}
-	var nombreTab = tabVisible.getAttribute('data-tabname');
-	// Si el nombre del grupo no está en el arreglo llama a la funcion deseleccionar para procesar el grupo de botones radio
-	if (!gruposProcesados.includes(nombreTab)) {
-		deseleccionar(nombreTab);
-	}
+function radioDeseleccionar () {
+	// Selecciona todos los radio
+	const radios = document.querySelectorAll('.btn-check[type="radio"]');
+	radios.forEach(radio => {
+		if(!radioGroups.includes(radio.name)) {
+			deseleccionar(radio.name);
+			radioGroups.push(radio.name);
+		} 
+	});
 }
 // Funciones de validación
 // Define una función que valida y actualiza los campos de entrada de la pestaña actual
 function validarYActualizarInputs() {
 	let valid = true;
-	// Obtiene todos los elementos con la etiqueta "input" dentro de tabs y los asigna a una variable y
+	// Obtiene todos los elementos con la etiqueta 'input' dentro de tabs y los asigna a una variable y
 	const inputs = tabs[currentTab].getElementsByTagName('input');
 	// Recorre todos los elementos de inputs y verifica su tipo y valor
 	for (let i = 0; i < inputs.length; i++) {
 		switch (inputs[i].type) {
-			case 'email': // Si el tipo es "email"
+			case 'email': // Si el tipo es 'email'
 				// Verifica validez con validity.valid o si está vacío
 				inputs[i].classList.toggle(
 					'invalid',
 					!inputs[i].validity.valid || inputs[i].value === '',
 				);
 				break;
-			case 'tel': // Si el tipo es "tel"
+			case 'tel': // Si el tipo es 'tel'
 				// Comprueba vacío y NaN
 				inputs[i].classList.toggle(
 					'invalid',
 					inputs[i].value === '' || Number.isNaN(Number(inputs[i].value)),
 				);
 				break;
-			case 'radio': // Si el tipo es "radio"
-				// Si no hay ningún elemento seleccionado, agrega la clase "invalid" al elemento
-				inputs[i].classList.toggle('invalid', !document.querySelector( "input[name='" + inputs[i].name + "']:checked", ));
+			case 'radio': // Si el tipo es 'radio' o 'checkbox'
+			case 'checkbox':
+				// Si no hay ningún elemento seleccionado, agrega la clase 'invalid' al elemento
+				inputs[i].classList.toggle('invalid', !document.querySelector(`input[name='${inputs[i].name}']:checked`));
 				break;
 			default: // Si el tipo es otro
-				// Si el valor está vacío, agrega la clase "invalid" al elemento
+				// Si el valor está vacío, agrega la clase 'invalid' al elemento
 				inputs[i].classList.toggle('invalid', inputs[i].value == '');
 				break;
 		}
@@ -160,60 +154,45 @@ function validarYActualizarInputs() {
 	// Deshabilita nextBtn si valid es false
 	nextBtn.classList.toggle('disabled', !valid);
 }
-// Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo "radio"
-function deseleccionar(e) {
-	// Obtiene todos los elementos con el nombre e y los guarda en un arreglo
-	let elementos = document.getElementsByName(e);
+// Define una función que recibe un parámetro grupo que indica el nombre de un grupo de elementos de tipo 'radio'
+function deseleccionar(radios) {
+	let elementos = document.getElementsByName(radios);
 	// Declara una variable para guardar el último elemento seleccionado
 	let ultimo;
-	// Crea un objeto que almacene las funciones que se deben ejecutar para cada grupo
-	let funciones = {
-		grupo2: handleTreatedClick,
-		grupo3: function () {
-			// Manejar el error del grupo3 al limpiar los botones radio cuando no existe
-			if (resetUltimo && !this.checked) {
-				ultimo = null;
-				resetUltimo = false;
-			}
-		},
-	};
 	for (let i = 0; i < elementos.length; i++) {
 		// Obtiene el elemento actual
 		let elemento = elementos[i];
-		// Verifica si el elemento tiene el atributo data-haslistener
-		const hasListener = elemento.getAttribute('data-haslistener');
-		if (!hasListener) {
-			elemento.setAttribute('data-haslistener', 'true');
-			// Le añade el evento listener de tipo "click"
-			elemento.addEventListener('click', function () {
-				// Si el nombre del elemento coincide con alguna de las propiedades del objeto funciones
-				if (funciones[elemento.name]) {
-					// Ejecuta la función correspondiente
-					funciones[elemento.name]();
-				}
-				// Si el elemento es el mismo que el último seleccionado y está marcado
-				if (this.getAttribute('id') == ultimo) {
-					// Lo deselecciona y limpia ultimo
-					elemento.checked = false;
-					ultimo = null;
-					// procesa el cambio y lo valida
-					validarYActualizarInputs();
-				} else {
-					// Si no, asigna el elemento a ultimo y lo selecciona
-					ultimo = this.getAttribute('id');
-					elemento.checked = true;
-				}
-			});
-		}
+		// Le añade el evento listener de tipo "click"
+		elemento.addEventListener('click', function() {
+			// Si el nombre del elemento coincide con alguna de las propiedades del objeto funciones
+			if (funciones[elemento.name]) {
+				// Ejecuta la función correspondiente
+				funciones[elemento.name]();
+			}
+			// Si el elemento es el mismo que el último seleccionado y está marcado
+			if (this.getAttribute('id') == ultimo) {
+				// Lo deselecciona y limpia ultimo
+				elemento.checked = false;
+				ultimo = null;
+				// procesa el cambio y lo valida
+				validarYActualizarInputs();
+			} else {
+				// Si no, asigna el elemento a ultimo y lo selecciona
+				ultimo = this.getAttribute('id');
+				elemento.checked = true;
+			}
+		});
 	}
-	// Agrega el nombre del grupo al arreglo para no correr de nuevo esta misma funcion
-	gruposProcesados.push(e);
 }
-
 // Funciones para eventos
 // Define una función para manejar el evento de cambio de los radios de tratamiento
 // Modificar esto para hacerlo reutilizable!!!!!!!!!!!!!!!
 function handleTreatedClick() {
+	// Obtener el div que se muestra u oculta según el tratamiento
+	const treatmentDiv = document.getElementById('applyTreatment');
+	// Obtener los radios que indican si se aplica tratamiento o no
+	const treatedYes = document.getElementById('grupo2_0');
+	const treatedNo = document.getElementById('grupo2_1');
 	// Obtener valor actual de treated para variar la clase tab segun sea el caso
 	if (treatedYes.checked && !treatmentDiv.classList.contains('tab')) {
 		resetUltimo = true;
@@ -234,65 +213,78 @@ function clearRadioGroup(name) {
 		radio.checked = false;
 	});
 }
-// Inicializadores y listener
-// Llama a la función updateSpans al inicio para inicializar los spans
-updateSpans();
-// Llama a la función showTab para mostrar la primera pestaña
-showTab(currentTab);
-// Al hacer clic en btnToggler, llamar a la función toggleVisibility
-btnToggler.addEventListener('click', function () {
-	toggleVisibility(grandparent, nextSibling);
-});
-// La función toggleVisibility oculta el primer elemento y muestra el segundo
-function toggleVisibility(elem1, elem2) {
-	elem1.style.display = 'none';
-	elem1.classList.remove('d-flex');
-	elem2.style.display = 'block';
-}
-
-
 // Arrays de contenidos
+// label, icon, dataCover,dataZone
+// se rellena false si no aplica
 const mini = [
-  ['bozo','fa-solid fa-crown'],
-  ['nariz','fa-solid fa-umbrella'],
-  ['orejas','fa-solid fa-bell'],
-  ['nudillos manos','fa-solid fa-gift'],
-  ['nudillos pies','fa-solid fa-gift'] 
+  ['bozo','fa-solid fa-crown',false],
+  ['nariz','fa-solid fa-umbrella',false],
+  ['orejas','fa-solid fa-bell',false],
+  ['nudillos manos','fa-solid fa-gift',false],
+  ['nudillos pies','fa-solid fa-gift',false] 
 ];
-
 const peque = [
-  ['axilas','fa-solid fa-coffee'],
-  ['bikini','fa-solid fa-bicycle'],
-  ['cuello','fa-solid fa-tree'],
-  ['línea alba','fa-solid fa-cloud'],
-  ['mejillas','fa-solid fa-fire'],
-  ['mentón','fa-solid fa-moon']
+  ['axilas','fa-solid fa-coffee',false],
+  ['bikini','fa-solid fa-bicycle',false],
+  ['cuello','fa-solid fa-tree',false],
+  ['línea alba','fa-solid fa-cloud',false],
+  ['mejillas','fa-solid fa-fire',false],
+  ['mentón','fa-solid fa-moon',false]
 ];
-
 const media = [
   ['abdomen','fa-solid fa-flag','línea alba'],
-  ['antebrazo','fa-solid fa-paint-brush'],
+  ['antebrazo','fa-solid fa-paint-brush',false],
   ['barba','fa-solid fa-phone','mejillas,mentón,bozo'],
   ['brasilero','fa-solid fa-calculator', 'bikini'],
-  ['espalda alta','fa-solid fa-lightbulb'],
-  ['espalda baja','fa-solid fa-magnet'], 
-  ['glúteos','fa-solid fa-key'],
-  ['hombros','fa-solid fa-lock'],
-  ['media pierna','fa-solid fa-map'],
-  ['muslos','fa-solid fa-compass']
+  ['espalda alta','fa-solid fa-lightbulb',false],
+  ['espalda baja','fa-solid fa-magnet',false], 
+  ['glúteos','fa-solid fa-key',false],
+  ['hombros','fa-solid fa-lock',false],
+  ['media pierna','fa-solid fa-map',false],
+  ['muslos','fa-solid fa-compass',false]
 ];
-
 const grande = [
-  ['brazos completos','fa-solid fa-clock','nudillos manos,antebrazo'],
+  ['brazos completos','fa-solid fa-clock','nudillos manos,antebrazo,hombros'],
   ['espalda completa','fa-solid fa-clock','espalda alta,espalda baja'],
   ['pecho completo','fa-solid fa-thermometer','abdomen,línea alba'],
   ['piernas completas','fa-solid fa-medal','muslos,media pierna,nudillos pies'],
   ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba'] 
 ];
-let grupo = 10; // esta es la variable global que almacena el número de grupo 
+const tipoDepilacion = [
+	['cera', 'fa-solid fa-planet-moon', false],
+	['laser', 'fa-solid fa-planet-moon', false]
+]
+const treatedYesNo = [
+	['si', false , false],
+	['no', false , false]
+]
+const sexSelect = [
+	['hombre', 'fa-solid fa-mars', false],
+	['mujer', 'fa-solid fa-venus', false],
+	['otro', 'fa-solid fa-transgender', false]
+]
+const howOften = [
+	['1-2',false, false],
+	['3-4',false, false],
+	['5-6',false, false],
+	['7-8',false, false],	
+	['9+',false, false]
+]
+const age = [
+	['15-18',false,false],
+	['19-34',false,false],
+	['35-54',false,false],
+	['55-64',false,false],
+	['65+',false,false]
+]
 // Generar inputs
 // Creamos un arreglo que contiene los arreglos de las categorías y sus nombres
+// nombreArreglo, nombreContenedor, inputType
 const categorias = [
+	[tipoDepilacion, 'tipoDepilacion', 'radio'],
+	[treatedYesNo, 'treatedYesno', 'radio'],
+	[howOften, 'howOften', 'radio'],
+	[age, 'age', 'radio'],
 	[mini, 'mini', 'checkbox'],
 	[peque, 'peque', 'checkbox'],
 	[media, 'media', 'checkbox'],
@@ -309,29 +301,35 @@ categorias.forEach(categoria => {
 // Función para asignar atributos 
 function generateInputs(contents, containerName, type) {
 	const container = document.getElementById(containerName);
-	contents.forEach((content, index) => {
+	const grupoName = container.closest("div[data-tabname]");
+	let grupo = grupoName.getAttribute("data-tabname");
+	if (!grupos[grupo]) {
+		// Si no tiene, crear un contador con el valor 0
+		grupos[grupo] = 0;
+	}
+	console.log(grupo);
+	contents.forEach((content) => {
 		// Crear input
 		const input = document.createElement('input');
 		const inputConfig = {
-			type: type,
 			class: 'btn-check',
-			id: `grupo${grupo}_${index}`, // usamos el número de grupo y el índice para crear el id
+			type: type,
+			name: grupo,
+			id: `${grupo}_${grupos[grupo]}`, // usamos el número de grupo y el índice para crear el id
 			'data-label': content[0],
-			'data-covered-by': content[2]
+			...content[2] ? {'data-covered-by': content[2]} : '',	// aplicamos data covered si no es false
+			...content[3] ? {'data-zone': content[3]} : ''	// aplicamos data zone si no es false
 		};
-		if (type == 'radio') {
-			input.name = `grupo${grupo}`;
-		}
 		setAttributes(input, inputConfig);
 		// Crear label
 		const label = document.createElement('label');
 		const labelConfig = {
-			for: input.id,
-			class: 'btn btn-outline-1505c btn-lg box-shadow px-2'
+			class: 'btn btn-outline-1505c btn-lg box-shadow px-3',
+			for: input.id
 		};
 		setAttributes(label, labelConfig);
-		if (content[1]) {
 		// Crear i
+		if (content[1]) {
 		const i = document.createElement('i');
 		const iConfig = {
 			class: content[1],
@@ -347,8 +345,9 @@ function generateInputs(contents, containerName, type) {
 		label.appendChild(span);
 		container.appendChild(input);
 		container.appendChild(label);
+		// Incrementar el contador del grupo
+		grupos[grupo]++;
 	});
-	grupo++; // incrementamos el número de grupo cada vez que se llama a la función
 }
 // Función para asignar atributos 
 function setAttributes(element, attributes) {
@@ -359,7 +358,7 @@ function setAttributes(element, attributes) {
 // Crea una clase para manejar los checkboxes
 class CheckboxesManager {
 	constructor() {
-		// Selecciona todos los elementos <input> por su tipo
+		// Selecciona todos los checkbox
 		this.checkboxes = document.querySelectorAll('.btn-check[type="checkbox"]');
 		// Selecciona el elemento <div> por su id
 		this.contentsContainer = document.querySelector('#contents-container');
@@ -367,7 +366,7 @@ class CheckboxesManager {
 		this.alert = document.querySelector('.alert');
 	}
 	init() {
-		// Recorre los elementos <input>
+		// Recorre los checkbox
 		this.checkboxes.forEach(checkbox => {
 			// Añade un evento change a cada elemento <input> para que se ejecute una función cuando cambie su estado
 			checkbox.addEventListener('change', () => {
@@ -394,6 +393,7 @@ class CheckboxesManager {
 				this.contentsContainer.removeChild(span);
 				checkbox.checked = false;
 				this.toggleLabels(covered, false, disabled);
+				validarYActualizarInputs();
 			})
 		} else if (span && !checkbox.checked) {
 			// Elimina el elemento <span> existente
@@ -413,15 +413,16 @@ class CheckboxesManager {
 			}
 		}
 	}
-	toggleLabels(covered, enable,disabled) {
+	toggleLabels(covered, enable, disabled) {
 		// Convertir el covered-by a array
-		const zones = covered.split(',');
-		// Iterar cada zona
-		zones.forEach(zone => {
-			// Encontrar inputs con data-label igual a la zona
-			const inputs = document.querySelectorAll(`[data-label="${zone}"]`);
-			// Iterar los inputs
-			inputs.forEach(input => {
+		if(covered){
+			const zones = covered.split(',');
+			// Iterar cada zona
+			zones.forEach(zone => {
+				// Encontrar inputs con data-label igual a la zona
+				const inputs = document.querySelectorAll(`[data-label="${zone}"]`);
+				// Iterar los inputs
+				inputs.forEach(input => {
 				// Obtener el id del input
 				const inputId = input.id;
 				// Encontrar el label por el id
@@ -429,7 +430,6 @@ class CheckboxesManager {
 				label.classList.toggle('disabled', enable)
 				// Habilitar/deshabilitar según enable
 				if (enable) {
-					console.log('entre a deseleccionar');
 					input.checked = false;
 					disabled.push(input);
 				}
@@ -437,26 +437,26 @@ class CheckboxesManager {
 		});
 		return disabled;
 	}
+}
 	createSpan(value) {
-		// Crea un nuevo elemento <span>
+		// Crear span
 		const span = document.createElement('span');
-		// Define los atributos del elemento <span>
-		const attributes = {
+		const spanConfig = {
 			'data-value': value,
 			class: 'badge-pill-primary me-1 mb-1',
 			'data-bs-theme': 'dark'
 		};
-		// Asigna los atributos al elemento <span>
-		setAttributes(span, attributes);
-		// Asigna el valor del elemento <input> como el texto del elemento <span>
-		span.textContent = value;
-		// Crea un nuevo elemento <button>
+		setAttributes(span, spanConfig);
+		span.textContent = value; // Asignamos el texto del span
+		// Crea button
 		const button = document.createElement('button');
-		// Define los atributos del elemento <button>
-		button.type = 'button';
-		button.classList.add('btn-close');
-		button.setAttribute('aria-label', 'Close');
-		// Añade el elemento <button> al elemento <span> como hijo
+		const buttonConfig = {
+			type: 'button',
+			class: 'btn-close',
+			'aria-label': 'Close'
+		}
+		setAttributes(button, buttonConfig);
+		// agregar button al label
 		span.appendChild(button);
 		// Devuelve el elemento <span> creado
 		return span;
@@ -465,13 +465,8 @@ class CheckboxesManager {
 		// Obtiene el número total de elementos <span> en el elemento <div> que contiene los contenidos
 		const totalcontents = this.contentsContainer.querySelectorAll('span').length;
 		// Si hay más de un interés seleccionado
-		if (totalcontents > 1) {
-			// Muestra el elemento <div> con la clase alert
-			this.alert.style.display = 'block';
-		} else {
-			// Oculta el elemento <div> con la clase alert
-			this.alert.style.display = 'none';
-		}
+		this.alert.style.display = totalcontents > 1 ? 'block' : 'none';
+
 	}
 }
 // Crea una función para asignar varios atributos a un elemento
@@ -482,7 +477,14 @@ function setAttributes(element, attributes) {
 		element.setAttribute(attr, attributes[attr]);
 	});
 }
+// Inicializadores y listener
 // Crea una instancia de la clase CheckboxesManager
 const manager = new CheckboxesManager();
 // Inicializa la instancia
 manager.init();
+// Llama a la función updateSpans al inicio para inicializar los spans
+updateSpans();
+// Llama a la función showTab para mostrar la primera pestaña
+showTab(currentTab);
+// Llama a la función showTab para procesar los radios
+radioDeseleccionar ();
