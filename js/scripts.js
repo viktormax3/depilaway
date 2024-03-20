@@ -218,37 +218,39 @@ function clearRadioGroup(name) {
 // se rellena false si no aplica
 const mini = [
   ['bozo','fa-solid fa-crown',false],
+	['mentón','fa-solid fa-moon',false],
   ['nariz','fa-solid fa-umbrella',false],
-  ['orejas','fa-solid fa-bell',false],
-  ['nudillos manos','fa-solid fa-gift',false],
-  ['nudillos pies','fa-solid fa-gift',false] 
+  ['orejas','fa-solid fa-bell',false]
 ];
 const peque = [
-  ['axilas','fa-solid fa-coffee',false],
+	['axilas','fa-solid fa-coffee',false],
   ['bikini','fa-solid fa-bicycle',false],
   ['cuello','fa-solid fa-tree',false],
+  ['frente','fa-solid fa-book',false],
   ['línea alba','fa-solid fa-cloud',false],
+	['manos','fa-solid fa-gift',false],
   ['mejillas','fa-solid fa-fire',false],
-  ['mentón','fa-solid fa-moon',false]
+	['pies','fa-solid fa-gift',false,'piernas completas'] 
 ];
 const media = [
   ['abdomen','fa-solid fa-flag','línea alba'],
   ['antebrazo','fa-solid fa-paint-brush',false],
-  ['barba','fa-solid fa-phone','mejillas,mentón,bozo'],
+  ['barba','fa-solid fa-phone','mejillas,mentón,bozo,definicion barba'],
   ['brasilero','fa-solid fa-calculator', 'bikini'],
-  ['espalda alta','fa-solid fa-lightbulb',false],
-  ['espalda baja','fa-solid fa-magnet',false], 
+  ['definicion barba','fa-solid fa-phone','mejillas,mentón,bozo,barba'],
+  ['espalda alta','fa-solid fa-lightbulb',false,'espalda completa'],
+  ['espalda baja','fa-solid fa-magnet',false,'espalda completa'], 
   ['glúteos','fa-solid fa-key',false],
   ['hombros','fa-solid fa-lock',false],
-  ['media pierna','fa-solid fa-map',false],
-  ['muslos','fa-solid fa-compass',false]
+  ['media pierna','fa-solid fa-map',false,'piernas completas'],
+  ['muslos','fa-solid fa-compass',false,'piernas completas']
 ];
 const grande = [
-  ['brazos completos','fa-solid fa-clock','nudillos manos,antebrazo,hombros'],
+  ['brazos completos','fa-solid fa-clock','manos,antebrazo,hombros'],
   ['espalda completa','fa-solid fa-clock','espalda alta,espalda baja'],
   ['pecho completo','fa-solid fa-thermometer','abdomen,línea alba'],
-  ['piernas completas','fa-solid fa-medal','muslos,media pierna,nudillos pies'],
-  ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba'] 
+  ['piernas completas','fa-solid fa-medal','muslos,media pierna,pies'],
+  ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba,definicion barba,frente'] 
 ];
 const tipoDepilacion = [
 	['cera', 'fa-solid fa-planet-moon', false],
@@ -374,6 +376,33 @@ class CheckboxesManager {
 			});
 		});
 	}
+	// Método para alternar las zonas según el checkbox
+	registryZone = {};
+	toggleZones(checkbox) {
+		// Obtener zona grande
+		const containedZone = checkbox.dataset.zone;
+		const labelRegistry = checkbox.dataset.label;
+		const contained = document.querySelector(`[data-label="${containedZone}"]`);
+		const coveredZones = contained.dataset.coveredBy;
+		// Inicializar arreglo vacío segun la zona si no existe
+		if (!this.registryZone[containedZone]) {
+			this.registryZone[containedZone] = [];
+		}
+		// Registrar zona Seleccionada en una matriz para comprobarlo
+		if (!this.registryZone[containedZone].includes(labelRegistry)) {
+			this.registryZone[containedZone].push(labelRegistry);
+		}
+		// Obtener arreglo de zonas
+		const zones = coveredZones.split(",");
+		// Verificar si se han seleccionado todas las zonas contenidas
+		if (contained && this.registryZone[containedZone].length === zones.length) {
+			// Deseleccionar
+			checkbox.checked = false;
+			this.registryZone[containedZone] = [];
+			// Seleccionar zona grande
+			contained.checked = true;
+		}
+	}
 	handleChange(checkbox) {
 		// Obtiene el valor del elemento <input>
 		const value = checkbox.dataset.label;
@@ -381,6 +410,9 @@ class CheckboxesManager {
 		const checked = checkbox.checked;
 		const covered = checkbox.dataset.coveredBy;
 		let disabled = [];
+		if (checkbox.dataset.zone) {
+			this.toggleZones(checkbox);
+		}
 		// Si no hay un elemento <span> con el mismo valor
 		if (!span && checkbox.checked) {
 			// Crea un nuevo elemento <span> con el valor del elemento <input>
@@ -400,7 +432,7 @@ class CheckboxesManager {
 			this.contentsContainer.removeChild(span);
 		}
 		this.updateAlert();
-		if (covered){
+		if (covered) {
 			this.toggleLabels(covered, checked, disabled);
 			if (disabled.length) {
 				// Eliminar spans
@@ -415,7 +447,7 @@ class CheckboxesManager {
 	}
 	toggleLabels(covered, enable, disabled) {
 		// Convertir el covered-by a array
-		if(covered){
+		if (covered) {
 			const zones = covered.split(',');
 			// Iterar cada zona
 			zones.forEach(zone => {
@@ -423,21 +455,21 @@ class CheckboxesManager {
 				const inputs = document.querySelectorAll(`[data-label="${zone}"]`);
 				// Iterar los inputs
 				inputs.forEach(input => {
-				// Obtener el id del input
-				const inputId = input.id;
-				// Encontrar el label por el id
-				const label = document.querySelector(`label[for="${inputId}"]`);
-				label.classList.toggle('disabled', enable)
-				// Habilitar/deshabilitar según enable
-				if (enable) {
-					input.checked = false;
-					disabled.push(input);
-				}
+					// Obtener el id del input
+					const inputId = input.id;
+					// Encontrar el label por el id
+					const label = document.querySelector(`label[for="${inputId}"]`);
+					label.classList.toggle('disabled', enable)
+					// Habilitar/deshabilitar según enable
+					if (enable) {
+						input.checked = false;
+						disabled.push(input);
+					}
+				});
 			});
-		});
-		return disabled;
+			return disabled;
+		}
 	}
-}
 	createSpan(value) {
 		// Crear span
 		const span = document.createElement('span');
@@ -466,7 +498,6 @@ class CheckboxesManager {
 		const totalcontents = this.contentsContainer.querySelectorAll('span').length;
 		// Si hay más de un interés seleccionado
 		this.alert.style.display = totalcontents > 1 ? 'block' : 'none';
-
 	}
 }
 // Crea una función para asignar varios atributos a un elemento
