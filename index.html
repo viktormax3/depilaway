@@ -109,9 +109,9 @@
 						<div data-tabname="grupo1" class="mb-1 tab">
 							<div class="w-100">
 								<ul class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
-									<li class="nav-item">
+									<!-- <li class="nav-item">
 										<a class="nav-link disabled">Zonas:</a>
-									</li>
+									</li> -->
 									<li class="nav-item">
 										<button class="nav-link" id="tabMini" data-bs-toggle="tab" data-bs-target="#mini" type="button" role="tab" aria-controls="movies-tab" aria-selected="true"> Mini </button>
 									</li>
@@ -134,7 +134,8 @@
 							</div>
 							<div>
 								<!-- Crea un elemento <div> con la clase .alert para mostrar los contenidos seleccionados -->
-								<div class="alert alert-primary p-1 mb-0" role="alert" style="display:none">
+								<!-- <div class="alert alert-primary p-1 mb-0" role="alert" style="display:none"> -->
+								<div class="alert p-1 mb-0" role="alert" style="display:none">
 									<!-- Crea un elemento <div> con un id para contener los elementos <span> -->
 									<div id="contents-container"></div>
 								</div>
@@ -165,7 +166,7 @@
 							</p>
 						</div>
 						<div data-tabname="grupo6" class="mb-3 tab">
-							<h2>Paso 6</h2>
+							<h2>Base de datos</h2>
 							<p>
 								<input placeholder="Usuario" name="uname" class="border rounded-3 w-75 p-2" />
 							</p>
@@ -175,7 +176,8 @@
 						</div>
 						<!-- Indicadores -->
 						<div class="d-flex flex-warp mt-2 justify-content-around align-items-center">
-							<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a>
+							<a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-lg fa-solid fa-arrow-left"></a>
+							<!-- <a type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-1505c btn-lg fa-solid fa-arrow-left"></a> -->
 							<a id="stepContainer">
 							</a>
 							<a type="button" id="nextBtn" onclick="nextPrev(1)"></a>
@@ -297,7 +299,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row p-5 my-5 text-light text-center bg-7477c justify-content-evenly">
+		<div class="row p-5 mt-5 text-light text-center bg-7477c justify-content-evenly">
 			<div class="col mb-3">
 				<a href="#" class="d-flex align-items-center mb-3">
 					<img src="images/logo3.svg" width="100%" />
@@ -364,28 +366,6 @@
 						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
 					</li>
 				</ul>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<a id="modal-281890" href="#modal-container-281890" role="button" class="btn" data-bs-toggle="modal">Abrir modal</a>
-				<div class="modal fade" id="modal-container-281890" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="myModalLabel">Titulo</h5>
-								<button type="button" class="close" data-bs-dismiss="modal">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<div class="modal-body">...</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-1505c">Accion</button>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<script src="js/carouselGen.js"></script>

@@ -94,9 +94,9 @@ html{
 }
 
 .btn-check:checked+.btn.btn-outline-1505c {
-  outline:var(--bs-btn-active-border-color);
-  outline-style: dashed;
-  outline-width: 3px;
+  /*outline:var(--bs-btn-active-border-color);
+  /*outline-style: dashed;
+  outline-width: 3px;*/
   position: relative;
 }
 .btn-check:checked + .btn.btn-outline-1505c::after {
@@ -105,8 +105,8 @@ html{
   transform: translateY(-50%);
   animation-name: bounceIn;
   animation-duration: 450ms;
-  color:var(--bs-btn-active-border-color);
-  background-color: white;
+  /*color:var(--bs-btn-active-border-color);*/
+  background-color: #aaa;
   font-size: 25px;
   line-height: 25px;
   border-radius: 25px;
@@ -203,15 +203,25 @@ html{
   font-size: 0.70em;
   font-weight: 700;
   line-height: 1;
-  color: #fff;
+  color: #aaa;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 50rem;
-  background-color: #ff6900;
+  /* background-color: #ff6900; */
+  outline: #aaa;
+  outline-style: solid;
+  outline-width: thin;
   display: inline-flex;
   align-items: center;
   }
+  button.btn-close {
+    filter: none !important;
+  }
+  .btn-outline-1505c.disabled {
+    color: #bbbb;
+    background: #f0f0f0;
+}
 /* Cambia el color de texto de los nav-pills por defecto */
 .nav-pills .nav-link {
   color: var(--bs-heading-color);

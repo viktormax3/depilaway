@@ -67,11 +67,12 @@ function showTab(n) {
 	tabs[n].style.display = 'block';
 	// Muestra u oculta el botón prev según corresponda
 	document.getElementById('prevBtn').style.visibility =
-		n === 0 ? 'hidden' 
+		n === 0 ? 'hidden'
 						: 'visible';
 	// Cambia el icono del botón next según corresponda
 	nextBtn.className =
-		'btn btn-1505c btn-lg ' +
+		// 'btn btn-1505c btn-lg ' +
+		'btn btn-lg ' +
 		(n === tabs.length - 1
 			? 'fa-sharp fa-regular fa-paper-plane-top'
 			: 'fa-solid fa-arrow-right');
@@ -110,7 +111,7 @@ function radioDeseleccionar () {
 		if(!radioGroups.includes(radio.name)) {
 			deseleccionar(radio.name);
 			radioGroups.push(radio.name);
-		} 
+		}
 	});
 }
 // Funciones de validación
@@ -230,7 +231,7 @@ const peque = [
   ['línea alba','fa-solid fa-cloud',false],
 	['manos','fa-solid fa-gift',false],
   ['mejillas','fa-solid fa-fire',false],
-	['pies','fa-solid fa-gift',false,'piernas completas'] 
+	['pies','fa-solid fa-gift',false,'piernas completas']
 ];
 const media = [
   ['abdomen','fa-solid fa-flag','línea alba'],
@@ -239,7 +240,7 @@ const media = [
   ['brasilero','fa-solid fa-calculator', 'bikini'],
   ['definicion barba','fa-solid fa-phone','mejillas,mentón,bozo,barba'],
   ['espalda alta','fa-solid fa-lightbulb',false,'espalda completa'],
-  ['espalda baja','fa-solid fa-magnet',false,'espalda completa'], 
+  ['espalda baja','fa-solid fa-magnet',false,'espalda completa'],
   ['glúteos','fa-solid fa-key',false],
   ['hombros','fa-solid fa-lock',false],
   ['media pierna','fa-solid fa-map',false,'piernas completas'],
@@ -250,7 +251,7 @@ const grande = [
   ['espalda completa','fa-solid fa-clock','espalda alta,espalda baja'],
   ['pecho completo','fa-solid fa-thermometer','abdomen,línea alba'],
   ['piernas completas','fa-solid fa-medal','muslos,media pierna,pies'],
-  ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba,definicion barba,frente'] 
+  ['rostro completo','fa-solid fa-trophy','mejillas,mentón,bozo,nariz,orejas,cuello,barba,definicion barba,frente']
 ];
 const tipoDepilacion = [
 	['cera', 'fa-solid fa-planet-moon', false],
@@ -269,7 +270,7 @@ const howOften = [
 	['1-2',false, false],
 	['3-4',false, false],
 	['5-6',false, false],
-	['7-8',false, false],	
+	['7-8',false, false],
 	['9+',false, false]
 ]
 const age = [
@@ -300,7 +301,7 @@ categorias.forEach(categoria => {
 	// Llamamos a la función generateInputs con las variables
 	generateInputs(contents, containerName, type);
 });
-// Función para asignar atributos 
+// Función para asignar atributos
 function generateInputs(contents, containerName, type) {
 	const container = document.getElementById(containerName);
 	const grupoName = container.closest("div[data-tabname]");
@@ -351,7 +352,7 @@ function generateInputs(contents, containerName, type) {
 		grupos[grupo]++;
 	});
 }
-// Función para asignar atributos 
+// Función para asignar atributos
 function setAttributes(element, attributes) {
 	Object.keys(attributes).forEach(attr => {
 		element.setAttribute(attr, attributes[attr]);

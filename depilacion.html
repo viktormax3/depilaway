@@ -13,6 +13,62 @@
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 		<link rel="stylesheet" href="css/all.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			.extra-info {
+				display: none;
+			}
+
+			.extra-info.active {
+				display: block;
+			}
+
+			.icon-square {
+				width: 3rem;
+				height: 3rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 0.5rem;
+			}
+
+			.text-muted {
+				color: #6c757d;
+			}
+
+			.pain-points {
+				display: flex;
+				gap: 0.25rem;
+			}
+
+			.pain-points .point {
+				width: 1rem;
+				height: 1rem;
+				background-color: #ddd;
+				border-radius: 50%;
+				position: relative;
+			}
+
+			.pain-points .point::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 100%;
+				background-color: #ff4d4d;
+				border-top-left-radius: 50%;
+				border-bottom-left-radius: 50%;
+				display: none;
+			}
+
+			.pain-points .point.half::after {
+				display: block;
+			}
+
+			.pain-points .point.full {
+				background-color: #ff4d4d;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container-fluid bg-light">
@@ -79,31 +135,20 @@
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<img src="images/q.100.png" class="d-block w-100" alt="...">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Slide 1</h5>
-										<p>Contenido relacionado con la slide 1</p>
-									</div>
 								</div>
-								<div class="carousel-item">
-									<img src="images/w.100.png" class="d-block w-100" alt="...">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Slide 2</h5>
-										<p>Contenido relacionado con la slide 2</p>
+									<div class="carousel-item" class="d-block w-100" alt="...">
+										<picture>
+											<source srcset="images/1.50.png" media="(max-width: 575px)">
+											<source srcset="images/1.75.png" media="(min-width: 576px) and (max-width: 991px)">
+											<source srcset="images/1.100.png" media="(min-width: 992px)">
+											<img src="images/1.50.png" class="img-fluid w-100" alt="Slideshow 1" draggable="false">
+										</picture>
 									</div>
-								</div>
 								<div class="carousel-item">
 									<img src="images/3.100.png" class="d-block w-100" alt="...">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Slide 3</h5>
-										<p>Contenido relacionado con la slide 3</p>
-									</div>
 								</div>
 								<div class="carousel-item">
 									<img src="images/4.100.png" class="d-block w-100" alt="...">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Slide 4</h5>
-										<p>Contenido relacionado con la slide 4</p>
-									</div>
 								</div>
 								<div class="carousel-indicators depizones">
 									<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="carousel-indicator indicator-1 active">
@@ -124,7 +169,238 @@
 					</div>
 				</div>
 			</div>
+			<div id="extraInfo1" class="extra-info">
+				<!-- Información adicional para el item 1 -->
+				<p>Información detallada para el item 1</p>
+			</div>
+			<div id="extraInfo2" class="extra-info">
+				<!-- Información adicional para el item 2 -->
+				<p>Información detallada para el item 2</p>
+			</div>
+			<div id="extraInfo3" class="extra-info">
+				<!-- Información adicional para el item 3 -->
+				<p>Información detallada para el item 3</p>
+			</div>
+			<div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+				<div class="col d-flex align-items-start">
+					<div class="icon-square bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+						<svg class="bi" width="1em" height="1em">
+							<use xlink:href="#price-tag"></use>
+						</svg>
+					</div>
+					<div>
+						<h4 class="fs-5 text-muted">Precio</h4>
+						<div id="precio">$$</div>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div class="icon-square bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+						<svg class="bi" width="1em" height="1em">
+							<use xlink:href="#clock"></use>
+						</svg>
+					</div>
+					<div>
+						<h4 class="fs-5 text-muted">Duración</h4>
+						<div id="duracion">__ mins</div>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div class="icon-square bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+						<svg class="bi" width="1em" height="1em">
+							<use xlink:href="#sessions"></use>
+						</svg>
+					</div>
+					<div>
+						<h4 class="fs-5 text-muted"># sesiones</h4>
+						<div id="cantidad-sesiones">__ sesiones</div>
+					</div>
+				</div>
+				<div class="col d-flex align-items-start">
+					<div class="icon-square bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+						<svg class="bi" width="1em" height="1em">
+							<use xlink:href="#pain-level"></use>
+						</svg>
+					</div>
+					<div>
+						<h4 class="fs-5 text-muted">Tolerancia</h4>
+						<div class="pain-points">
+							<span class="point"></span>
+							<span class="point"></span>
+							<span class="point"></span>
+							<span class="point"></span>
+							<span class="point"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container px-4 py-5">
+				<h2 class="pb-2 border-bottom">Depilación láser en ____</h2>
+				<div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+					<!-- Imagen y recomendación -->
+					<div class="col d-flex flex-column align-items-start gap-2">
+						<img src="Axilas.jpg" alt="Zona a depilar" class="img-fluid mb-3">
+						<p class="text-body-secondary">Si buscas una sensación de limpieza continua, la depilación láser en ____ es perfecta. Este tratamiento es superior y más duradero que otros métodos como la cuchilla o las cremas depilatorias, evitando irritaciones y ofreciendo resultados más prolongados.</p>
+					</div>
+					<!-- Beneficios alineados en vertical -->
+					<div class="col d-flex flex-column align-items-start gap-4">
+						<div class="row row-cols-1 g-4">
+							<!-- Beneficios de la depilación (nombre de la zona) -->
+							<div class="col d-flex flex-column gap-2">
+								<div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-1505c bg-gradient fs-4 rounded-3">
+									<svg class="bi" width="1em" height="1em">
+										<use xlink:href="#collection"></use>
+									</svg>
+								</div>
+								<h4 class="fw-semibold mb-0 text-body-emphasis">Beneficios</h4>
+								<p class="text-body-secondary">La depilación de esta zona específica ayuda a mantener la piel limpia y libre de vello no deseado, mejorando la estética y el confort.</p>
+							</div>
+							<!-- Lo mejor de la depilación láser -->
+							<div class="col d-flex flex-column gap-2">
+								<div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-1505c bg-gradient fs-4 rounded-3">
+									<svg class="bi" width="1em" height="1em">
+										<use xlink:href="#gear-fill"></use>
+									</svg>
+								</div>
+								<h4 class="fw-semibold mb-0 text-body-emphasis">Lo mejor</h4>
+								<ul class="text-body-secondary">
+									<li>Reduce el vello de manera permanente.</li>
+									<li>Es segura, sencilla y efectiva.</li>
+									<li>Suaviza y alisa la piel.</li>
+									<li>Funciona en todos los tipos de piel.</li>
+									<li>Ahorra tiempo y dinero.</li>
+									<li>Elimina vellos encarnados y molestias.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="row row-cols-1 row-cols-sm-2 g-4">
+						<!-- Ofertas especiales -->
+						<div class="col d-flex flex-column gap-2">
+							<div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-1505c bg-gradient fs-4 rounded-3">
+								<svg class="bi" width="1em" height="1em">
+									<use xlink:href="#speedometer"></use>
+								</svg>
+							</div>
+							<h4 class="fw-semibold mb-0 text-body-emphasis">Ofertas especiales</h4>
+							<p class="text-body-secondary">Aprovecha nuestras increíbles promociones al pagar paquetes de 5 o 10 sesiones. Además, ofrecemos descuentos especiales para zonas agrupadas. ¡Ahorra más y luce una piel suave y libre de vello!</p>
+						</div>
+						<!-- Nuestra tecnología -->
+						<div class="col d-flex flex-column gap-2">
+							<div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-1505c bg-gradient fs-4 rounded-3">
+								<svg class="bi" width="1em" height="1em">
+									<use xlink:href="#gear-fill"></use>
+								</svg>
+							</div>
+							<h4 class="fw-semibold mb-0 text-body-emphasis">Nuestra tecnología</h4>
+							<p class="text-body-secondary">Utilizamos un avanzado sistema de depilación láser diodo con enfriamiento, lo que mejora significativamente la experiencia. Este sistema es eficaz, seguro y proporciona un tratamiento más cómodo y agradable.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row p-5 mt-5 text-light text-center bg-7477c justify-content-evenly">
+				<div class="col mb-3">
+					<a href="#" class="d-flex align-items-center mb-3">
+						<img src="images/logo3.svg" width="100%" />
+					</a>
+					<p class="text-light"> © 2024 Depilaway. Todos los derechos reservados </p>
+				</div>
+				<div class="col mb-3"></div>
+				<div class="col mb-3">
+					<h5>Titulo Seccion 1</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col mb-3">
+					<h5>Titulo Seccion 2</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col mb-3">
+					<h5>Titulo Seccion 3</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<script src="js/carouselGen.js"></script>
 			<link rel="stylesheet" href="css/Carousel.css" />
+			<script>
+				document.addEventListener('DOMContentLoaded', (event) => {
+					var extraInfos = document.querySelectorAll('.extra-info');
+					var carousel = document.getElementById('myCarousel');
+
+					function showInfo(index) {
+						extraInfos.forEach((info, idx) => {
+							info.classList.toggle('active', idx === index);
+						});
+					}
+					carousel.addEventListener('slide.bs.carousel', function(e) {
+						var idx = Array.prototype.indexOf.call(e.target.getElementsByClassName('carousel-item'), e.relatedTarget);
+						showInfo(idx);
+					});
+					// Mostrar la información del primer item al cargar la página
+					showInfo(0);
+				});
+
+				function setPainLevel(level) {
+					const points = document.querySelectorAll('.pain-points .point');
+					points.forEach((point, index) => {
+						point.classList.remove('half', 'full');
+						if (index < Math.floor(level / 2)) {
+							point.classList.add('full');
+						} else if (index < Math.floor(level / 2) + 1 && level % 2 !== 0) {
+							point.classList.add('half');
+						}
+					});
+				}
+				// Ejemplo de uso:
+				setPainLevel(3); // Llena 3 puntos completos y 1 punto a la mitad (3.5 en una escala de 1-5).
+			</script>
 	</body>
 </html>
