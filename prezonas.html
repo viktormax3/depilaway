@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Depilaway</title>
+    <meta name="description" content="Laser diodo de alta potencia" />
+    <meta name="author" content="viktormax3" />
+    <link rel="icon" href="images/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .card-horizontal {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .card-img-left {
+            width: 30%;
+            object-fit: contain;
+        }
+        .card-body {
+            flex: 1;
+        }
+				.card {
+				color: #666;
+				border: none;
+				}
+				.card-text { 
+				font-size: 0.875rem;
+			}
+				.carousel-caption 
+				{ position: absolute; 
+					top: 50%; 
+					left: 20px; 
+					transform: translateY(-50%); 
+					text-align: left;
+				}
+    </style>
+</head>
+<body>
+	<div class="container-fluid bg-light">
+		<div class="row">
+			<div class="col-md-12 px-0">
+				<nav class="navbar navbar-expand-lg">
+					<div class="container-fluid">
+						<!--navbar-toggler oculto para centrar el logo -->
+						<a class="navbar-toggler" style="visibility:hidden;">
+							<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="d-flex align-items-center justify-content-center">
+								<a class="navbar-brand me-lg-2 me-0" href="#">
+									<img src="images/logo2.svg" />
+								</a>
+							</div>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
+								<ul class="navbar-nav text-center justify-content-around">
+									<li class="nav-item">
+										<a class="nav-link" href="#">PROMOS</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">DEPILACION <br> MUJERES </a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">DEPILACION <br> HOMBRES </a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">TIENDA</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">INFO</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">UBICACION</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">CONTACTANOS</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">AGENDAR <br>CITA </a>
+									</li>
+									<form class="py-2 d-none">
+										<div class="input-group rounded align-items-center">
+											<input type="search" class="form-control border border-end-0 rounded-start" placeholder="Buscar...">
+											<button class="btn btn-outline-1505c border border-start-0 rounded-end" type="submit">
+												<i class="fas fa-search"></i>
+											</button>
+										</div>
+									</form>
+								</ul>
+							</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="row justify-content-sm-around justify-content-lg-end">
+				<div class="col-md-12 px-0 user-select-none" id="slideshowRes">
+					<div id="myCarousel" class="carousel slide carousel-fade">
+						<div class="carousel-inner">
+							<div class="carousel-item active" class="d-block w-100" alt="...">
+								<picture>
+									<source srcset="images/6.50.png" media="(max-width: 575px)">
+									<source srcset="images/6.75.png" media="(min-width: 576px) and (max-width: 991px)">
+									<source srcset="images/6.100.png" media="(min-width: 992px)">
+									<img src="images/6.50.png" class="img-fluid w-100" alt="Slideshow 1" draggable="false">
+								</picture>
+								<div class="carousel-caption d-none d-md-block">
+									<h2 class="bs5-">Texto enfoque</h2>
+									<p>Contenido relacionado</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-5">
+			<h2 class="text-center">Descubre nuestras zonas de depilacion laser</h2>
+			<div class="row mt-4">
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="rostro.png" class="card-img-left" alt="Rostro">
+									<div class="card-body">
+											<h5 class="card-title">Rostro</h5>
+											<p class="card-text">Despídete de esos vellos faciales indeseados. Te ayudamos a mantener una piel tersa y suave, desde la frente hasta la barbilla y todo lo demás.</p>
+											<a href="rostro.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="brazos.png" class="card-img-left" alt="Brazos">
+									<div class="card-body">
+											<h5 class="card-title">Brazos</h5>
+											<p class="card-text">Olvídate del afeitado diario. Mantén tus brazos y axilas suaves y sin vello, desde el hombro hasta los dedos, con nuestros tratamientos efectivos.</p>
+											<a href="brazos.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="pecho.png" class="card-img-left" alt="Pecho">
+									<div class="card-body">
+											<h5 class="card-title">Pecho</h5>
+											<p class="card-text">Libérate del vello en el pecho y disfruta de una piel lisa y limpia. Perfecto para lucir tu mejor versión en cualquier ocasión.</p>
+											<a href="pecho.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="espalda.png" class="card-img-left" alt="Espalda">
+									<div class="card-body">
+											<h5 class="card-title">Espalda</h5>
+											<p class="card-text">Disfruta de una espalda suave y libre de vello con nuestro tratamiento de depilación láser, ideal para resultados duraderos y efectivos.</p>
+											<a href="espalda.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="intimo.png" class="card-img-left" alt="Íntimo">
+									<div class="card-body">
+											<h5 class="card-title">Íntimo</h5>
+											<p class="card-text">Deja de lidiar con la irritación del afeitado en tu zona íntima. Ofrecemos opciones que van desde el clásico bikini hasta la depilación brasileña completa.</p>
+											<a href="intimo.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-3">
+							<div class="card card-horizontal">
+									<img src="piernas.png" class="card-img-left" alt="Piernas">
+									<div class="card-body">
+											<h5 class="card-title">Piernas</h5>
+											<p class="card-text">Despídete de la navaja y saluda a unas piernas suaves y sin vello. Disponemos de opciones para depilación completa o media pierna.</p>
+											<a href="piernas.html" class="btn btn-1505c">Ver más</a>
+									</div>
+							</div>
+					</div>
+			</div>
+		</div>
+		<div class="container py-3">
+			<header>
+				<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+					<h2 class="fw-normal">Descubre nuestros combos</h2>
+					<p>En Depilaway, ofrecemos una variedad de combos de depilación láser que se adaptan a tus necesidades. Cada paquete está diseñado para brindarte la mejor experiencia de depilación con resultados duraderos. ¡Elige el combo que más te convenga y disfruta de una piel suave y libre de vello!.</p>
+				</div>
+			</header>
+			<main>
+				<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+					<div class="col">
+						<div class="card mb-4 rounded-3 shadow-sm">
+							<div class="card-header py-3">
+								<h4 class="my-0 fw-normal">Sport</h4>
+							</div>
+							<div class="card-body">
+								<h1 class="card-title pricing-card-title">$20<small class="text-body-secondary fw-light">/sesion</small></h1>
+								<ul class="list-unstyled mt-3 mb-4">
+									<li>Axilas + Media Pierna</li>
+								</ul>
+								<button type="button" class="w-100 btn btn-lg btn-outline-1505c">Sign up for free</button>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card mb-4 rounded-3 shadow-sm">
+							<div class="card-header py-3">
+								<h4 class="my-0 fw-normal">Playero</h4>
+							</div>
+							<div class="card-body">
+								<h1 class="card-title pricing-card-title">$40<small class="text-body-secondary fw-light">/sesion</small></h1>
+								<ul class="list-unstyled mt-3 mb-4">
+									<li>Axilas</li>
+									<li>Brasilero</li>
+									<li>Media Pierna</li>
+								</ul>
+								<button type="button" class="w-100 btn btn-lg btn-1505c">Agenda ahora</button>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card mb-4 rounded-3 shadow-sm border-primary">
+							<div class="card-header py-3 bg-1505c text-light border-primary">
+								<h4 class="my-0 fw-normal">Diario</h4>
+							</div>
+							<div class="card-body">
+								<h1 class="card-title pricing-card-title">$60<small class="text-body-secondary fw-light">/sesion</small></h1>
+								<ul class="list-unstyled mt-3 mb-4">
+									<li>Axilas</li>
+									<li>Bozo</li>
+									<li>Brasilero</li>
+									<li>Piernas completas</li>
+								</ul>
+								<button type="button" class="w-100 btn btn-lg btn-1505c">Contactanos</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<div class="row p-5 mt-5 text-light text-center bg-7477c justify-content-evenly">
+			<div class="col mb-3">
+				<a href="#" class="d-flex align-items-center mb-3">
+					<img src="images/logo3.svg" width="100%" />
+				</a>
+				<p class="text-light"> © 2024 Depilaway. Todos los derechos reservados </p>
+			</div>
+			<div class="col mb-3"></div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 1</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 2</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col mb-3">
+				<h5>Titulo Seccion 3</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 1</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 2</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 3</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 4</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a href="#" class="nav-link p-0 text-light">Opcion 5</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
